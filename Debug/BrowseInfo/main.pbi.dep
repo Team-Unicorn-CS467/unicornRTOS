@@ -1,0 +1,21 @@
+C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\main.pbi: \
+  C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\main.c \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\stdint.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\ycheck.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\yvals.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Defaults.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Config_Normal.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Product.h \
+  C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\board_io.h \
+  C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\ticks.h \
+  C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\TM4C123GH6PM.h \
+  C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\CMSIS\Include\core_cm4.h \
+  C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\CMSIS\Include\core_cmInstr.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\aarch32\cmsis_iar.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\aarch32\iccarm_builtin.h \
+  C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\CMSIS\Include\core_cmFunc.h \
+  C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\CMSIS\Include\core_cmSimd.h \
+  C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\unicorn.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\aarch32\intrinsics.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\aarch32\iccarm_builtin.h \
+  C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\aarch32\iar_intrinsics_common.h
