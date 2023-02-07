@@ -1,0 +1,79 @@
+Still getting the hang of Git, this commit is the same as the last one
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	modified:   CHANGE_HX/robert_changes_feb)_6.txt
+#	modified:   CMSIS/Include/arm_common_tables.h
+#	modified:   CMSIS/Include/arm_const_structs.h
+#	modified:   CMSIS/Include/arm_math.h
+#	modified:   CMSIS/Include/cmsis_armcc.h
+#	modified:   CMSIS/Include/cmsis_armcc_V6.h
+#	modified:   CMSIS/Include/cmsis_gcc.h
+#	modified:   CMSIS/Include/core_cm0.h
+#	modified:   CMSIS/Include/core_cm0plus.h
+#	modified:   CMSIS/Include/core_cm3.h
+#	modified:   CMSIS/Include/core_cm4.h
+#	modified:   CMSIS/Include/core_cm7.h
+#	modified:   CMSIS/Include/core_cmFunc.h
+#	modified:   CMSIS/Include/core_cmInstr.h
+#	modified:   CMSIS/Include/core_cmSimd.h
+#	modified:   CMSIS/Include/core_sc000.h
+#	modified:   CMSIS/Include/core_sc300.h
+#	modified:   CMSIS/README.txt
+#	modified:   Debug/.ninja_deps
+#	modified:   Debug/.ninja_log
+#	modified:   Debug/BrowseInfo/.ninja_log
+#	modified:   Debug/BrowseInfo/board_io.pbi
+#	modified:   Debug/BrowseInfo/board_io.pbi.dep
+#	modified:   Debug/BrowseInfo/board_io.xcl
+#	modified:   Debug/BrowseInfo/build.ninja
+#	modified:   Debug/BrowseInfo/ek-tm4c123gxl/system_TM4C123GH6PM.pbi.dep
+#	modified:   Debug/BrowseInfo/ek-tm4c123gxl/system_TM4C123GH6PM.xcl
+#	modified:   Debug/BrowseInfo/main.pbi
+#	modified:   Debug/BrowseInfo/main.pbi.dep
+#	modified:   Debug/BrowseInfo/main.xcl
+#	modified:   Debug/BrowseInfo/main2.pbi.dep
+#	modified:   Debug/BrowseInfo/main2.xcl
+#	modified:   Debug/BrowseInfo/project.pbd
+#	modified:   Debug/BrowseInfo/project.pbd.browse
+#	modified:   Debug/BrowseInfo/project.pbw
+#	modified:   Debug/BrowseInfo/project_part0.pbi
+#	modified:   Debug/BrowseInfo/project_part1.pbi
+#	modified:   Debug/BrowseInfo/project_part2.pbi
+#	modified:   Debug/BrowseInfo/startup_vector_table.pbi
+#	modified:   Debug/BrowseInfo/startup_vector_table.pbi.dep
+#	modified:   Debug/BrowseInfo/startup_vector_table.xcl
+#	modified:   Debug/BrowseInfo/ticks.pbi
+#	modified:   Debug/BrowseInfo/ticks.pbi.dep
+#	modified:   Debug/BrowseInfo/ticks.xcl
+#	modified:   Debug/BrowseInfo/unicorn.pbi
+#	modified:   Debug/BrowseInfo/unicorn.pbi.dep
+#	modified:   Debug/BrowseInfo/unicorn.xcl
+#	modified:   Debug/Exe/project.out
+#	modified:   Debug/List/project.map
+#	modified:   Debug/Obj/board_io.o
+#	modified:   Debug/Obj/main.o
+#	modified:   Debug/Obj/main2.o.iar_deps
+#	modified:   Debug/Obj/startup_vector_table.o
+#	modified:   Debug/Obj/ticks.o
+#	modified:   Debug/Obj/unicorn.o
+#	deleted:    lm4f120h5qr.h
+#	deleted:    masks.h
+#	modified:   project.dep
+#	modified:   project.ewp
+#	modified:   project.ewt
+#	modified:   project.eww
+#	modified:   settings/project.Debug.cspy.bat
+#	modified:   settings/project.Debug.cspy.ps1
+#	modified:   settings/project.Debug.driver.xcl
+#	modified:   settings/project.Debug.general.xcl
+#	modified:   settings/project.crun
+#	modified:   settings/project.dbgdt
+#	modified:   settings/project.dnx
+#	modified:   settings/project.wsdt
+#
