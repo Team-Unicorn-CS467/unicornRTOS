@@ -80,7 +80,9 @@ void readyNewTask(EntryFunction taskFunc)
   
   //initialize the dormant task and mark as ready
   initializeTask(&(taskTable[i]), taskFunc);
-  taskTable[i].state = TASK_STATE_READY;
+  
+  // is this redundant?  initializeTask puts target->state = TASK_STATE_READY
+  taskTable[i].state = TASK_STATE_READY; 
 }
 
 //interrupts must be disabled when this function is called

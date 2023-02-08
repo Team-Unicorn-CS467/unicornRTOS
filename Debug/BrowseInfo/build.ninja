@@ -24,67 +24,67 @@ rule PDBLINK
 
 
 #Build steps
-build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\board_io.xcl : COMPILER_XCL 
-  xclcommand = -source_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\board_io.c -xcl_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\board_io.xcl -macro_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\board_io.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
-  flags = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\board_io.c -o C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -I C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\CMSIS\Include\ -Ol --predef_macros C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\board_io.tmp
-  rspfile_name = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\board_io.xcl.rsp
+build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\board_io.xcl : COMPILER_XCL 
+  xclcommand = -source_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\board_io.c -xcl_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\board_io.xcl -macro_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\board_io.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
+  flags = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\board_io.c -o C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -I C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\CMSIS\Include\ -Ol --predef_macros C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\board_io.tmp
+  rspfile_name = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\board_io.xcl.rsp
 
-build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\main.xcl : COMPILER_XCL 
-  xclcommand = -source_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\main.c -xcl_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\main.xcl -macro_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\main.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
-  flags = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\main.c -o C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -I C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\CMSIS\Include\ -Ol --predef_macros C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\main.tmp
-  rspfile_name = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\main.xcl.rsp
+build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\main.xcl : COMPILER_XCL 
+  xclcommand = -source_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\main.c -xcl_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\main.xcl -macro_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\main.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
+  flags = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\main.c -o C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -I C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\CMSIS\Include\ -Ol --predef_macros C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\main.tmp
+  rspfile_name = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\main.xcl.rsp
 
-build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\startup_vector_table.xcl : COMPILER_XCL 
-  xclcommand = -source_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\startup_vector_table.c -xcl_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\startup_vector_table.xcl -macro_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\startup_vector_table.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
-  flags = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\startup_vector_table.c -o C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -I C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\CMSIS\Include\ -Ol --predef_macros C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\startup_vector_table.tmp
-  rspfile_name = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\startup_vector_table.xcl.rsp
+build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\startup_vector_table.xcl : COMPILER_XCL 
+  xclcommand = -source_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\startup_vector_table.c -xcl_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\startup_vector_table.xcl -macro_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\startup_vector_table.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
+  flags = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\startup_vector_table.c -o C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -I C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\CMSIS\Include\ -Ol --predef_macros C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\startup_vector_table.tmp
+  rspfile_name = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\startup_vector_table.xcl.rsp
 
-build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\ticks.xcl : COMPILER_XCL 
-  xclcommand = -source_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\ticks.c -xcl_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\ticks.xcl -macro_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\ticks.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
-  flags = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\ticks.c -o C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -I C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\CMSIS\Include\ -Ol --predef_macros C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\ticks.tmp
-  rspfile_name = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\ticks.xcl.rsp
+build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\ticks.xcl : COMPILER_XCL 
+  xclcommand = -source_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\ticks.c -xcl_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\ticks.xcl -macro_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\ticks.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
+  flags = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\ticks.c -o C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -I C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\CMSIS\Include\ -Ol --predef_macros C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\ticks.tmp
+  rspfile_name = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\ticks.xcl.rsp
 
-build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\unicorn.xcl : COMPILER_XCL 
-  xclcommand = -source_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\unicorn.c -xcl_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\unicorn.xcl -macro_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\unicorn.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
-  flags = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\unicorn.c -o C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -I C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\CMSIS\Include\ -Ol --predef_macros C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\unicorn.tmp
-  rspfile_name = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\unicorn.xcl.rsp
+build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\unicorn.xcl : COMPILER_XCL 
+  xclcommand = -source_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn.c -xcl_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\unicorn.xcl -macro_file C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\unicorn.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
+  flags = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn.c -o C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -I C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\CMSIS\Include\ -Ol --predef_macros C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\unicorn.tmp
+  rspfile_name = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\unicorn.xcl.rsp
 
-build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\board_io.pbi : INDEXER C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\board_io.xcl |  $
-C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\board_io.c
-  flags = -out=C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\board_io.pbi -f C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\board_io.xcl
+build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\board_io.pbi : INDEXER C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\board_io.xcl |  $
+C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\board_io.c
+  flags = -out=C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\board_io.pbi -f C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\board_io.xcl
 
-build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\main.pbi : INDEXER C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\main.xcl |  $
-C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\main.c
-  flags = -out=C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\main.pbi -f C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\main.xcl
+build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\main.pbi : INDEXER C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\main.xcl |  $
+C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\main.c
+  flags = -out=C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\main.pbi -f C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\main.xcl
 
-build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\startup_vector_table.pbi : INDEXER C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\startup_vector_table.xcl |  $
-C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\startup_vector_table.c
-  flags = -out=C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\startup_vector_table.pbi -f C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\startup_vector_table.xcl
+build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi : INDEXER C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\startup_vector_table.xcl |  $
+C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\startup_vector_table.c
+  flags = -out=C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi -f C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\startup_vector_table.xcl
 
-build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\ticks.pbi : INDEXER C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\ticks.xcl |  $
-C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\ticks.c
-  flags = -out=C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\ticks.pbi -f C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\ticks.xcl
+build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\ticks.pbi : INDEXER C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\ticks.xcl |  $
+C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\ticks.c
+  flags = -out=C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\ticks.pbi -f C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\ticks.xcl
 
-build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\unicorn.pbi : INDEXER C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\unicorn.xcl |  $
-C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\unicorn.c
-  flags = -out=C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\unicorn.pbi -f C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\unicorn.xcl
+build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\unicorn.pbi : INDEXER C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\unicorn.xcl |  $
+C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn.c
+  flags = -out=C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\unicorn.pbi -f C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\unicorn.xcl
 
-build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\project.pbw : MAKEBROWSE C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\project.pbd
-  flags = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\project.pbd -output C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\project.pbw
+build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\project.pbw : MAKEBROWSE C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\project.pbd
+  flags = C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\project.pbd -output C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\project.pbw
 
-build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\project_part0.pbi : PDBLINK C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\board_io.pbi |  $
-C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\main.pbi
-  flags = -M C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\project_part0.pbi C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\board_io.pbi C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\main.pbi
+build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\project_part0.pbi : PDBLINK C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\board_io.pbi |  $
+C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\main.pbi
+  flags = -M C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\project_part0.pbi C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\board_io.pbi C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\main.pbi
 
-build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\project_part1.pbi : PDBLINK C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\startup_vector_table.pbi |  $
-C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\ticks.pbi
-  flags = -M C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\project_part1.pbi C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\startup_vector_table.pbi C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\ticks.pbi
+build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\project_part1.pbi : PDBLINK C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi |  $
+C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\ticks.pbi
+  flags = -M C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\project_part1.pbi C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\ticks.pbi
 
-build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\project_part2.pbi : PDBLINK C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\unicorn.pbi
-  flags = -M C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\project_part2.pbi C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\unicorn.pbi
+build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\project_part2.pbi : PDBLINK C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\unicorn.pbi
+  flags = -M C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\project_part2.pbi C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\unicorn.pbi
 
-build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\project.pbd : PDBLINK C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\project_part0.pbi |  $
-C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\project_part1.pbi $
-C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\project_part2.pbi
-  flags = -M C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\project.pbd C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\project_part0.pbi C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\project_part1.pbi C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn_rtos\Debug\BrowseInfo\project_part2.pbi
+build C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\project.pbd : PDBLINK C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\project_part0.pbi |  $
+C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\project_part1.pbi $
+C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\project_part2.pbi
+  flags = -M C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\project.pbd C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\project_part0.pbi C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\project_part1.pbi C$:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\project_part2.pbi
 

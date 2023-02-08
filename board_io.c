@@ -24,6 +24,10 @@ void boardStartup(void)
   __ISB(); //Instruction Synchronization Barrier 
   __DSB(); //Data Memory Barrier 
   
+  
+  GPIOF_AHB->DIR |= (RED | BLUE | GREEN);   // enable GPIOF red, blue and green as inputs
+  GPIOF_AHB->DEN |= (RED | BLUE | GREEN);   // enable GPIOF red, blue and green as digital
+  
   //systick stuff
   // register abstractions in core_cm4h.h (CMSIS directory)
   SysTick->LOAD = (uint32_t)1000000U;
@@ -44,6 +48,17 @@ void boardStartup(void)
 // Gotta get the Systick handler to manage the ticks on these
 ////////////////////////////////////////////////////////////////////
 //assumes necessary initial setup completed to support blinking
+
+void ledRedOn()    { GPIOF_AHB->DATA_Bits[RED] = RED; }
+void ledRedOff()   { GPIOF_AHB->DATA_Bits[RED] = OFF; }
+
+void ledGreenOn()  { GPIOF_AHB->DATA_Bits[GREEN] = GREEN; }
+void ledGreenOff() { GPIOF_AHB->DATA_Bits[GREEN] = OFF; }
+    
+void ledBlueOn()   { GPIOF_AHB->DATA_Bits[BLUE] = BLUE; }
+void ledBlueOff()  { GPIOF_AHB->DATA_Bits[BLUE] = OFF; }
+    
+
 void blinkRed()
 {
     int direction = -1;
@@ -73,7 +88,7 @@ void blinkBlue()
     int offset = 0;
     while(1)
     {
-      GPIOF_AHB->DATA_Bits[BLUE] = GREEN; //turn color on
+      GPIOF_AHB->DATA_Bits[BLUE] = BLUE; //turn color on
       int i = -BLINKY_MAX;
       while(i < offset)
         ++i;        
