@@ -16,7 +16,7 @@
         <ShowSource>1</ShowSource>
     </Trace1>
     <DebugChecksum>
-        <Checksum>3787433258</Checksum>
+        <Checksum>621624475</Checksum>
     </DebugChecksum>
     <Disassembly>
         <InstrCount>0</InstrCount>
@@ -66,7 +66,7 @@
         <MultiCoreRunAll>1</MultiCoreRunAll>
     </Simulator>
     <LmiFtdiDriver>
-        <LMIFTDIserialNo>0E238FA6</LMIFTDIserialNo>
+        <LMIFTDIserialNo>0E235492</LMIFTDIserialNo>
         <LMIFTDIfoundProbes />
         <LmiFtdiResetStyle>0</LmiFtdiResetStyle>
         <LmiFtdiResetStrategy>0</LmiFtdiResetStrategy>
@@ -101,7 +101,8 @@
         <mode>0</mode>
     </DisassembleMode>
     <Breakpoints2>
-        <Count>0</Count>
+        <Bp0>_ 1 "EMUL_CODE" "{$PROJ_DIR$\main.c}.43.3" 0 0 1 "" 0 "" 0</Bp0>
+        <Count>1</Count>
     </Breakpoints2>
     <Aliases>
         <Count>0</Count>

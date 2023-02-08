@@ -3,7 +3,7 @@
 #include "board_io.h"     // for the blink functions
 #include "ticks.h"        // for resetTicks()
 #include "TM4C123GH6PM.h" // map of named hardware addresses
-
+#include "locks.h"
 //#include "masks.h"        // defined bit mask values
 #include "unicorn.h"
 
@@ -22,22 +22,28 @@ int main()
   
   //***start tasks here***
   /*
-  readyNewTask(&ledRedOn);
-  readyNewTask(&ledRedOff);
+  readyTaskStart(&ledRedOn);
+  readyTaskStart(&ledRedOff);
   
-  readyNewTask(&ledBlueOn);
-  readyNewTask(&ledBlueOff);
+  readyTaskStart(&ledBlueOn);
+  readyTaskStart(&ledBlueOff);
   
-  readyNewTask(&ledGreenOn);
-  readyNewTask(&ledGreenOff);
+  readyTaskStart(&ledGreenOn);
+  readyTaskStart(&ledGreenOff);
   */
   
-  readyNewTask(&blinkRed);
-  readyNewTask(&blinkBlue);
-  //readyNewTask(&blinkGreen);
+  readyTaskStart(&blinkRed);
+  readyTaskStart(&blinkBlue);
+  //readyTaskStart(&blinkGreen);
   
   resetTicks(); //set starting number of ticks to 0
 
+  //testing
+  initTaskTableLock();
+  releaseTaskTableLock();
+  acquireTaskTableLock();
+  releaseTaskTableLock();
+  
   __asm("CPSIE I"); //enable interrupts
   
   //***from this point, the systick interrupt handler will begin executing and will cause scheduling of processes**

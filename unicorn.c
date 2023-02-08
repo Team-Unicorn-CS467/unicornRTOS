@@ -65,7 +65,7 @@ void initializeScheduler()
   nextTask = (Task*)0U;
 }
 
-void readyNewTask(EntryFunction taskFunc)
+void readyTaskStart(EntryFunction taskFunc)
 {  
   unsigned int i;
   
@@ -83,6 +83,13 @@ void readyNewTask(EntryFunction taskFunc)
   
   // is this redundant?  initializeTask puts target->state = TASK_STATE_READY
   taskTable[i].state = TASK_STATE_READY; 
+}
+
+void readyTaskEnd()
+{
+  if(currentTask == (Task*)0U || currentTask == &idleTask) //sanity check
+    return;
+  
 }
 
 //interrupts must be disabled when this function is called

@@ -75,8 +75,8 @@ typedef struct
 //set's up a Task's initial stack and member variables
 void initializeTask(Task*, EntryFunction);
 
-extern Task* currentTask; //initialized in tbc.c
-extern Task* nextTask; //initialized in tbc.c
+extern Task* currentTask; //initialized in unicorn.c
+extern Task* nextTask; //initialized in unicorn.c
 
 
 /*** Scheduling Stuff ***/
@@ -88,7 +88,11 @@ void pointlessWork();
 void initializeScheduler();
 
 //initializes a new Task and marks it as ready to run
-void readyNewTask(EntryFunction);
+void readyTaskStart(EntryFunction);
+
+//called by a task to exit
+//assumes initializeScheduler() has previously been called
+void readyTaskEnd();
 
 //potentially schedules a new stack and context switches
 void sched();

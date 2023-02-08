@@ -1,7 +1,5 @@
 #include "board_io.h"
-
 //#include "lm4f120h5qr.h" //map of named hardware addresses
-// #include "masks.h" //defined bit mask values
 #include "TM4C123GH6PM.h"
 //#include "core_cm4.h"
 

@@ -1,13 +1,13 @@
-"C:\Users\atoyn\OneDrive\Stuff\School\CS 467 (Winter 2023)\unicornRTOS\main.c"
+"C:\Users\atoyn\OneDrive\Stuff\School\CS 467 (Winter 2023)\unicornRTOS\locks.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -funsigned-char
 -MD
 -MF
-C:\Users\atoyn\OneDrive\Stuff\School\CS 467 (Winter 2023)\unicornRTOS\Debug\BrowseInfo\main.pbi.dep
+C:\Users\atoyn\OneDrive\Stuff\School\CS 467 (Winter 2023)\unicornRTOS\Debug\BrowseInfo\locks.pbi.dep
 -o
-C:\Users\atoyn\OneDrive\Stuff\School\CS 467 (Winter 2023)\unicornRTOS\Debug\BrowseInfo\main.pbi
+C:\Users\atoyn\OneDrive\Stuff\School\CS 467 (Winter 2023)\unicornRTOS\Debug\BrowseInfo\locks.pbi
 -I
 C:\Users\atoyn\OneDrive\Stuff\School\CS 467 (Winter 2023)\unicornRTOS
 -I

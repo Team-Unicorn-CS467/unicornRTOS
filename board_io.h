@@ -26,7 +26,8 @@ void ledGreenOn();
 void ledGreenOff();
     
 void ledBlueOn();  
-void ledBlueOff(); 
+void ledBlueOff();
+
 // gate clocking, systick speed, digitial/direction enable
 // set Systick/PendSV priority values
 void boardStartup(void);
