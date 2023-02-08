@@ -63,7 +63,7 @@ typedef struct
 void initializeFirstFrame(ContextFrame*, EntryFunction);
 
 
-/*** Task ***/
+/*** Task ( Thread Control Block (TCB)) ***/
 
 typedef struct
 {
@@ -75,9 +75,10 @@ typedef struct
 //set's up a Task's initial stack and member variables
 void initializeTask(Task*, EntryFunction);
 
-extern Task* currentTask; //initialized in tbc.c
-extern Task* nextTask; //initialized in tbc.c
+extern Task* volatile currentTask; //initialized in unicorn.c
+extern Task* volatile nextTask; //initialized in unicorn.c
 
+extern uint8_t numTasks;
 
 /*** Scheduling Stuff ***/
 

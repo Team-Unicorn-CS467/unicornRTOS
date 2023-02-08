@@ -1,10 +1,15 @@
 #include "unicorn.h"
+#include "qassert.h" // Q_ASSERT
+#include "TM4C123GH6PM.h" // NVIC_SystemReset()
 
+Q_DEFINE_THIS_FILE   // required for using Q_ASSERT
 
 Task idleTask;
 Task taskTable[MAX_TASKS];
-Task* currentTask; //must be here because it gets labelled for easier access in assembly code
-Task* nextTask; //must be here because it gets labelled for easier access in assembly code
+Task* volatile currentTask; //must be here because it gets labelled for easier access in assembly code
+Task* volatile nextTask; //must be here because it gets labelled for easier access in assembly code
+
+uint8_t numTasks; // the total number of Tasks initialized into taskTable;
 
 //used to create the starting, mostly fake, ContextFrame in a new task's stack memory
 void initializeFirstFrame(ContextFrame* target, EntryFunction taskFunc)
@@ -28,6 +33,9 @@ void initializeFirstFrame(ContextFrame* target, EntryFunction taskFunc)
   //values which actually matter
   target->pc = (uint32_t)taskFunc; //task function entry point
   target->xpsr = (1U << 24); //program status register value for "thumb state"
+  
+  
+  
 }
 
 //peforms initial Task setup
@@ -77,6 +85,8 @@ void readyNewTask(EntryFunction taskFunc)
   }
 
   //***NEED AN ASSERT HERE THAT i < MAX_TASKS
+  Q_ASSERT(i < MAX_TASKS);
+  
   
   //initialize the dormant task and mark as ready
   initializeTask(&(taskTable[i]), taskFunc);
@@ -137,3 +147,16 @@ void sched()
     nextTask->state = TASK_STATE_ACTIVE;
   }
 }
+
+void Q_onAssert(char const *module, int loc) {
+    /* TBD: damage control */
+    (void)module; /* avoid the "unused parameter" compiler warning */
+    (void)loc;    /* avoid the "unused parameter" compiler warning */
+    
+    // inlined function copied from core_cm4.h (line 1790)
+    // because using #include core_cm4.h was causing all
+    // kinds of havoc
+    NVIC_SystemReset();
+    
+}
+
