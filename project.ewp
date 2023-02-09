@@ -2190,4 +2190,10 @@
     <file>
         <name>$PROJ_DIR$\unicorn.h</name>
     </file>
+    <file>
+        <name>$PROJ_DIR$\usertasks.c</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\usertasks.h</name>
+    </file>
 </project>

@@ -15,8 +15,9 @@ C:\Users\atoyn\OneDrive\Stuff\School\CS\ 467\ (Winter\ 2023)\unicornRTOS\Debug\B
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\aarch32\iccarm_builtin.h \
   C:\Users\atoyn\OneDrive\Stuff\School\CS\ 467\ (Winter\ 2023)\unicornRTOS\CMSIS\Include\core_cmFunc.h \
   C:\Users\atoyn\OneDrive\Stuff\School\CS\ 467\ (Winter\ 2023)\unicornRTOS\CMSIS\Include\core_cmSimd.h \
-  C:\Users\atoyn\OneDrive\Stuff\School\CS\ 467\ (Winter\ 2023)\unicornRTOS\locks.h \
   C:\Users\atoyn\OneDrive\Stuff\School\CS\ 467\ (Winter\ 2023)\unicornRTOS\unicorn.h \
+  C:\Users\atoyn\OneDrive\Stuff\School\CS\ 467\ (Winter\ 2023)\unicornRTOS\locks.h \
+  C:\Users\atoyn\OneDrive\Stuff\School\CS\ 467\ (Winter\ 2023)\unicornRTOS\usertasks.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\aarch32\intrinsics.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\aarch32\iccarm_builtin.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\aarch32\iar_intrinsics_common.h

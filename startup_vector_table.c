@@ -39,7 +39,7 @@ void handler_SVCall(void) //no implementation for now
 }
 
 //***NOTE: THE CURRENT IMPLEMENTATION REQUIRES THE FPU TO BE TURNED OFF***
-void handler_PendSV(void) //no implementation for now
+void handler_PendSV(void)
 { 
   __asm("CPSID I"); //disable interrupts
   

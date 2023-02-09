@@ -54,6 +54,11 @@ build C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\
   flags = "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\unicorn.c" -o "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\Obj\\" --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -I "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\CMSIS\Include\\" -Ol --predef_macros "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\unicorn.tmp"
   rspfile_name = C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\unicorn.xcl.rsp
 
+build C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\usertasks.xcl : COMPILER_XCL 
+  xclcommand = -source_file "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\usertasks.c" -xcl_file "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\usertasks.xcl" -macro_file "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\usertasks.tmp" -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
+  flags = "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\usertasks.c" -o "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\Obj\\" --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=None --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -I "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\CMSIS\Include\\" -Ol --predef_macros "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\usertasks.tmp"
+  rspfile_name = C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\usertasks.xcl.rsp
+
 build C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\board_io.pbi : INDEXER C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\board_io.xcl |  $
 C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\board_io.c
   flags = "-out=C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\board_io.pbi" -f "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\board_io.xcl"
@@ -78,20 +83,25 @@ build C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\
 C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\unicorn.c
   flags = "-out=C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\unicorn.pbi" -f "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\unicorn.xcl"
 
+build C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\usertasks.pbi : INDEXER C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\usertasks.xcl |  $
+C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\usertasks.c
+  flags = "-out=C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\usertasks.pbi" -f "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\usertasks.xcl"
+
 build C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\project.pbw : MAKEBROWSE C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\project.pbd
   flags = "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\project.pbd" -output "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\project.pbw"
 
 build C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\project_part0.pbi : PDBLINK C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\board_io.pbi |  $
-C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\locks.pbi
-  flags = -M "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\project_part0.pbi" "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\board_io.pbi" "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\locks.pbi"
+C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\locks.pbi $
+C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\main.pbi
+  flags = -M "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\project_part0.pbi" "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\board_io.pbi" "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\locks.pbi" "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\main.pbi"
 
-build C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\project_part1.pbi : PDBLINK C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\main.pbi |  $
-C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi
-  flags = -M "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\project_part1.pbi" "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\main.pbi" "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi"
-
-build C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\project_part2.pbi : PDBLINK C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\ticks.pbi |  $
+build C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\project_part1.pbi : PDBLINK C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi |  $
+C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\ticks.pbi $
 C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\unicorn.pbi
-  flags = -M "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\project_part2.pbi" "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\ticks.pbi" "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\unicorn.pbi"
+  flags = -M "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\project_part1.pbi" "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi" "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\ticks.pbi" "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\unicorn.pbi"
+
+build C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\project_part2.pbi : PDBLINK C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\usertasks.pbi
+  flags = -M "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\project_part2.pbi" "C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\usertasks.pbi"
 
 build C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\project.pbd : PDBLINK C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\project_part0.pbi |  $
 C$:\Users\atoyn\OneDrive\Stuff\School\CS$ 467$ (Winter$ 2023)\unicornRTOS\Debug\BrowseInfo\project_part1.pbi $

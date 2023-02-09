@@ -8,30 +8,17 @@
 
 #define SYSTICKS_PER_SEC 1000;
 
-
-//#define RED (BYTE_BIT_1)
-//#define BLUE (BYTE_BIT_2)
-//#define GREEN (BYTE_BIT_3)
-
-//note: they are not bundled into a single function 
-// because Unicorn OS tasks currently can't be parameterized
-void blinkRed();
-void blinkBlue();
-void blinkGreen();
-
-void ledRedOn();
-void ledRedOff();
-
-void ledGreenOn(); 
-void ledGreenOff();
-    
-void ledBlueOn();  
-void ledBlueOff();
-
 // gate clocking, systick speed, digitial/direction enable
 // set Systick/PendSV priority values
 void boardStartup(void);
 
+//GPIO F output manipulation to control the on-board LED
+void ledRedOn();
+void ledRedOff();
+void ledGreenOn(); 
+void ledGreenOff();
+void ledBlueOn();  
+void ledBlueOff();
 
 
 #endif //BOARD_IO_H

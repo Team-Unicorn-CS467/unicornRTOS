@@ -3,35 +3,14 @@
 #include "board_io.h"     // for the blink functions
 #include "ticks.h"        // for resetTicks()
 #include "TM4C123GH6PM.h" // map of named hardware addresses
-#include "locks.h"
 #include "unicorn.h"
+#include "locks.h" //for initSpinLock()
+#include "usertasks.h" //for userTaskLoad
 
 ////////////////////////////////////////////////////////////
 
 #include <intrinsics.h>
 
-//***user adds tasks here***
-void userTaskLoad()
-{
-
-  readyTaskStart(&blinkRed);
-  readyTaskStart(&blinkBlue);
-  readyTaskStart(&blinkGreen);
-  
-  /*
-  readyTaskStart(&ledRedOn);
-  readyTaskStart(&ledRedOff);
-  
-  readyTaskStart(&ledBlueOn);
-  readyTaskStart(&ledBlueOff);
-  
-  readyTaskStart(&ledGreenOn);
-  readyTaskStart(&ledGreenOff);
-  */
-  
-  while(1); //LATER THIS WILL BE CHANGED TO A TASK EXIT CALL
-  
-}
 
 int main()
 { 
@@ -43,11 +22,8 @@ int main()
   //OS stuff
   initializeScheduler();
 
-  //testing
+  //initialize the new spin lock
   initSpinLock();
-  acquireSpinLock();
-  releaseSpinLock();
-  //testing
   
   readyTaskStart(&userTaskLoad);
     
