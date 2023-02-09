@@ -63,7 +63,7 @@ void handler_PendSV(void) //no implementation for now
     //set currentTask = nextTask
     __asm("LDR r1, =nextTask"); //load address of nextTask into r1
     __asm("LDR r1, [r1]"); //load (pointer) value stored at nextTask into r1
-    __asm("LDR r2, =currentTask"); //load address of currentTask into r2
+    __asm("LDR r2, =currentTask"); //load address of currentT  ask into r2
     __asm("STR r1, [r2]"); //store (pointer) value of nextTask at currentTask address
     
     //save registers R4 through R11 to the stack of nextTask (now also currentTask)

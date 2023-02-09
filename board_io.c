@@ -5,13 +5,15 @@
 #include "TM4C123GH6PM.h"
 //#include "core_cm4.h"
 
+
+
+
 const int BLINKY_MAX = 2000;
 
 
 void boardStartup(void)
 {
-
-  __asm("CPSID I"); //disable interrupts
+   __asm("CPSID I"); //disable interrupts
 
   /////////////////////////////////////////////////////////////////
   // switched to using the AHB bus (faster)
@@ -34,11 +36,20 @@ void boardStartup(void)
   SysTick->VAL  = 0U;                          //clear on write (so clears the counter value)
   SysTick->CTRL = (uint32_t)0b00000111U;    //clock source, interrupt enable, counter enable in 'multi-shot' (repeating mode)
   
+  // just couldn't get this to work !
+  //SystemCoreClockUpdate();
+  //SysTick_Config(SystemCoreClock / SYSTICKS_PER_SEC);
+
+  
   //exception handler preemption priorty stuff
+  NVIC_SetPriority(SysTick_IRQn, 0U); // set Systick to higherst priority
+  
+  
   //has the effect of setting pendsv to lowest priorty, 
   // RESERVED, and monitor interrupts to highest priority
   // *** couldn't find the TM4c123GH6PM.h equivalent of this lm4f120h5qr.h register abstraction, so I hardcoded it
-    // NVIC_SYS_PRI3_R = 0x00FF0000U;    
+    // NVIC_SYS_PRI3_R = 0x00FF0000U; 
+  // sets PendSV interrupt priority to less than Systick, thus allowing Systic to exit and then enter PendSV
   (*((volatile unsigned long *)0xE000ED20)) = 0x00FF0000U;
   
 }

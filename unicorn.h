@@ -63,29 +63,43 @@ typedef struct
 void initializeFirstFrame(ContextFrame*, EntryFunction);
 
 
-/*** Task ***/
+/*** Task ( Thread Control Block (TCB)) ***/
+// 32 bit mask indicating which threads in taskTable are ready to run
+// where the nth bit index corresponds to the nth index of taskTable
+// e.g. readyTasks = 0b0000'0000'0000'0000'0000'0000'0010'1001
+// means that taskTable at index 0, 3 and 5 are ready to run
+extern uint32_t readyTasks;
 
 typedef struct
 {
   uint32_t* sp; //stack pointer
   uint32_t  stack[TASK_STACK_WORD_SIZE]; //memory allocation for the stack - ***later this will be alocated outside this struct and passed in via a pointer***
+  uint32_t  timeout;  // timer for delayTask() function (unicorn.c)
   uint8_t   state;
 } Task;
 
 //set's up a Task's initial stack and member variables
 void initializeTask(Task*, EntryFunction);
 
-extern Task* currentTask; //initialized in tbc.c
-extern Task* nextTask; //initialized in tbc.c
+extern Task* volatile currentTask; //initialized in unicorn.c
+extern Task* volatile nextTask; //initialized in unicorn.c
 
+// number of tasks initialized in taskTable
+extern uint8_t numTasks;
+
+// index in taskTable of the currently active Task
+extern uint8_t currTaskIdx;
 
 /*** Scheduling Stuff ***/
 
-//the idleTask's job
-void pointlessWork();
-
 //starting setup of the task table, idleTask
 void initializeScheduler();
+
+// busy work for the idleTask to do 
+void onIdle();
+//the idleTask's job
+//void pointlessWork();
+
 
 //initializes a new Task and marks it as ready to run
 void readyNewTask(EntryFunction);

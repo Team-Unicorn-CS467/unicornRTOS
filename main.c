@@ -1,14 +1,8 @@
 #include <stdint.h>
-
 #include "board_io.h"     // for the blink functions
 #include "ticks.h"        // for resetTicks()
 #include "TM4C123GH6PM.h" // map of named hardware addresses
-
-//#include "masks.h"        // defined bit mask values
 #include "unicorn.h"
-
-////////////////////////////////////////////////////////////
-
 #include <intrinsics.h>
 
 
@@ -21,16 +15,16 @@ int main()
   initializeScheduler();
   
   //***start tasks here***
-  /*
-  readyNewTask(&ledRedOn);
-  readyNewTask(&ledRedOff);
   
-  readyNewTask(&ledBlueOn);
-  readyNewTask(&ledBlueOff);
+  //readyNewTask(&ledRedOn);
+  //readyNewTask(&ledRedOff);
   
-  readyNewTask(&ledGreenOn);
-  readyNewTask(&ledGreenOff);
-  */
+  //readyNewTask(&ledBlueOn);
+  //readyNewTask(&ledBlueOff);
+  
+  //readyNewTask(&ledGreenOn);
+  //readyNewTask(&ledGreenOff);
+  
   
   readyNewTask(&blinkRed);
   readyNewTask(&blinkBlue);

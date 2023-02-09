@@ -1,10 +1,17 @@
 #include "unicorn.h"
+#include "qassert.h" // Q_ASSERT
+#include "TM4C123GH6PM.h" // NVIC_SystemReset()
 
+Q_DEFINE_THIS_FILE   // required for using Q_ASSERT
 
 Task idleTask;
 Task taskTable[MAX_TASKS];
-Task* currentTask; //must be here because it gets labelled for easier access in assembly code
-Task* nextTask; //must be here because it gets labelled for easier access in assembly code
+Task* volatile currentTask; //must be here because it gets labelled for easier access in assembly code
+Task* volatile nextTask; //must be here because it gets labelled for easier access in assembly code
+
+uint8_t  numTasks;       // the total number of Tasks initialized into taskTable;
+uint8_t  currTaskIdx;    // index of the active task in taskTable
+uint32_t readyTasks;    // bitmask where asserted bit index = index of ready task in taskTable
 
 //used to create the starting, mostly fake, ContextFrame in a new task's stack memory
 void initializeFirstFrame(ContextFrame* target, EntryFunction taskFunc)
@@ -45,23 +52,27 @@ void initializeTask(Task* target, EntryFunction taskFunc)
   
   //target->sp now point to the last used word in stack memory
   
-  target->state = TASK_STATE_READY;
+  //target->state = TASK_STATE_READY;
 };
 
-void pointlessWork()
+// busy work for the idleTask to perform
+void onIdle()
 {
-  while(1);
+  for(;;);
 }
 
 //starting setup of the task table, idle task
 void initializeScheduler()
 {
-  for(int i = 0; i < MAX_TASKS; ++i)
-    taskTable[i].state = TASK_STATE_DORMANT;
+  //for(int i = 0; i < MAX_TASKS; ++i)
+  //  taskTable[i].state = TASK_STATE_DORMANT;
   
-  initializeTask(&idleTask, &pointlessWork);
+  initializeTask(&idleTask, &onIdle);
   
-  currentTask = (Task*)0U;
+  /////////////////////////////////////////////////////////////////
+  currentTask = &idleTask; //(Task*)0U;
+  /////////////////////////////////////////////////////////////////
+  
   nextTask = (Task*)0U;
 }
 
@@ -72,68 +83,63 @@ void readyNewTask(EntryFunction taskFunc)
   //find a dormant task
   for (i = 0; i < MAX_TASKS; ++i)
   {
-    if(taskTable[i].state == TASK_STATE_DORMANT)
-      break;
+    //if(taskTable[i].state == TASK_STATE_DORMANT) break;
+    
+    // if readTasks @ index i is 0 then taskTable[i] is not initialized yet
+    if ((readyTasks & (1U << i)) == 0) break;
   }
 
   //***NEED AN ASSERT HERE THAT i < MAX_TASKS
+  Q_ASSERT(i < MAX_TASKS);
+  
   
   //initialize the dormant task and mark as ready
   initializeTask(&(taskTable[i]), taskFunc);
   
+  // set the new Task into the ready state (set readyTasks mask)
+  readyTasks |= (1U << (i)); 
+  
+  // increment number of initialized tasks:
+  ++numTasks;
+  
   // is this redundant?  initializeTask puts target->state = TASK_STATE_READY
-  taskTable[i].state = TASK_STATE_READY; 
+  //taskTable[i].state = TASK_STATE_READY; 
 }
 
 //interrupts must be disabled when this function is called
 //updates currentTask and nextTask and their states
 void sched()
 {
-  int i;
-  int readyTaskCount = 0;
-  int activeTaskIndex = -1;
-  for(i = 0; i < MAX_TASKS; ++i)
-  {
-    if(taskTable[i].state == TASK_STATE_READY)
-      ++readyTaskCount;
-    else if(taskTable[i].state == TASK_STATE_ACTIVE)
-      activeTaskIndex = i;
-  }
-
-  if(readyTaskCount == 0)
-  {
-    currentTask = &idleTask;
-    nextTask = &idleTask;
-  }
-
-  else if (activeTaskIndex == -1) //current task is the idleTask and other task(s) ready to run
-  {
-    for(i = 0; i < MAX_TASKS; ++i)
-    {
-      if(taskTable[i].state == TASK_STATE_READY)
-        break;
-    }
-    currentTask = &idleTask;
-    nextTask = &(taskTable[i]);
-    nextTask->state = TASK_STATE_ACTIVE;
-  }
   
-  else //active task is not the idleTask
+  if(readyTasks == 0U)  // no threads running ? switch to idleTask
   {
-    //find the ready task which is "next in line"
-    i = activeTaskIndex + 1;
-    do
-    {
-      if(i == MAX_TASKS)
-        i = 0;
-      else if(taskTable[i].state == TASK_STATE_READY)
-        break;
-      else
-        ++i;
-    } while(i != activeTaskIndex);
-    currentTask = &(taskTable[activeTaskIndex]);
-    currentTask->state = TASK_STATE_READY;
-    nextTask = &(taskTable[i]);
-    nextTask->state = TASK_STATE_ACTIVE;
+    currTaskIdx = 0U;
+    currentTask = &idleTask;
+    nextTask    = &idleTask;
   }
+
+  else 
+  {
+    //currentTask = &(taskTable[currTaskIdx]);
+    do 
+    {
+        if (currTaskIdx == numTasks)  // iterate only over initialized Tasks, if counter at highest filled index in taskTable ? --> start at 0
+            currTaskIdx =  0U;
+        nextTask = &(taskTable[currTaskIdx++]);
+        //++currTaskIdx;
+    } while ( (readyTasks & (1U << (currTaskIdx))) == 0U );
+  } 
 }
+
+void Q_onAssert(char const *module, int loc) {
+    /* TBD: damage control */
+    (void)module; /* avoid the "unused parameter" compiler warning */
+    (void)loc;    /* avoid the "unused parameter" compiler warning */
+    
+    // inlined function copied from core_cm4.h (line 1790)
+    // because using #include core_cm4.h was causing all
+    // kinds of havoc
+    NVIC_SystemReset();
+    
+}
+
