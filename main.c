@@ -4,23 +4,20 @@
 #include "ticks.h"        // for resetTicks()
 #include "TM4C123GH6PM.h" // map of named hardware addresses
 #include "locks.h"
-//#include "masks.h"        // defined bit mask values
 #include "unicorn.h"
 
 ////////////////////////////////////////////////////////////
 
 #include <intrinsics.h>
 
+//***user adds tasks here***
+void userTaskLoad()
+{
 
-int main()
-{ 
-  // un-gateclock GPIOF AHB, set digital/direction , set Systick, set SysTck/PendSV priorities
-  boardStartup();
+  readyTaskStart(&blinkRed);
+  readyTaskStart(&blinkBlue);
+  readyTaskStart(&blinkGreen);
   
-  //OS stuff
-  initializeScheduler();
-  
-  //***start tasks here***
   /*
   readyTaskStart(&ledRedOn);
   readyTaskStart(&ledRedOff);
@@ -32,18 +29,30 @@ int main()
   readyTaskStart(&ledGreenOff);
   */
   
-  readyTaskStart(&blinkRed);
-  readyTaskStart(&blinkBlue);
-  //readyTaskStart(&blinkGreen);
+  while(1); //LATER THIS WILL BE CHANGED TO A TASK EXIT CALL
   
-  resetTicks(); //set starting number of ticks to 0
+}
+
+int main()
+{ 
+  __asm("CPSID I"); //disable interrupts
+
+  // un-gateclock GPIOF AHB, set digital/direction , set Systick, set SysTck/PendSV priorities
+  boardStartup();
+  
+  //OS stuff
+  initializeScheduler();
 
   //testing
-  initTaskTableLock();
-  releaseTaskTableLock();
-  acquireTaskTableLock();
-  releaseTaskTableLock();
+  initSpinLock();
+  acquireSpinLock();
+  releaseSpinLock();
+  //testing
   
+  readyTaskStart(&userTaskLoad);
+    
+  resetTicks(); //set starting number of ticks to 0
+
   __asm("CPSIE I"); //enable interrupts
   
   //***from this point, the systick interrupt handler will begin executing and will cause scheduling of processes**

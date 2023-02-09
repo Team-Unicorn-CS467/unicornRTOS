@@ -1,16 +1,16 @@
 #ifndef LOCKS_H
 #define LOCKS_H
 
+
 #include <stdint.h>
 
-extern uint32_t* TaskTableLockAddress; //initialized in locks.c
+extern uint32_t SpinLock; //initialized in locks.c
 
-void initTaskTableLock();
+void initSpinLock();
 
-void releaseTaskTableLock();
+void releaseSpinLock();
 
-void acquireTaskTableLock();
-
+void acquireSpinLock();
 
 
 #endif //LOCKS_H

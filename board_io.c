@@ -7,9 +7,7 @@ const int BLINKY_MAX = 2000;
 
 
 void boardStartup(void)
-{
-
-  __asm("CPSID I"); //disable interrupts
+{ 
 
   /////////////////////////////////////////////////////////////////
   // switched to using the AHB bus (faster)

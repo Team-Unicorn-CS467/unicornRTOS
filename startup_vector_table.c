@@ -65,6 +65,11 @@ void handler_PendSV(void) //no implementation for now
     __asm("LDR r1, [r1]"); //load (pointer) value stored at nextTask into r1
     __asm("LDR r2, =currentTask"); //load address of currentTask into r2
     __asm("STR r1, [r2]"); //store (pointer) value of nextTask at currentTask address
+
+    //clear the exclusive monitor associated w/ LDREX and STREX (semaphore load/store instructions)
+    //this ensures that one task does not mistakenly think it can aquire a lock which another task
+    //was just about to aqcuire before interrupt/context switch
+    __asm("CLREX");
     
     //save registers R4 through R11 to the stack of nextTask (now also currentTask)
     __asm("POP {r4-r11}");
