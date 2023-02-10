@@ -15,20 +15,20 @@ int main()
   initializeScheduler();
   
   //***start tasks here***
+  /*
+  readyNewTask(&ledRedOn);
+  readyNewTask(&ledRedOff);
   
-  //readyNewTask(&ledRedOn);
-  //readyNewTask(&ledRedOff);
+  readyNewTask(&ledBlueOn);
+  readyNewTask(&ledBlueOff);
   
-  //readyNewTask(&ledBlueOn);
-  //readyNewTask(&ledBlueOff);
-  
-  //readyNewTask(&ledGreenOn);
-  //readyNewTask(&ledGreenOff);
-  
+  readyNewTask(&ledGreenOn);
+  readyNewTask(&ledGreenOff);
+  */
   
   readyNewTask(&blinkRed);
   readyNewTask(&blinkBlue);
-  //readyNewTask(&blinkGreen);
+  readyNewTask(&blinkGreen);
   
   resetTicks(); //set starting number of ticks to 0
 

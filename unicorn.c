@@ -4,8 +4,8 @@
 
 Q_DEFINE_THIS_FILE   // required for using Q_ASSERT
 
-Task idleTask;
-Task taskTable[MAX_TASKS];
+//Task idleTask;
+Task taskTable[MAX_TASKS + 1];
 Task* volatile currentTask; //must be here because it gets labelled for easier access in assembly code
 Task* volatile nextTask; //must be here because it gets labelled for easier access in assembly code
 
@@ -66,31 +66,32 @@ void initializeScheduler()
 {
   //for(int i = 0; i < MAX_TASKS; ++i)
   //  taskTable[i].state = TASK_STATE_DORMANT;
+  initializeTask(&(taskTable[0]), onIdle);
   
-  initializeTask(&idleTask, &onIdle);
-  
-  /////////////////////////////////////////////////////////////////
-  currentTask = &idleTask; //(Task*)0U;
-  /////////////////////////////////////////////////////////////////
-  
+  // increment number of initialized tasks:
+  ++numTasks;
+
+  currentTask = (Task*)0U;
   nextTask = (Task*)0U;
+  
+  // set idleTask as ready
+  readyTasks |= (1U << (0)); 
 }
 
 void readyNewTask(EntryFunction taskFunc)
 {  
   unsigned int i;
   
-  //find a dormant task
-  for (i = 0; i < MAX_TASKS; ++i)
+  //find a dormant task, skip taskTable[0] because that's the idle thread
+  for (i = 1; i < MAX_TASKS + 1; ++i)
   {
     //if(taskTable[i].state == TASK_STATE_DORMANT) break;
-    
     // if readTasks @ index i is 0 then taskTable[i] is not initialized yet
     if ((readyTasks & (1U << i)) == 0) break;
   }
 
   //***NEED AN ASSERT HERE THAT i < MAX_TASKS
-  Q_ASSERT(i < MAX_TASKS);
+  Q_ASSERT(i < MAX_TASKS+1);
   
   
   //initialize the dormant task and mark as ready
@@ -100,10 +101,7 @@ void readyNewTask(EntryFunction taskFunc)
   readyTasks |= (1U << (i)); 
   
   // increment number of initialized tasks:
-  ++numTasks;
-  
-  // is this redundant?  initializeTask puts target->state = TASK_STATE_READY
-  //taskTable[i].state = TASK_STATE_READY; 
+  ++numTasks; 
 }
 
 //interrupts must be disabled when this function is called
@@ -112,23 +110,29 @@ void sched()
 {
   
   if(readyTasks == 0U)  // no threads running ? switch to idleTask
-  {
     currTaskIdx = 0U;
-    currentTask = &idleTask;
-    nextTask    = &idleTask;
-  }
-
   else 
   {
-    //currentTask = &(taskTable[currTaskIdx]);
     do 
     {
-        if (currTaskIdx == numTasks)  // iterate only over initialized Tasks, if counter at highest filled index in taskTable ? --> start at 0
-            currTaskIdx =  0U;
-        nextTask = &(taskTable[currTaskIdx++]);
-        //++currTaskIdx;
-    } while ( (readyTasks & (1U << (currTaskIdx))) == 0U );
+      ++currTaskIdx;
+      if (currTaskIdx == numTasks)  // iterate only over initialized Tasks, if counter at highest filled index in taskTable ? --> start at 1 to skip idleTask
+        currTaskIdx =  1U;
+      
+       nextTask = &(taskTable[currTaskIdx]);
+        
+    } while ( (readyTasks & (1U << (currTaskIdx - 1U))) == 0U ); // task index 0 at taskTable[1]
   } 
+  nextTask = &(taskTable[currTaskIdx]);
+  
+  
+  // comparing currentTask and nextTask (two volatile variables) is leads to
+  // unpredictable access order *Warning[Pa082]* see:
+  // https://www.iar.com/knowledge/support/technical-notes/compiler/warningpa082-undefined-behavior-the-order-of-volatile-accesses-is-undefined-in-this-statement/
+  Task const *next = nextTask;
+  if (currentTask != next)
+      //NVIC_INT_CTRL_R |= 0x10000000U; //trigger PendSV exception via interrupt control and state register in system control block
+      *(uint32_t volatile *)0xE000ED04 = (1U << 28U);  
 }
 
 void Q_onAssert(char const *module, int loc) {
