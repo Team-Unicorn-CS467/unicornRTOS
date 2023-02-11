@@ -2845,6 +2845,15 @@
             </data>
         </settings>
     </configuration>
+    <group>
+        <name>ek-tm4c123gxl</name>
+        <file>
+            <name>$PROJ_DIR$\qpc\3rd_party\ek-tm4c123gxl\system_TM4C123GH6PM.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\qpc\3rd_party\ek-tm4c123gxl\TM4C123GH6PM.h</name>
+        </file>
+    </group>
     <file>
         <name>$PROJ_DIR$\board_io.c</name>
     </file>
@@ -2868,9 +2877,6 @@
     </file>
     <file>
         <name>$PROJ_DIR$\ticks.h</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\TM4C123GH6PM.h</name>
     </file>
     <file>
         <name>$PROJ_DIR$\unicorn.c</name>

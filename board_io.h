@@ -8,6 +8,7 @@
 
 #define SYSTICKS_PER_SEC 1000;
 
+#include "TM4C123GH6PM.h"
 
 //#define RED (BYTE_BIT_1)
 //#define BLUE (BYTE_BIT_2)

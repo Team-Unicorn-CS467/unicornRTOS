@@ -1,14 +1,8 @@
 #include <stdint.h>
-
 #include "board_io.h"     // for the blink functions
 #include "ticks.h"        // for resetTicks()
 #include "TM4C123GH6PM.h" // map of named hardware addresses
-
-//#include "masks.h"        // defined bit mask values
 #include "unicorn.h"
-
-////////////////////////////////////////////////////////////
-
 #include <intrinsics.h>
 
 
@@ -34,7 +28,7 @@ int main()
   
   readyNewTask(&blinkRed);
   readyNewTask(&blinkBlue);
-  //readyNewTask(&blinkGreen);
+  readyNewTask(&blinkGreen);
   
   resetTicks(); //set starting number of ticks to 0
 

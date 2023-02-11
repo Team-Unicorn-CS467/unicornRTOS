@@ -41,36 +41,53 @@ void handler_SVCall(void) //no implementation for now
 //***NOTE: THE CURRENT IMPLEMENTATION REQUIRES THE FPU TO BE TURNED OFF***
 void handler_PendSV(void) //no implementation for now
 { 
-  __asm("CPSID I"); //disable interrupts
-  
-  //currentTask and nextTask are not the same, switch context
-  if (currentTask != nextTask)
-  { 
+  /*
+  // if not coming from reset (when currenTask=null) save r4-r11 and currentTask->sp to stack
+  if (currentTask != (Task *)0)
+  {
     //save registers R4 through R11 to currentTask's stack
-    __asm("PUSH {r4-r11}");
-    
-    //save the current sp register value to currentTask->sp
-    __asm("LDR r1, =currentTask"); //load address of currentTask into r1
-    __asm("LDR r1, [r1]"); //load (pointer) value stored at currentTask into r1
-    __asm("STR sp, [r1, #0x00]"); //save current value of sp register to currentTask->sp (sp at offset 0x00 in Task struct)
-
-    //store nextTask->sp into sp register
-    __asm("LDR r1, =nextTask"); //load address of nextTask into r1
-    __asm("LDR r1, [r1]"); //load (pointer) value stored at nextTask into r1
-    __asm("LDR r1, [r1, #0x00]"); //load nextTask->sp value into r1
-    __asm("MOV sp, r1"); //copy nextTask->sp value into sp register
-    
-    //set currentTask = nextTask
-    __asm("LDR r1, =nextTask"); //load address of nextTask into r1
-    __asm("LDR r1, [r1]"); //load (pointer) value stored at nextTask into r1
-    __asm("LDR r2, =currentTask"); //load address of currentTask into r2
-    __asm("STR r1, [r2]"); //store (pointer) value of nextTask at currentTask address
-    
-    //save registers R4 through R11 to the stack of nextTask (now also currentTask)
-    __asm("POP {r4-r11}");
+    currentTask->sp = sp;
   }
+  sp = nextTask->sp;
+  currentTask = nextTask;
+  //enable interrupts:
+  __asm("CPSIE I");
+  */
   
-  __asm("CPSIE I"); //enable interrupts)
+  //disable interrupts
+  __asm("CPSID I\n" 
+  
+    // if (currentTask != (Task *)0);  
+    "LDR.N      R2, =currentTask\n"
+    "LDR        R0, [R2]\n"
+    "CMP        R0, #0\n"
+    "BEQ.N      PendSV_restore\n"
+  
+  // save r4-r11 onto stack
+    "PUSH {r4-r11}\n"
+  
+  // currentTask->sp = sp;
+    "LDR        R0, [R2]\n"
+    "STR        SP, [R0]\n" 
+    
+    "PendSV_restore:\n\n"
+    // sp = nextTask->sp;
+    "LDR.N      R1, =nextTask\n"
+    "LDR        R0, [R1]\n"
+    "LDR        SP,[R0]\n"
+  
+  // currentTask = nextTask
+    "LDR        R0, [R1]\n"
+    "STR        R0, [R2]\n"
+  
+  // restore nextTask's r4-r11 regs
+    "POP        {r4-r11}\n"
+    
+  // enable interrupts:
+    "CPSIE I\n"
+  
+  // return
+    "BX         LR\n"); 
 }
 
 void handler_SysTick(void) //incrementing ticks, scheduling/switching task
@@ -80,8 +97,7 @@ void handler_SysTick(void) //incrementing ticks, scheduling/switching task
   sched(); //schedule next task
   __asm("CPSIE I"); //enable interrupts)
   
-  NVIC_INT_CTRL_R |= 0x10000000U; //trigger PendSV exception via interrupt control and state register in system control block
-}
+  }
 
 int const __vector_table[] @ ".intvec" = //the @ ".intvec" syntax is not standard c, but IAR supports it for replacing the generic vector table IAR generates in the linking process from its own library???
 {

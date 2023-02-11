@@ -11,7 +11,11 @@ C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\unicorn.pbi
 -I
 C:\Users\RJ\Desktop\programming\osu467\unicornRTOS
 -I
-C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\CMSIS\Include
+C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\qpc\3rd_party\CMSIS\Include
+-I
+C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\qpc\include
+-I
+C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\qpc\3rd_party\ek-tm4c123gxl
 -I
 C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c\aarch32
 -I
@@ -19,7 +23,11 @@ C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc
 -I
 C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c
 -I
-C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\CMSIS\Include
+C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\qpc\3rd_party\CMSIS\Include
+-I
+C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\qpc\include
+-I
+C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\qpc\3rd_party\ek-tm4c123gxl
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

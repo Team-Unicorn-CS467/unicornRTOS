@@ -1,0 +1,22 @@
+robert_changes_feb10.txt
+
+startup_vector_table.c	
+	handler_PendSV()
+		-added a branch so idleTask does not push it's
+		contents upon context switch (for faster switching)
+		
+unicorn.c
+	onIdle()
+		- changed while(1) to for(;;) because i've never written
+		it in code and i think it looks cool
+	
+	initializeScheduler()
+		- added idleTask TBC back to taskTable; refactored the function
+		
+sched()
+	- simplified the scheduling algo with a bit mask to check
+	ready tasks
+	- moved assert of INTCTRL reg (trigger PendSV) to sched()
+	also moved the check on 'if (currentTask = nextTask)' and
+	created a temporary variable because the compiler was squawking
+	about comparing two volatile variables (see note in code)
