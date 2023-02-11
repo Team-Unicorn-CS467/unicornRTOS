@@ -37,22 +37,21 @@ void initializeFirstFrame(ContextFrame* target, EntryFunction taskFunc)
   target->xpsr = (1U << 24); //program status register value for "thumb state"
 }
 
-//peforms initial Task setup
-//taskFunc is this task's method
-void initializeTask(Task* target, EntryFunction taskFunc)
-{
-  uint32_t stackEnd = (uint32_t)target->stack + (TASK_STACK_WORD_SIZE * BYTES_PER_WORD); //later the stack size will be parameterized
-  uint32_t remainder = stackEnd % 8U;
-  stackEnd -= remainder; //Cortex-M stack must be alligned at 8-byte boundary
+uint8_t getDormantTaskIndex()
+{  
+  uint8_t i;
   
-  //initialize the first (mostly fabricated) context frame
-  target->sp = (uint32_t*)(stackEnd - sizeof(ContextFrame));
-  ContextFrame* firstFrame = (ContextFrame*)(target->sp);
-  initializeFirstFrame(firstFrame, taskFunc);
+  //find a dormant task
+  for (i = 0; i < MAX_TASKS; ++i)
+  {
+    // if readTasks[i] is 0, taskTable[i] is dormant
+    if ((readyTasks & (1U << i)) == 0) break;
+  }
+
+  //no dormant tasks!!!
+  Q_ASSERT(i < MAX_TASKS);
   
-  //target->sp now point to the last used word in stack memory
-  
-  //target->state = TASK_STATE_READY;
+  return i;
 };
 
 // busy work for the idleTask to perform
@@ -64,44 +63,40 @@ void onIdle()
 //starting setup of the task table, idle task
 void initializeScheduler()
 {
-  //for(int i = 0; i < MAX_TASKS; ++i)
-  //  taskTable[i].state = TASK_STATE_DORMANT;
-  initializeTask(&(taskTable[0]), onIdle);
+  currentTask = (Task*)0U;
+  nextTask = (Task*)0U;
+  numTasks = 0U;
+  readyTasks = 0U;
+  
+  // initialize the idle task
+  readyNewTask(onIdle);
+}
+
+//peforms initial Task setup
+//taskFunc is this task's method
+void readyNewTask(EntryFunction taskFunc)
+{  
+
+  uint8_t taskIndex = getDormantTaskIndex();
+  Task* tsk = &(taskTable[taskIndex]);
+  
+  uint32_t stackEnd = (uint32_t)tsk->stack + (TASK_STACK_WORD_SIZE * BYTES_PER_WORD); //later the stack size will be parameterized
+  uint32_t remainder = stackEnd % 8U;
+  stackEnd -= remainder; //Cortex-M stack must be alligned at 8-byte boundary
+  
+  //initialize the first (mostly fabricated) context frame
+  tsk->sp = (uint32_t*)(stackEnd - sizeof(ContextFrame));
+  ContextFrame* firstFrame = (ContextFrame*)(tsk->sp);
+  initializeFirstFrame(firstFrame, taskFunc);
+  
+  //tsk->sp now points to the last used word in stack memory
   
   // increment number of initialized tasks:
   ++numTasks;
-
-  currentTask = (Task*)0U;
-  nextTask = (Task*)0U;
-  
-  // set idleTask as ready
-  readyTasks |= (1U << (0)); 
-}
-
-void readyNewTask(EntryFunction taskFunc)
-{  
-  unsigned int i;
-  
-  //find a dormant task, skip taskTable[0] because that's the idle thread
-  for (i = 1; i < MAX_TASKS + 1; ++i)
-  {
-    //if(taskTable[i].state == TASK_STATE_DORMANT) break;
-    // if readTasks @ index i is 0 then taskTable[i] is not initialized yet
-    if ((readyTasks & (1U << i)) == 0) break;
-  }
-
-  //***NEED AN ASSERT HERE THAT i < MAX_TASKS
-  Q_ASSERT(i < MAX_TASKS+1);
-  
-  
-  //initialize the dormant task and mark as ready
-  initializeTask(&(taskTable[i]), taskFunc);
   
   // set the new Task into the ready state (set readyTasks mask)
-  readyTasks |= (1U << (i)); 
+  readyTasks |= (1U << taskIndex); 
   
-  // increment number of initialized tasks:
-  ++numTasks; 
 }
 
 //interrupts must be disabled when this function is called
@@ -124,7 +119,6 @@ void sched()
     } while ( (readyTasks & (1U << (currTaskIdx - 1U))) == 0U ); // task index 0 at taskTable[1]
   } 
   nextTask = &(taskTable[currTaskIdx]);
-  
   
   // comparing currentTask and nextTask (two volatile variables) is leads to
   // unpredictable access order *Warning[Pa082]* see:

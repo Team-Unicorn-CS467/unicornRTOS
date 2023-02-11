@@ -78,17 +78,16 @@ typedef struct
   uint8_t   state;
 } Task;
 
-//set's up a Task's initial stack and member variables
-void initializeTask(Task*, EntryFunction);
+uint8_t getDormantTaskIndex();
 
 extern Task* volatile currentTask; //initialized in unicorn.c
 extern Task* volatile nextTask; //initialized in unicorn.c
 
 // number of tasks initialized in taskTable
-extern uint8_t numTasks;
+//extern uint8_t numTasks;
 
 // index in taskTable of the currently active Task
-extern uint8_t currTaskIdx;
+//extern uint8_t currTaskIdx;
 
 /*** Scheduling Stuff ***/
 
@@ -102,6 +101,7 @@ void onIdle();
 
 
 //initializes a new Task and marks it as ready to run
+//set's the Task's initial stack and member variables
 void readyNewTask(EntryFunction);
 
 //potentially schedules a new stack and context switches

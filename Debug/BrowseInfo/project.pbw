@@ -118563,30 +118563,30 @@
     "scope": null
   },
   {
-    "ID": "c:@F@initializeTask",
+    "ID": "c:@F@getDormantTaskIndex",
     "What": "Function",
     "defdec": "Dec",
-    "display": "void initializeTask(Task *, EntryFunction)",
+    "display": "uint8_t getDormantTaskIndex(void)",
     "location": {
-      "column": "6",
-      "line": "82",
+      "column": "9",
+      "line": "81",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.h"
     },
-    "name": "initializeTask",
+    "name": "getDormantTaskIndex",
     "origin": "user_include",
     "scope": null
   },
   {
-    "ID": "c:@F@initializeTask",
+    "ID": "c:@F@getDormantTaskIndex",
     "What": "Function",
     "defdec": "Dec",
-    "display": "void initializeTask(Task *, EntryFunction)",
+    "display": "uint8_t getDormantTaskIndex(void)",
     "location": {
-      "column": "6",
-      "line": "82",
+      "column": "9",
+      "line": "81",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.h"
     },
-    "name": "initializeTask",
+    "name": "getDormantTaskIndex",
     "origin": "user_include",
     "scope": null
   },
@@ -118597,7 +118597,7 @@
     "display": "currentTask",
     "location": {
       "column": "23",
-      "line": "84",
+      "line": "83",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.h"
     },
     "name": "currentTask",
@@ -118611,38 +118611,10 @@
     "display": "nextTask",
     "location": {
       "column": "23",
-      "line": "85",
+      "line": "84",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.h"
     },
     "name": "nextTask",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@numTasks",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "numTasks",
-    "location": {
-      "column": "16",
-      "line": "88",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.h"
-    },
-    "name": "numTasks",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@currTaskIdx",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "currTaskIdx",
-    "location": {
-      "column": "16",
-      "line": "91",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.h"
-    },
-    "name": "currTaskIdx",
     "origin": "user_include",
     "scope": null
   },
@@ -118653,7 +118625,7 @@
     "display": "void initializeScheduler(void)",
     "location": {
       "column": "6",
-      "line": "96",
+      "line": "95",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.h"
     },
     "name": "initializeScheduler",
@@ -118667,7 +118639,7 @@
     "display": "void initializeScheduler(void)",
     "location": {
       "column": "6",
-      "line": "96",
+      "line": "95",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.h"
     },
     "name": "initializeScheduler",
@@ -118681,7 +118653,7 @@
     "display": "void onIdle(void)",
     "location": {
       "column": "6",
-      "line": "99",
+      "line": "98",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.h"
     },
     "name": "onIdle",
@@ -118695,7 +118667,7 @@
     "display": "void onIdle(void)",
     "location": {
       "column": "6",
-      "line": "99",
+      "line": "98",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.h"
     },
     "name": "onIdle",
@@ -119697,6 +119669,300 @@
     "scope": null
   },
   {
+    "ID": "c:unicorn.c@Q_this_module_",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "Q_this_module_",
+    "location": {
+      "column": "1",
+      "line": "5",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "Q_this_module_",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@taskTable",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "taskTable",
+    "location": {
+      "column": "6",
+      "line": "8",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "taskTable",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@currentTask",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "currentTask",
+    "location": {
+      "column": "16",
+      "line": "9",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "currentTask",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@nextTask",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "nextTask",
+    "location": {
+      "column": "16",
+      "line": "10",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "nextTask",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@numTasks",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "numTasks",
+    "location": {
+      "column": "10",
+      "line": "12",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "numTasks",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@currTaskIdx",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "currTaskIdx",
+    "location": {
+      "column": "10",
+      "line": "13",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "currTaskIdx",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@readyTasks",
+    "What": "Variable",
+    "defdec": "Dec",
+    "display": "readyTasks",
+    "location": {
+      "column": "10",
+      "line": "14",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "readyTasks",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@initializeFirstFrame",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void initializeFirstFrame(ContextFrame *, EntryFunction)",
+    "location": {
+      "column": "6",
+      "line": "17",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "initializeFirstFrame",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@getDormantTaskIndex",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "uint8_t getDormantTaskIndex(void)",
+    "location": {
+      "column": "9",
+      "line": "40",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "getDormantTaskIndex",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:unicorn.c@1543@F@getDormantTaskIndex@i",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "i",
+    "location": {
+      "column": "11",
+      "line": "42",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "i",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@onIdle",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void onIdle(void)",
+    "location": {
+      "column": "6",
+      "line": "58",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "onIdle",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@initializeScheduler",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void initializeScheduler(void)",
+    "location": {
+      "column": "6",
+      "line": "64",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "initializeScheduler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@readyNewTask",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void readyNewTask(EntryFunction)",
+    "location": {
+      "column": "6",
+      "line": "77",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "readyNewTask",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:unicorn.c@2235@F@readyNewTask@taskIndex",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "taskIndex",
+    "location": {
+      "column": "11",
+      "line": "80",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "taskIndex",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:unicorn.c@2281@F@readyNewTask@tsk",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "tsk",
+    "location": {
+      "column": "9",
+      "line": "81",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "tsk",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:unicorn.c@2325@F@readyNewTask@stackEnd",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "stackEnd",
+    "location": {
+      "column": "12",
+      "line": "83",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "stackEnd",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:unicorn.c@2457@F@readyNewTask@remainder",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "remainder",
+    "location": {
+      "column": "12",
+      "line": "84",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "remainder",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:unicorn.c@2698@F@readyNewTask@firstFrame",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "firstFrame",
+    "location": {
+      "column": "17",
+      "line": "89",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "firstFrame",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@sched",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void sched(void)",
+    "location": {
+      "column": "6",
+      "line": "104",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "sched",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:unicorn.c@4021@F@sched@next",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "next",
+    "location": {
+      "column": "15",
+      "line": "126",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "next",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@Q_onAssert",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void Q_onAssert(const char *, int)",
+    "location": {
+      "column": "6",
+      "line": "132",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
+    },
+    "name": "Q_onAssert",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
     "ID": "c:qassert.h@1922@macro@QP_INC_QASSERT_H_",
     "What": "MacroDef",
     "defdec": "Def",
@@ -119988,272 +120254,6 @@
     },
     "name": "Q_DIM",
     "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:unicorn.c@Q_this_module_",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "Q_this_module_",
-    "location": {
-      "column": "1",
-      "line": "5",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "Q_this_module_",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@taskTable",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "taskTable",
-    "location": {
-      "column": "6",
-      "line": "8",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "taskTable",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@currentTask",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "currentTask",
-    "location": {
-      "column": "16",
-      "line": "9",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "currentTask",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@nextTask",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "nextTask",
-    "location": {
-      "column": "16",
-      "line": "10",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "nextTask",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@numTasks",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "numTasks",
-    "location": {
-      "column": "10",
-      "line": "12",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "numTasks",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@currTaskIdx",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "currTaskIdx",
-    "location": {
-      "column": "10",
-      "line": "13",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "currTaskIdx",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@readyTasks",
-    "What": "Variable",
-    "defdec": "Dec",
-    "display": "readyTasks",
-    "location": {
-      "column": "10",
-      "line": "14",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "readyTasks",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@initializeFirstFrame",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void initializeFirstFrame(ContextFrame *, EntryFunction)",
-    "location": {
-      "column": "6",
-      "line": "17",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "initializeFirstFrame",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@initializeTask",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void initializeTask(Task *, EntryFunction)",
-    "location": {
-      "column": "6",
-      "line": "42",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "initializeTask",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:unicorn.c@1633@F@initializeTask@stackEnd",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "stackEnd",
-    "location": {
-      "column": "12",
-      "line": "44",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "stackEnd",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:unicorn.c@1768@F@initializeTask@remainder",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "remainder",
-    "location": {
-      "column": "12",
-      "line": "45",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "remainder",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:unicorn.c@2012@F@initializeTask@firstFrame",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "firstFrame",
-    "location": {
-      "column": "17",
-      "line": "50",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "firstFrame",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@onIdle",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void onIdle(void)",
-    "location": {
-      "column": "6",
-      "line": "59",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "onIdle",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@initializeScheduler",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void initializeScheduler(void)",
-    "location": {
-      "column": "6",
-      "line": "65",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "initializeScheduler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@readyNewTask",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void readyNewTask(EntryFunction)",
-    "location": {
-      "column": "6",
-      "line": "81",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "readyNewTask",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:unicorn.c@2757@F@readyNewTask@i",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "i",
-    "location": {
-      "column": "16",
-      "line": "83",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "i",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@sched",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void sched(void)",
-    "location": {
-      "column": "6",
-      "line": "109",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "sched",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:unicorn.c@4420@F@sched@next",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "next",
-    "location": {
-      "column": "15",
-      "line": "132",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "next",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@Q_onAssert",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void Q_onAssert(const char *, int)",
-    "location": {
-      "column": "6",
-      "line": "138",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
-    },
-    "name": "Q_onAssert",
-    "origin": "project_file",
     "scope": null
   },
   {
