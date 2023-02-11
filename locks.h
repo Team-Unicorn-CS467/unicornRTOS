@@ -4,13 +4,16 @@
 
 #include <stdint.h>
 
-extern uint32_t SpinLock; //initialized in locks.c
+typedef struct
+{
+  uint32_t held; //stores 0 if available, 1 if held
+} SpinLock;
 
-void initSpinLock();
+void initLock(SpinLock*);
 
-void releaseSpinLock();
+void releaseLock(SpinLock*);
 
-void acquireSpinLock();
+void acquireLock(SpinLock*);
 
 
 #endif //LOCKS_H

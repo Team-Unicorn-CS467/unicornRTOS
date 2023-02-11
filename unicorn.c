@@ -1,17 +1,19 @@
 #include "unicorn.h"
 #include "qassert.h" // Q_ASSERT
 #include "TM4C123GH6PM.h" // NVIC_SystemReset()
+#include "locks.h"
 
 Q_DEFINE_THIS_FILE   // required for using Q_ASSERT
 
-//Task idleTask;
 Task taskTable[MAX_TASKS + 1];
-Task* volatile currentTask; //must be here because it gets labelled for easier access in assembly code
-Task* volatile nextTask; //must be here because it gets labelled for easier access in assembly code
+Task* volatile currentTask;     //must be here because it gets labelled for easier access in assembly code
+Task* volatile nextTask;        //must be here because it gets labelled for easier access in assembly code
 
-uint8_t  numTasks;       // the total number of Tasks initialized into taskTable;
-uint8_t  currTaskIdx;    // index of the active task in taskTable
-uint32_t readyTasks;    // bitmask where asserted bit index = index of ready task in taskTable
+uint8_t  numTasks;              // the total number of Tasks initialized into taskTable (includes idle task);
+uint8_t  currTaskIdx;           // taskTable index of the task currently running (or about to be run in sched)
+uint32_t readyTasks;            // bitmask where set bits correspond to ready task indices, unset bits to dormant task indices in taskTable
+
+SpinLock taskChangeLock;
 
 //used to create the starting, mostly fake, ContextFrame in a new task's stack memory
 void initializeFirstFrame(ContextFrame* target, EntryFunction taskFunc)
@@ -54,15 +56,17 @@ uint8_t getDormantTaskIndex()
   return i;
 };
 
-// busy work for the idleTask to perform
+// busy work for the idle task to perform
 void onIdle()
 {
   for(;;);
 }
 
-//starting setup of the task table, idle task
+//starting setup of the task table lock, task table, and idle task
 void initializeScheduler()
 {
+  initLock(&taskChangeLock);
+
   currentTask = (Task*)0U;
   nextTask = (Task*)0U;
   numTasks = 0U;
@@ -72,11 +76,12 @@ void initializeScheduler()
   readyNewTask(onIdle);
 }
 
-//peforms initial Task setup
+//peforms initial Task setup and marks new task as ready
 //taskFunc is this task's method
 void readyNewTask(EntryFunction taskFunc)
 {  
-
+  acquireLock(&taskChangeLock); //prevent any other tasks from making concurrent changes to the task table
+  
   uint8_t taskIndex = getDormantTaskIndex();
   Task* tsk = &(taskTable[taskIndex]);
   
@@ -90,41 +95,59 @@ void readyNewTask(EntryFunction taskFunc)
   initializeFirstFrame(firstFrame, taskFunc);
   
   //tsk->sp now points to the last used word in stack memory
+
+  ++numTasks; // increment number of initialized tasks
+  readyTasks |= (1U << taskIndex); // mark task as ready (set readyTasks mask)
   
-  // increment number of initialized tasks:
-  ++numTasks;
-  
-  // set the new Task into the ready state (set readyTasks mask)
-  readyTasks |= (1U << taskIndex); 
-  
+  releaseLock(&taskChangeLock); 
 }
 
+//marks the caller as dormant and enters the scheduler, never to return to the caller
+//this would cause problems if it were ever called on the idle task
+void exitTask()
+{
+  acquireLock(&taskChangeLock); //prevent any other tasks from making concurrent changes to the task table
+
+  --numTasks; // decrement number of initialized tasks
+  readyTasks &= ~(1U << currTaskIdx); // mark task as dormant (unset set readyTasks mask)
+  
+  releaseLock(&taskChangeLock);
+  
+  sched(); // enter the scheduler never to return
+}
+
+//updates nextTaskIdx and nextTask
 //interrupts must be disabled when this function is called
-//updates currentTask and nextTask and their states
+//assumes numTasks > 0
 void sched()
 {
   
-  if(readyTasks == 0U)  // no threads running ? switch to idleTask
+  //anthony's note: I had to change the logic because with task exits, we can potentially
+  //have need to set the nextTaskIndex back to 0U if the last user task exited
+  //we also can have situations where all the ready tasks may not be in contiguous positions
+  //in memory, so this this can't rely on numTasks in the same manner as it did previously
+
+  //select the next task to run
+  if(numTasks == 1U)  // only idle task is ready
     currTaskIdx = 0U;
-  else 
-  {
+  else // at least one user task is ready (this may be the current task)
+  {    
+    uint8_t lastTaskIndex = currTaskIdx;
     do 
     {
       ++currTaskIdx;
-      if (currTaskIdx == numTasks)  // iterate only over initialized Tasks, if counter at highest filled index in taskTable ? --> start at 1 to skip idleTask
-        currTaskIdx =  1U;
-      
-       nextTask = &(taskTable[currTaskIdx]);
-        
-    } while ( (readyTasks & (1U << (currTaskIdx - 1U))) == 0U ); // task index 0 at taskTable[1]
-  } 
+      if (currTaskIdx == MAX_TASKS)
+        currTaskIdx =  1U; //start back at the first user task      
+      if ((readyTasks & (1U << currTaskIdx)) != 0U)
+        break; //found a ready user task
+    } while (currTaskIdx != lastTaskIndex);
+  }
   nextTask = &(taskTable[currTaskIdx]);
-  
+
   // comparing currentTask and nextTask (two volatile variables) is leads to
   // unpredictable access order *Warning[Pa082]* see:
   // https://www.iar.com/knowledge/support/technical-notes/compiler/warningpa082-undefined-behavior-the-order-of-volatile-accesses-is-undefined-in-this-statement/
-  Task const *next = nextTask;
-  if (currentTask != next)
+  if (currentTask != &(taskTable[currTaskIdx]))
       //NVIC_INT_CTRL_R |= 0x10000000U; //trigger PendSV exception via interrupt control and state register in system control block
       *(uint32_t volatile *)0xE000ED04 = (1U << 28U);  
 }
