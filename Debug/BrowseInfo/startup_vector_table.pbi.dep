@@ -1,12 +1,12 @@
-C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi: \
-  C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\startup_vector_table.c \
-  C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\ticks.h \
+C:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi: \
+  C:\Users\atoyn\Downloads\unicornRTOS\startup_vector_table.c \
+  C:\Users\atoyn\Downloads\unicornRTOS\ticks.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\stdint.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\ycheck.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\yvals.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Defaults.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Config_Normal.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Product.h \
-  C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\exception_handlers.h \
-  C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\lm4f120h5qr.h \
-  C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\unicorn.h
+  C:\Users\atoyn\Downloads\unicornRTOS\exception_handlers.h \
+  C:\Users\atoyn\Downloads\unicornRTOS\lm4f120h5qr.h \
+  C:\Users\atoyn\Downloads\unicornRTOS\unicorn.h
