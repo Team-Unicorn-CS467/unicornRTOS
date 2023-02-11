@@ -112,8 +112,12 @@ void exitTask()
   readyTasks &= ~(1U << currTaskIdx); // mark task as dormant (unset set readyTasks mask)
   
   releaseLock(&taskChangeLock);
+
+  __asm("CPSID I"); //disable interrupts
+  sched(); //schedule next task and set PendSV to trigger (as soon as interrupts are enabled)
+  __asm("CPSIE I"); //enable interrupts)  
   
-  sched(); // enter the scheduler never to return
+  //here we should be diverted to PendSV handler never to return
 }
 
 //updates nextTaskIdx and nextTask
@@ -153,14 +157,15 @@ void sched()
 }
 
 void Q_onAssert(char const *module, int loc) {
-    /* TBD: damage control */
-    (void)module; /* avoid the "unused parameter" compiler warning */
-    (void)loc;    /* avoid the "unused parameter" compiler warning */
-    
-    // inlined function copied from core_cm4.h (line 1790)
-    // because using #include core_cm4.h was causing all
-    // kinds of havoc
-    NVIC_SystemReset();
+
+  /* TBD: damage control */
+  (void)module; /* avoid the "unused parameter" compiler warning */
+  (void)loc;    /* avoid the "unused parameter" compiler warning */
+  
+  // inlined function copied from core_cm4.h (line 1790)
+  // because using #include core_cm4.h was causing all
+  // kinds of havoc
+  NVIC_SystemReset();
     
 }
 

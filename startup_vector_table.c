@@ -39,8 +39,8 @@ void handler_SVCall(void) //no implementation for now
 }
 
 //***NOTE: THE CURRENT IMPLEMENTATION REQUIRES THE FPU TO BE TURNED OFF***
-void handler_PendSV(void) //no implementation for now
-{ 
+void handler_PendSV(void)
+{
   /*
   // if not coming from reset (when currenTask=null) save r4-r11 and currentTask->sp to stack
   if (currentTask != (Task *)0)
@@ -94,7 +94,7 @@ void handler_SysTick(void) //incrementing ticks, scheduling/switching task
 {  
   __asm("CPSID I"); //disable interrupts
   incrementTicks();
-  sched(); //schedule next task
+  sched(); //schedule next task and set PendSV to trigger (as soon as interrupts are enabled)
   __asm("CPSIE I"); //enable interrupts)
   
   }

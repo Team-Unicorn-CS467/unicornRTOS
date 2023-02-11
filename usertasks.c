@@ -1,6 +1,6 @@
 #include "usertasks.h"
 
-const int taskTimer = 1000000;
+const int taskTimer = 5000000;
 
 //***user tasks to be loaded at startup***
 void userTaskLoad()
@@ -40,9 +40,8 @@ void blinkRed()
 {
   int i;
   ledRedOn();
-  for(i = 0; i < taskTimer / 5 ; ++i);
+  for(i = 0; i < taskTimer / 10 ; ++i);
   ledRedOff();
-  for(i = 0; i < taskTimer / 5; ++i);
   exitTask();
 }
 
@@ -50,9 +49,8 @@ void blinkBlue()
 {
   int i;
   ledBlueOn();
-  for(i = 0; i < taskTimer / 5 ; ++i);
+  for(i = 0; i < taskTimer / 10 ; ++i);
   ledBlueOff();
-  for(i = 0; i < taskTimer / 5; ++i);
   exitTask();
 }
 
@@ -60,8 +58,7 @@ void blinkGreen()
 {
   int i;
   ledGreenOn();
-  for(i = 0; i < taskTimer / 5 ; ++i);
+  for(i = 0; i < taskTimer / 10 ; ++i);
   ledGreenOff();
-  for(i = 0; i < taskTimer / 5; ++i);
   exitTask();
 }
