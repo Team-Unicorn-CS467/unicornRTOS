@@ -25,7 +25,7 @@ void userTaskLoad()
 // ADD ANY USER TASK DEFINITIONS HERE
 ///////////////////////////////////////////////////////////////////
 
-const int BLINK_TIME = 2000;
+const int BLINK_TIME = 200000;
 
 //each blink function below assumes necessary initial
 //setup completed to support blinking

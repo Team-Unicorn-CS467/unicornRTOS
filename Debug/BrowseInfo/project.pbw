@@ -42363,7 +42363,7 @@
     "display": "void releaseSpinLock(void)",
     "location": {
       "column": "6",
-      "line": "11",
+      "line": "10",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\locks.c"
     },
     "name": "releaseSpinLock",
@@ -42377,7 +42377,7 @@
     "display": "void acquireSpinLock(void)",
     "location": {
       "column": "6",
-      "line": "24",
+      "line": "19",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\locks.c"
     },
     "name": "acquireSpinLock",
@@ -120299,7 +120299,7 @@
     "scope": null
   },
   {
-    "ID": "c:usertasks.c@969@F@blinkRed@i",
+    "ID": "c:usertasks.c@971@F@blinkRed@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
@@ -120327,7 +120327,7 @@
     "scope": null
   },
   {
-    "ID": "c:usertasks.c@1206@F@blinkBlue@i",
+    "ID": "c:usertasks.c@1208@F@blinkBlue@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
@@ -120355,7 +120355,7 @@
     "scope": null
   },
   {
-    "ID": "c:usertasks.c@1446@F@blinkGreen@i",
+    "ID": "c:usertasks.c@1448@F@blinkGreen@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
