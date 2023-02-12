@@ -2175,6 +2175,12 @@
         <name>$PROJ_DIR$\lm4f120h5qr.h</name>
     </file>
     <file>
+        <name>$PROJ_DIR$\locks.c</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\locks.h</name>
+    </file>
+    <file>
         <name>$PROJ_DIR$\main.c</name>
     </file>
     <file>
@@ -2191,5 +2197,11 @@
     </file>
     <file>
         <name>$PROJ_DIR$\unicorn.h</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\usertasks.c</name>
+    </file>
+    <file>
+        <name>$PROJ_DIR$\usertasks.h</name>
     </file>
 </project>

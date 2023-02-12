@@ -4,6 +4,7 @@
 #include "TM4C123GH6PM.h" // map of named hardware addresses
 #include "unicorn.h"
 #include <intrinsics.h>
+#include "usertasks.h" //for userTaskLoad()
 
 
 int main()
@@ -14,21 +15,7 @@ int main()
   //OS stuff
   initializeScheduler();
   
-  //***start tasks here***
-  /*
-  readyNewTask(&ledRedOn);
-  readyNewTask(&ledRedOff);
-  
-  readyNewTask(&ledBlueOn);
-  readyNewTask(&ledBlueOff);
-  
-  readyNewTask(&ledGreenOn);
-  readyNewTask(&ledGreenOff);
-  */
-  
-  readyNewTask(&blinkRed);
-  readyNewTask(&blinkBlue);
-  readyNewTask(&blinkGreen);
+  readyNewTask(&userTaskLoad);
   
   resetTicks(); //set starting number of ticks to 0
 

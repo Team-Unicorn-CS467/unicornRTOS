@@ -7,10 +7,6 @@
 #define BYTES_PER_WORD       4U      // for 32 bit architecture
 #define MAX_TASKS            8U
 
-#define TASK_STATE_DORMANT   0U
-#define TASK_STATE_READY     1U
-#define TASK_STATE_ACTIVE    2U
-
 /*** note: the ARM Application Procedure Call Standard (AAPCS) disallows
     clobbering of registers R4 through R11. I believe this means the compiler
     has responsibility to ensure these register values, by the time of procedure exit,
@@ -30,9 +26,7 @@
 
 typedef void (*EntryFunction)(); //a pointer to a void function which takes no arguments
 
-
-/*** ContextFrame - stored register values to facilitate context shifting ***/
-
+/***stored register values to facilitate context shifting ***/
 typedef struct
 {
   
@@ -60,16 +54,6 @@ typedef struct
 
 } ContextFrame;
 
-void initializeFirstFrame(ContextFrame*, EntryFunction);
-
-
-/*** Task ( Thread Control Block (TCB)) ***/
-// 32 bit mask indicating which threads in taskTable are ready to run
-// where the nth bit index corresponds to the nth index of taskTable
-// e.g. readyTasks = 0b0000'0000'0000'0000'0000'0000'0010'1001
-// means that taskTable at index 0, 3 and 5 are ready to run
-extern uint32_t readyTasks;
-
 typedef struct
 {
   uint32_t* sp; //stack pointer
@@ -78,31 +62,20 @@ typedef struct
   uint8_t   state;
 } Task;
 
-//set's up a Task's initial stack and member variables
-void initializeTask(Task*, EntryFunction);
-
 extern Task* volatile currentTask; //initialized in unicorn.c
 extern Task* volatile nextTask; //initialized in unicorn.c
-
-// number of tasks initialized in taskTable
-extern uint8_t numTasks;
-
-// index in taskTable of the currently active Task
-extern uint8_t currTaskIdx;
 
 /*** Scheduling Stuff ***/
 
 //starting setup of the task table, idleTask
 void initializeScheduler();
 
-// busy work for the idleTask to do 
-void onIdle();
-//the idleTask's job
-//void pointlessWork();
-
-
 //initializes a new Task and marks it as ready to run
+//set's the Task's initial stack and member variables
 void readyNewTask(EntryFunction);
+
+//a task calls this to exit itself
+void exitTask();
 
 //potentially schedules a new stack and context switches
 void sched();
