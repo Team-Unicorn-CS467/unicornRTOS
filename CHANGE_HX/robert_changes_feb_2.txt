@@ -1,3 +1,0 @@
-2/2/23 Review of Anthony's Commit 1:
-	- changed spacing on comments some for readability
-	- changed name of 'defaultTask' to 'idleTask' as this is a OS standard term

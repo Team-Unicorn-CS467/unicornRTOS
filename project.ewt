@@ -2879,12 +2879,6 @@
         <name>$PROJ_DIR$\startup_vector_table.c</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\ticks.c</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\ticks.h</name>
-    </file>
-    <file>
         <name>$PROJ_DIR$\unicorn.c</name>
     </file>
     <file>

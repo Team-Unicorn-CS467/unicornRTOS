@@ -58,8 +58,8 @@ typedef struct
 {
   uint32_t* sp; //stack pointer
   uint32_t  stack[TASK_STACK_WORD_SIZE]; //memory allocation for the stack - ***later this will be alocated outside this struct and passed in via a pointer***
-  uint32_t  timeout;  // timer for delayTask() function (unicorn.c)
-  uint8_t   state;
+  uint32_t  timeout;                     // timer for sleep() function (unicorn.c)
+  //uint8_t   state;
 } Task;
 
 extern Task* volatile currentTask; //initialized in unicorn.c
@@ -69,6 +69,12 @@ extern Task* volatile nextTask; //initialized in unicorn.c
 
 //starting setup of the task table, idleTask
 void initializeScheduler();
+
+// set's the Task->timeout to 'ticks' and sets readyTasks[Task] to 0
+void sleep(uint32_t ticks);
+
+// decrements Task->tieout for all Tasks in taskTable
+void decrementTimeouts(void);
 
 //initializes a new Task and marks it as ready to run
 //set's the Task's initial stack and member variables
