@@ -15,6 +15,40 @@ uint32_t readyTasks;            // bitmask where set bits correspond to ready ta
 
 SpinLock taskChangeLock;
 
+// decrement timeout on all Tasks
+void decrementTimeouts(void)
+{
+  uint8_t i;
+  for (i=1U; i<MAX_TASKS; i++)
+  {
+    Task* tsk  = &(taskTable[i]); 
+    if (tsk->timeout != 0U)
+    {
+      --tsk->timeout;
+      if (tsk->timeout == 0U)
+        readyTasks |= (1U << (i));
+    }
+  }
+}
+
+// put currentTask in blocking unready state for 'ticks' number of SysTick cycles
+void sleep(uint32_t ticks)
+{
+    __asm("CPSID I");                           // disable interrupts
+    
+    // don't allow idleTask to enter sleep (REQUIRE same as ASSERT)
+    Q_REQUIRE(currentTask != &(taskTable[0]));
+    
+    currentTask->timeout = ticks;
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+    readyTasks &= ~(1U << (currTaskIdx));  // set task to not ready
+    
+    sched();                                    // schedule to another task
+    __asm("CPSIE I");
+}   
+
+
+
 //used to create the starting, mostly fake, ContextFrame in a new task's stack memory
 void initializeFirstFrame(ContextFrame* target, EntryFunction taskFunc)
 {
@@ -35,14 +69,14 @@ void initializeFirstFrame(ContextFrame* target, EntryFunction taskFunc)
   target->lr  = 0x00000000U;
   
   //values which actually matter
-  target->pc = (uint32_t)taskFunc; //task function entry point
+  target->pc   = (uint32_t)taskFunc; //task function entry point
   target->xpsr = (1U << 24); //program status register value for "thumb state"
 }
 
 uint8_t getDormantTaskIndex()
 {  
   uint8_t i;
-  
+
   //find a dormant task
   for (i = 0; i < MAX_TASKS; ++i)
   {
@@ -68,9 +102,9 @@ void initializeScheduler()
   initLock(&taskChangeLock);
 
   currentTask = (Task*)0U;
-  nextTask = (Task*)0U;
-  numTasks = 0U;
-  readyTasks = 0U;
+  nextTask    = (Task*)0U;
+  numTasks    = 0U;
+  readyTasks  = 0U;
   
   // initialize the idle task
   readyNewTask(onIdle);
@@ -82,20 +116,25 @@ void readyNewTask(EntryFunction taskFunc)
 {  
   acquireLock(&taskChangeLock); //prevent any other tasks from making concurrent changes to the task table
   
-  uint8_t taskIndex = getDormantTaskIndex();
-  Task* tsk = &(taskTable[taskIndex]);
+  uint8_t taskIndex   = getDormantTaskIndex();
+  Task* tsk           = &(taskTable[taskIndex]);
   
-  uint32_t stackEnd = (uint32_t)tsk->stack + (TASK_STACK_WORD_SIZE * BYTES_PER_WORD); //later the stack size will be parameterized
-  uint32_t remainder = stackEnd % 8U;
+  uint32_t stackEnd   = (uint32_t)tsk->stack + (TASK_STACK_WORD_SIZE * BYTES_PER_WORD); //later the stack size will be parameterized
+  uint32_t remainder  = stackEnd % 8U;
+  
   stackEnd -= remainder; //Cortex-M stack must be alligned at 8-byte boundary
   
   //initialize the first (mostly fabricated) context frame
   tsk->sp = (uint32_t*)(stackEnd - sizeof(ContextFrame));
   ContextFrame* firstFrame = (ContextFrame*)(tsk->sp);
   initializeFirstFrame(firstFrame, taskFunc);
-  
   //tsk->sp now points to the last used word in stack memory
 
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // set Task->timeout to 0  (Systick will ignore it for decrementing )
+  tsk->timeout = 0U;
+  
+  
   ++numTasks; // increment number of initialized tasks
   readyTasks |= (1U << taskIndex); // mark task as ready (set readyTasks mask)
   
@@ -132,8 +171,11 @@ void sched()
   //in memory, so this this can't rely on numTasks in the same manner as it did previously
 
   //select the next task to run
-  if(numTasks == 1U)  // only idle task is ready
+  /////////////////////////////////////////////////////////////////////////////////////////////////
+  // this conditional was changed from last version:
+  if(readyTasks == 1U)  // only idle task is ready
     currTaskIdx = 0U;
+  ///////////////////////////////////////////////////////////////////////////////////////////////////
   else // at least one user task is ready (this may be the current task)
   {    
     uint8_t lastTaskIndex = currTaskIdx;
@@ -141,9 +183,11 @@ void sched()
     {
       ++currTaskIdx;
       if (currTaskIdx == MAX_TASKS)
-        currTaskIdx =  1U; //start back at the first user task      
+        currTaskIdx =  1U; //start back at the first user task 
+      
       if ((readyTasks & (1U << currTaskIdx)) != 0U)
         break; //found a ready user task
+      
     } while (currTaskIdx != lastTaskIndex);
   }
   nextTask = &(taskTable[currTaskIdx]);

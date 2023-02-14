@@ -1,3 +1,0 @@
-Copied changes from robert's most recent patch, but organized
-them into the unicorn_rtos directory without any changes in the
-root directory. Added CHANGE_HX and SETUP subfolders in the unicorn_rtos directory.

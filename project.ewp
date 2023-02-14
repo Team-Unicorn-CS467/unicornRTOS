@@ -365,7 +365,7 @@
                 </option>
                 <option>
                     <name>CCOptLevel</name>
-                    <state>1</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>CCOptStrategy</name>
@@ -374,7 +374,7 @@
                 </option>
                 <option>
                     <name>CCOptLevelSlave</name>
-                    <state>1</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>CCPosIndRopi</name>
@@ -2185,12 +2185,6 @@
     </file>
     <file>
         <name>$PROJ_DIR$\startup_vector_table.c</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\ticks.c</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\ticks.h</name>
     </file>
     <file>
         <name>$PROJ_DIR$\unicorn.c</name>

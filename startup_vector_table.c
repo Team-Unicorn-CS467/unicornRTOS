@@ -1,4 +1,4 @@
-#include "ticks.h" //for incrementTicks()
+//#include "ticks.h" //for incrementTicks()
 #include "exception_handlers.h"
 #include "lm4f120h5qr.h"
 #include "unicorn.h"
@@ -93,7 +93,7 @@ void handler_PendSV(void)
 void handler_SysTick(void) //incrementing ticks, scheduling/switching task
 {  
   __asm("CPSID I"); //disable interrupts
-  incrementTicks();
+  decrementTimeouts();
   sched(); //schedule next task and set PendSV to trigger (as soon as interrupts are enabled)
   __asm("CPSIE I"); //enable interrupts)
   

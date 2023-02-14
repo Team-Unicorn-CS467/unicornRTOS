@@ -1,6 +1,7 @@
 #include "usertasks.h"
 
-const int taskTimer = 5000000;
+static int taskTimer = 10; //5000000;
+static int i;
 
 //***user tasks to be loaded at startup***
 void userTaskLoad()
@@ -10,17 +11,21 @@ void userTaskLoad()
   // ADD STARTUP TASKS BELOW THIS LINE
   ///////////////////////////////////////////////////////////////////
   
-  int i;
+
   while(1)
   {
     readyNewTask(&blinkRed);
     for(i = 0; i < taskTimer; ++i);
-        
+    sleep(2);
+    
     readyNewTask(&blinkBlue);
     for(i = 0; i < taskTimer; ++i);
+    sleep(1);
+    
     
     readyNewTask(&blinkGreen); 
     for(i = 0; i < taskTimer; ++i);
+    sleep(1);
   }
 
   ///////////////////////////////////////////////////////////////////
