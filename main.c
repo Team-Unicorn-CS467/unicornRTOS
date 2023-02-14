@@ -6,34 +6,6 @@
 #include <intrinsics.h>
 #include "usertasks.h" //for userTaskLoad()
 
-
-void blinky1() 
-{
-    while (1) 
-    {
-        ledBlueOn();
-        sleep(1000);
-        ledBlueOff();
-        sleep(2000);;
-        //ledBlueOff();
-        //sleep(1);
-    }
-}
-
-
-
-void blinky2() 
-{
-    while (1) 
-    {
-        ledRedOn();
-        sleep(1000);
-        ledRedOff();
-        sleep(1000);;
-        //ledRedOff();
-        //sleep(1);
-    }
-}
 int main()
 { 
   // un-gateclock GPIOF AHB, set digital/direction , set Systick, set SysTck/PendSV priorities
@@ -42,19 +14,16 @@ int main()
   //OS stuff
   initializeScheduler();
   
-  //readyNewTask(&userTaskLoad);
-  readyNewTask(&blinky1);
-  readyNewTask(&blinky2);
-  
+  readyNewTask(&userTaskLoad);
   
   //__asm("CPSID I");
   __asm("CPSID I");
-  sched();
+  sched(); //schedule first task and set PendSV to trigger (as soon as interrupts are enabled)
   __asm("CPSIE I");
   
-  //***from this point, the systick interrupt handler will begin executing and will cause scheduling of processes**
- 
-  while(1);
-  
+  //after the initial PendSV trigger following sched(),
+  //we will never return here
+  while(1); 
+    
   //return 0;
 }

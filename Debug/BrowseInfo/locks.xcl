@@ -1,21 +1,21 @@
-"C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\locks.c"
+"C:\Users\atoyn\Downloads\unicornRTOS\locks.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -funsigned-char
 -MD
 -MF
-C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\locks.pbi.dep
+C:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\locks.pbi.dep
 -o
-C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\BrowseInfo\locks.pbi
+C:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\locks.pbi
 -I
-C:\Users\RJ\Desktop\programming\osu467\unicornRTOS
+C:\Users\atoyn\Downloads\unicornRTOS
 -I
-C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\qpc\3rd_party\CMSIS\Include
+C:\Users\atoyn\Downloads\unicornRTOS\qpc\3rd_party\CMSIS\Include
 -I
-C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\qpc\include
+C:\Users\atoyn\Downloads\unicornRTOS\qpc\include
 -I
-C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\qpc\3rd_party\ek-tm4c123gxl
+C:\Users\atoyn\Downloads\unicornRTOS\qpc\3rd_party\ek-tm4c123gxl
 -I
 C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c\aarch32
 -I
@@ -23,11 +23,11 @@ C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc
 -I
 C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c
 -I
-C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\qpc\3rd_party\CMSIS\Include
+C:\Users\atoyn\Downloads\unicornRTOS\qpc\3rd_party\CMSIS\Include
 -I
-C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\qpc\include
+C:\Users\atoyn\Downloads\unicornRTOS\qpc\include
 -I
-C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\qpc\3rd_party\ek-tm4c123gxl
+C:\Users\atoyn\Downloads\unicornRTOS\qpc\3rd_party\ek-tm4c123gxl
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

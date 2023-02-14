@@ -1,28 +1,25 @@
 ###############################################################################
 #
-# IAR ELF Linker V9.32.1.338/W64 for ARM                  13/Feb/2023  17:11:59
+# IAR ELF Linker V9.32.1.338/W64 for ARM                  14/Feb/2023  06:42:40
 # Copyright 2007-2022 IAR Systems AB.
 #
-#    Output file  =
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Exe\project.out
+#    Output file  =  C:\Users\atoyn\Downloads\unicornRTOS\Debug\Exe\project.out
 #    Map file     =
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\List\project.map
+#        C:\Users\atoyn\Downloads\unicornRTOS\Debug\List\project.map
 #    Command line =
-#        -f
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Exe\project.out.rsp
-#        (C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\board_io.o
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\locks.o
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\main.o
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\startup_vector_table.o
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\ek-tm4c123gxl\system_TM4C123GH6PM.o
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\unicorn.o
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\usertasks.o
+#        -f C:\Users\atoyn\Downloads\unicornRTOS\Debug\Exe\project.out.rsp
+#        (C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\board_io.o
+#        C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\locks.o
+#        C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\main.o
+#        C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\startup_vector_table.o
+#        C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\ek-tm4c123gxl\system_TM4C123GH6PM.o
+#        C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\unicorn.o
+#        C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\usertasks.o
 #        --no_out_extension -o
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Exe\project.out
-#        --redirect _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb
-#        --map
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\List\project.map
-#        --config "C:\Program Files\IAR Systems\Embedded Workbench
+#        C:\Users\atoyn\Downloads\unicornRTOS\Debug\Exe\project.out --redirect
+#        _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb --map
+#        C:\Users\atoyn\Downloads\unicornRTOS\Debug\List\project.map --config
+#        "C:\Program Files\IAR Systems\Embedded Workbench
 #        9.1\arm/config/linker/TexasInstruments/TM4C123GH6.icf" --semihosting
 #        --entry __iar_program_start --vfe --text_out locale --cpu=Cortex-M4
 #        --fpu=None)
@@ -65,24 +62,25 @@ define block HEAP with size = 8K, alignment = 8 { };
   .intvec          const            0x0    0x40  startup_vector_table.o [1]
                                  - 0x40    0x40
 
-"P1":                                     0x508
-  .text            ro code         0x40   0x248  unicorn.o [1]
-  .text            ro code        0x288    0x22  locks.o [1]
-  .text            ro code        0x2ac    0xd8  board_io.o [1]
-  .text            ro code        0x384    0x60  main.o [1]
-  .text            ro code        0x3e4    0x50  startup_vector_table.o [1]
-  .rodata          const          0x434    0x40  unicorn.o [1]
-  .text            ro code        0x474    0x38  zero_init3.o [4]
-  .text            ro code        0x4ac    0x28  data_init.o [4]
-  .iar.init_table  const          0x4d4    0x10  - Linker created -
-  .text            ro code        0x4e4    0x1e  cmain.o [4]
-  .text            ro code        0x502     0x4  low_level_init.o [3]
-  .text            ro code        0x506     0x4  exit.o [3]
-  .text            ro code        0x50c     0xa  cexit.o [4]
-  .text            ro code        0x518    0x14  exit.o [5]
-  .text            ro code        0x52c    0x1c  cstartup_M.o [4]
-  .rodata          const          0x548     0x0  zero_init3.o [4]
-                                - 0x548   0x508
+"P1":                                     0x57c
+  .text            ro code         0x40   0x278  unicorn.o [1]
+  .text            ro code        0x2b8    0x22  locks.o [1]
+  .text            ro code        0x2dc    0xe4  board_io.o [1]
+  .text            ro code        0x3c0    0x8c  usertasks.o [1]
+  .text            ro code        0x44c    0x4c  startup_vector_table.o [1]
+  .text            ro code        0x498    0x38  zero_init3.o [4]
+  .rodata          const          0x4d0    0x30  unicorn.o [1]
+  .text            ro code        0x500    0x28  data_init.o [4]
+  .iar.init_table  const          0x528    0x10  - Linker created -
+  .text            ro code        0x538    0x20  main.o [1]
+  .text            ro code        0x558    0x1e  cmain.o [4]
+  .text            ro code        0x576     0x4  low_level_init.o [3]
+  .text            ro code        0x57a     0x4  exit.o [3]
+  .text            ro code        0x580     0xa  cexit.o [4]
+  .text            ro code        0x58c    0x14  exit.o [5]
+  .text            ro code        0x5a0    0x1c  cstartup_M.o [4]
+  .rodata          const          0x5bc     0x0  zero_init3.o [4]
+                                - 0x5bc   0x57c
 
 "P2", part 1 of 2:                        0x95c
   .bss             zero     0x2000'0000   0x948  unicorn.o [1]
@@ -103,7 +101,7 @@ Unused ranges:
 
          From           To      Size
          ----           --      ----
-        0x548     0x3'ffff  0x3'fab8
+        0x5bc     0x3'ffff  0x3'fa44
   0x2000'095c  0x2000'095f       0x4
   0x2000'1960  0x2000'7fff    0x66a0
 
@@ -130,16 +128,17 @@ command line/config:
     -------------------------------------------------
     Total:
 
-C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj: [1]
-    board_io.o                  216
+C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj: [1]
+    board_io.o                  228
     locks.o                      34
-    main.o                       96
-    startup_vector_table.o       80       64
-    unicorn.o                   584       64    2'394
+    main.o                       32
+    startup_vector_table.o       76       64
+    unicorn.o                   632       48    2'394
+    usertasks.o                 140
     -------------------------------------------------
-    Total:                    1'010      128    2'394
+    Total:                    1'142      112    2'394
 
-C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\ek-tm4c123gxl: [2]
+C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\ek-tm4c123gxl: [2]
     -------------------------------------------------
     Total:
 
@@ -166,7 +165,7 @@ shb_l.a: [5]
     Gaps                          6
     Linker created                        16    4'096
 -----------------------------------------------------
-    Grand Total:              1'208      144    6'490
+    Grand Total:              1'340      128    6'490
 
 
 *******************************************************************************
@@ -175,72 +174,76 @@ shb_l.a: [5]
 
 Entry                       Address   Size  Type      Object
 -----                       -------   ----  ----      ------
-.iar.init_table$$Base         0x4d4          --   Gb  - Linker created -
-.iar.init_table$$Limit        0x4e4          --   Gb  - Linker created -
-?main                         0x4e5         Code  Gb  cmain.o [4]
+.iar.init_table$$Base         0x528          --   Gb  - Linker created -
+.iar.init_table$$Limit        0x538          --   Gb  - Linker created -
+?main                         0x559         Code  Gb  cmain.o [4]
 CSTACK$$Base            0x2000'0960          --   Gb  - Linker created -
 CSTACK$$Limit           0x2000'1960         Data  Gb  - Linker created -
-Q_onAssert                    0x27d    0xc  Code  Gb  unicorn.o [1]
-Q_this_module_                0x434   0x40  Data  Lc  unicorn.o [1]
-Region$$Table$$Base           0x4d4          --   Gb  - Linker created -
-Region$$Table$$Limit          0x4e4          --   Gb  - Linker created -
-__NVIC_SetPriority            0x2ad   0x2c  Code  Lc  board_io.o [1]
+Q_onAssert                    0x2ad    0xc  Code  Gb  unicorn.o [1]
+Q_this_module_                0x4d0   0x30  Data  Lc  unicorn.o [1]
+Region$$Table$$Base           0x528          --   Gb  - Linker created -
+Region$$Table$$Limit          0x538          --   Gb  - Linker created -
+__NVIC_SetPriority            0x2dd   0x2c  Code  Lc  board_io.o [1]
 __NVIC_SystemReset             0x41   0x1a  Code  Lc  unicorn.o [1]
-__cmain                       0x4e5         Code  Gb  cmain.o [4]
-__exit                        0x519   0x14  Code  Gb  exit.o [5]
-__iar_data_init3              0x4ad   0x28  Code  Gb  data_init.o [4]
-__iar_program_start           0x52d         Code  Gb  cstartup_M.o [4]
-__iar_zero_init3              0x475   0x38  Code  Gb  zero_init3.o [4]
-__low_level_init              0x503    0x4  Code  Gb  low_level_init.o [3]
+__cmain                       0x559         Code  Gb  cmain.o [4]
+__exit                        0x58d   0x14  Code  Gb  exit.o [5]
+__iar_data_init3              0x501   0x28  Code  Gb  data_init.o [4]
+__iar_program_start           0x5a1         Code  Gb  cstartup_M.o [4]
+__iar_zero_init3              0x499   0x38  Code  Gb  zero_init3.o [4]
+__low_level_init              0x577    0x4  Code  Gb  low_level_init.o [3]
 __vector_table                  0x0   0x40  Data  Gb  startup_vector_table.o [1]
-_call_main                    0x4f1         Code  Gb  cmain.o [4]
-_exit                         0x50d         Code  Gb  cexit.o [4]
-acquireLock                   0x295   0x16  Code  Gb  locks.o [1]
-blinky1                       0x385   0x1c  Code  Gb  main.o [1]
-blinky2                       0x3a1   0x1c  Code  Gb  main.o [1]
-boardStartup                  0x2d9   0x5c  Code  Gb  board_io.o [1]
+_call_main                    0x565         Code  Gb  cmain.o [4]
+_exit                         0x581         Code  Gb  cexit.o [4]
+acquireLock                   0x2c5   0x16  Code  Gb  locks.o [1]
+anti_blinky                   0x43d   0x10  Code  Gb  usertasks.o [1]
+blinky1                       0x405   0x1c  Code  Gb  usertasks.o [1]
+blinky2                       0x421   0x1c  Code  Gb  usertasks.o [1]
+boardStartup                  0x309   0x5c  Code  Gb  board_io.o [1]
 currTaskIdx             0x2000'0959    0x1  Data  Gb  unicorn.o [1]
 currentTask             0x2000'0948    0x4  Data  Gb  unicorn.o [1]
 decrementTimeouts              0x5b   0x48  Code  Gb  unicorn.o [1]
-exit                          0x507    0x4  Code  Gb  exit.o [3]
+exit                          0x57b    0x4  Code  Gb  exit.o [3]
+exitTask                      0x1e1   0x32  Code  Gb  unicorn.o [1]
 getDormantTaskIndex           0x11d   0x30  Code  Gb  unicorn.o [1]
-handler_BusFault              0x3eb    0x2  Code  Gb  startup_vector_table.o [1]
-handler_HardFault             0x3e7    0x2  Code  Gb  startup_vector_table.o [1]
+handler_BusFault              0x453    0x2  Code  Gb  startup_vector_table.o [1]
+handler_HardFault             0x44f    0x2  Code  Gb  startup_vector_table.o [1]
 handler_MemoryManagementFault
-                              0x3e9    0x2  Code  Gb  startup_vector_table.o [1]
-handler_NMI                   0x3e5    0x2  Code  Gb  startup_vector_table.o [1]
-handler_PendSV                0x3f1   0x2a  Code  Gb  startup_vector_table.o [1]
-handler_SVCall                0x3ef    0x2  Code  Gb  startup_vector_table.o [1]
-handler_SysTick               0x425   0x10  Code  Gb  startup_vector_table.o [1]
-handler_UsageFault            0x3ed    0x2  Code  Gb  startup_vector_table.o [1]
-initLock                      0x289    0x6  Code  Gb  locks.o [1]
+                              0x451    0x2  Code  Gb  startup_vector_table.o [1]
+handler_NMI                   0x44d    0x2  Code  Gb  startup_vector_table.o [1]
+handler_PendSV                0x459   0x28  Code  Gb  startup_vector_table.o [1]
+handler_SVCall                0x457    0x2  Code  Gb  startup_vector_table.o [1]
+handler_SysTick               0x489   0x10  Code  Gb  startup_vector_table.o [1]
+handler_UsageFault            0x455    0x2  Code  Gb  startup_vector_table.o [1]
+initLock                      0x2b9    0x6  Code  Gb  locks.o [1]
 initializeFirstFrame           0xdb   0x42  Code  Gb  unicorn.o [1]
 initializeScheduler           0x14f   0x28  Code  Gb  unicorn.o [1]
-ledBlueOff                    0x34d    0x8  Code  Gb  board_io.o [1]
-ledBlueOn                     0x345    0x8  Code  Gb  board_io.o [1]
-ledRedOff                     0x33d    0x8  Code  Gb  board_io.o [1]
-ledRedOn                      0x335    0x8  Code  Gb  board_io.o [1]
-main                          0x3bd   0x20  Code  Gb  main.o [1]
+ledBlueOff                    0x385    0x8  Code  Gb  board_io.o [1]
+ledBlueOn                     0x37d    0x8  Code  Gb  board_io.o [1]
+ledGreenOff                   0x375    0x8  Code  Gb  board_io.o [1]
+ledRedOff                     0x36d    0x8  Code  Gb  board_io.o [1]
+ledRedOn                      0x365    0x8  Code  Gb  board_io.o [1]
+main                          0x539   0x20  Code  Gb  main.o [1]
 nextTask                0x2000'094c    0x4  Data  Gb  unicorn.o [1]
 numTasks                0x2000'0958    0x1  Data  Gb  unicorn.o [1]
 onIdle                        0x14d    0x2  Code  Gb  unicorn.o [1]
 readyNewTask                  0x177   0x6a  Code  Gb  unicorn.o [1]
 readyTasks              0x2000'0950    0x4  Data  Gb  unicorn.o [1]
-releaseLock                   0x28f    0x6  Code  Gb  locks.o [1]
-sched                         0x1e1   0x6a  Code  Gb  unicorn.o [1]
+releaseLock                   0x2bf    0x6  Code  Gb  locks.o [1]
+sched                         0x213   0x6a  Code  Gb  unicorn.o [1]
 sleep                          0xa5   0x36  Code  Gb  unicorn.o [1]
 taskChangeLock          0x2000'0954    0x4  Data  Gb  unicorn.o [1]
 taskTable               0x2000'0000  0x948  Data  Gb  unicorn.o [1]
+userTaskLoad                  0x3c1   0x40  Code  Gb  usertasks.o [1]
 
 
-[1] = C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj
-[2] = C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\ek-tm4c123gxl
+[1] = C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj
+[2] = C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\ek-tm4c123gxl
 [3] = dl7M_tln.a
 [4] = rt7M_tl.a
 [5] = shb_l.a
 
-  1'208 bytes of readonly  code memory
-    144 bytes of readonly  data memory
+  1'340 bytes of readonly  code memory
+    128 bytes of readonly  data memory
   6'490 bytes of readwrite data memory
 
 Errors: none
