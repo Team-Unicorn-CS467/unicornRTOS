@@ -15,12 +15,12 @@ void userTaskLoad()
   ledBlueOff();
   ledGreenOff();
   
-  readyNewTask(&blinky1);
-  readyNewTask(&blinky2);
+  readyNewTask(&blinky1, 1);
+  readyNewTask(&blinky2, 2);
   
   for (int j = 0; j < 1000000; ++j);
-  readyNewTask(&anti_blinky);
-  readyNewTask(&anti_blinky);
+  readyNewTask(&anti_blinky, 3);
+  //readyNewTask(&anti_blinky);
 
   exitTask();
   
@@ -69,9 +69,9 @@ void blinky1()
     while (1) 
     {
         ledBlueOn();
-        sleep(3000);
+        sleep(500);
         ledBlueOff();
-        sleep(6000);;
+        sleep(250);;
         //ledBlueOff();
         //sleep(1);
     }
@@ -82,9 +82,9 @@ void blinky2()
     while (1) 
     {
         ledRedOn();
-        sleep(3000);
+        sleep(300);
         ledRedOff();
-        sleep(3000);;
+        sleep(300);;
         //ledRedOff();
         //sleep(1);
     }

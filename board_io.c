@@ -25,7 +25,6 @@ void boardStartup(void)
   
   //systick stuff
   // register abstractions in core_cm4h.h (CMSIS directory)
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // 16 MHz clock with STRELOAD set to 15,999 should result in 1ms ticks
   SysTick->LOAD = (uint32_t)15999U;  //1000000 // STRELOAD datasheet p140
   SysTick->VAL  = 0U;                          //clear on write (so clears the counter value)

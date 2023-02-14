@@ -42,7 +42,7 @@ void handler_SVCall(void) //no implementation for now
 void handler_PendSV(void)
 {
   /*
-  // if not coming from reset (when currenTask=null) save r4-r11 and currentTask->sp to stack
+  // if not coming from reset/idleTask (when currenTask=null) save r4-r11 and currentTask->sp to stack
   if (currentTask != (Task *)0)
   {
     //save registers R4 through R11 to currentTask's stack
