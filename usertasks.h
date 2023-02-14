@@ -14,10 +14,12 @@ void userTaskLoad();
 // ADD ANY USER TASK DECLARATIONS BELOW
 ///////////////////////////////////////////////////////////////////
 
-//note: they are not bundled into a single function 
-// because Unicorn OS tasks currently can't be parameterized
 void blinkRed();
 void blinkBlue();
 void blinkGreen();
+void blinky1();
+void blinky2();
+void anti_blinky();
+
 
 #endif //USERTASKS_H

@@ -56,30 +56,31 @@ void handler_PendSV(void)
   
   //disable interrupts
   __asm("CPSID I\n" 
-  
-    // if (currentTask != (Task *)0);  
-    "LDR.N      R2, =currentTask\n"
+
+    "LDR        R2, =currentTask\n"
     "LDR        R0, [R2]\n"
-    "CMP        R0, #0\n"
-    "BEQ.N      PendSV_restore\n"
+        
+   // if (currentTask != (Task *)0);
+    "CBZ        R0, PendSV_restore\n"
   
   // save r4-r11 onto stack
-    "PUSH {r4-r11}\n"
+    "PUSH       {r4-r11}\n"
   
   // currentTask->sp = sp;
-    "LDR        R0, [R2]\n"
     "STR        SP, [R0]\n" 
     
     "PendSV_restore:\n\n"
-    // sp = nextTask->sp;
-    "LDR.N      R1, =nextTask\n"
+  // sp = nextTask->sp;
+    "LDR        R1, =nextTask\n"
     "LDR        R0, [R1]\n"
     "LDR        SP,[R0]\n"
   
   // currentTask = nextTask
-    "LDR        R0, [R1]\n"
     "STR        R0, [R2]\n"
-  
+
+  // clear exclusive monitor (for semaphores)
+    "CLREX              \n"
+      
   // restore nextTask's r4-r11 regs
     "POP        {r4-r11}\n"
     
@@ -97,7 +98,7 @@ void handler_SysTick(void) //incrementing ticks, scheduling/switching task
   sched(); //schedule next task and set PendSV to trigger (as soon as interrupts are enabled)
   __asm("CPSIE I"); //enable interrupts)
   
-  }
+}
 
 int const __vector_table[] @ ".intvec" = //the @ ".intvec" syntax is not standard c, but IAR supports it for replacing the generic vector table IAR generates in the linking process from its own library???
 {

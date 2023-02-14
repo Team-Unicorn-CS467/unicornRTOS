@@ -5,126 +5,63 @@
     <configuration>
         <name>Debug</name>
         <outputs>
-            <file>$PROJ_DIR$\Debug\List\project.map</file>
-            <file>$PROJ_DIR$\unicorn.h</file>
             <file>$PROJ_DIR$\Debug\Exe\project.out</file>
+            <file>$PROJ_DIR$\Debug\List\project.map</file>
             <file>$TOOLKIT_DIR$\inc\c\aarch32\intrinsics.h</file>
             <file>$PROJ_DIR$\qpc\3rd_party\CMSIS\Include\cmsis_iccarm.h</file>
-            <file>$TOOLKIT_DIR$\lib\m7M_tl.a</file>
-            <file>$PROJ_DIR$\Debug\Obj\startup_vector_table.o</file>
-            <file>$PROJ_DIR$\startup_vector_table.c</file>
-            <file>$PROJ_DIR$\qpc\3rd_party\CMSIS\Include\cmsis_compiler.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
-            <file>$PROJ_DIR$\ticks.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\unicorn.o</file>
-            <file>$PROJ_DIR$\Debug\Obj\main.o</file>
-            <file>$PROJ_DIR$\qpc\3rd_party\CMSIS\Include\cmsis_version.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\usertasks.o</file>
-            <file>$PROJ_DIR$\usertasks.c</file>
-            <file>$PROJ_DIR$\Debug\Obj\ticks.o</file>
-            <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
-            <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
-            <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
-            <file>$PROJ_DIR$\ticks.c</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\board_io.o</file>
-            <file>$TOOLKIT_DIR$\inc\c\aarch32\iar_intrinsics_common.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\locks.o</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\ek-tm4c123gxl\system_TM4C123GH6PM.o</file>
-            <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
-            <file>$PROJ_DIR$\qpc\include\qassert.h</file>
-            <file>$PROJ_DIR$\qpc\3rd_party\CMSIS\Include\mpu_armv7.h</file>
-            <file>$PROJ_DIR$\unicorn.c</file>
-            <file>$PROJ_DIR$\qpc\3rd_party\ek-tm4c123gxl\system_TM4C123GH6PM.h</file>
-            <file>$TOOLKIT_DIR$\config\linker\TexasInstruments\TM4C123GH6.icf</file>
-            <file>$PROJ_DIR$\usertasks.h</file>
-            <file>$PROJ_DIR$\qpc\3rd_party\CMSIS\Include\core_cm4.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\aarch32\iccarm_builtin.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
-            <file>$PROJ_DIR$\board_io.c</file>
-            <file>$PROJ_DIR$\board_io.h</file>
-            <file>$PROJ_DIR$\lm4f120h5qr.h</file>
             <file>$PROJ_DIR$\qpc\3rd_party\ek-tm4c123gxl\TM4C123GH6PM.h</file>
             <file>$PROJ_DIR$\exception_handlers.h</file>
-            <file>$PROJ_DIR$\locks.h</file>
-            <file>$PROJ_DIR$\qpc\3rd_party\ek-tm4c123gxl\system_TM4C123GH6PM.c</file>
-            <file>$PROJ_DIR$\locks.c</file>
+            <file>$PROJ_DIR$\lm4f120h5qr.h</file>
             <file>$PROJ_DIR$\main.c</file>
+            <file>$PROJ_DIR$\startup_vector_table.c</file>
+            <file>$PROJ_DIR$\unicorn.c</file>
+            <file>$PROJ_DIR$\usertasks.c</file>
+            <file>$PROJ_DIR$\locks.c</file>
+            <file>$PROJ_DIR$\unicorn.h</file>
+            <file>$PROJ_DIR$\usertasks.h</file>
+            <file>$PROJ_DIR$\qpc\3rd_party\ek-tm4c123gxl\system_TM4C123GH6PM.c</file>
+            <file>$PROJ_DIR$\board_io.c</file>
+            <file>$PROJ_DIR$\locks.h</file>
+            <file>$PROJ_DIR$\board_io.h</file>
+            <file>$PROJ_DIR$\qpc\3rd_party\ek-tm4c123gxl\system_TM4C123GH6PM.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\startup_vector_table.o</file>
+            <file>$PROJ_DIR$\qpc\3rd_party\CMSIS\Include\core_cm4.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\unicorn.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\usertasks.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
+            <file>$TOOLKIT_DIR$\lib\m7M_tl.a</file>
+            <file>$PROJ_DIR$\qpc\3rd_party\CMSIS\Include\cmsis_compiler.h</file>
+            <file>$PROJ_DIR$\qpc\3rd_party\CMSIS\Include\cmsis_version.h</file>
+            <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
+            <file>$PROJ_DIR$\Debug\Obj\locks.o</file>
+            <file>$PROJ_DIR$\qpc\3rd_party\CMSIS\Include\mpu_armv7.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\aarch32\iccarm_builtin.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\board_io.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\aarch32\iar_intrinsics_common.h</file>
+            <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
+            <file>$PROJ_DIR$\qpc\include\qassert.h</file>
+            <file>$TOOLKIT_DIR$\config\linker\TexasInstruments\TM4C123GH6.icf</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\ek-tm4c123gxl\system_TM4C123GH6PM.o</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+            <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
         </outputs>
         <file>
             <name>$PROJ_DIR$\Debug\Exe\project.out</name>
             <outputs>
                 <tool>
                     <name>ILINK</name>
-                    <file> 0</file>
+                    <file> 1</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ILINK</name>
-                    <file> 33 23 25 13 6 27 12 15 28 18 5 19</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\startup_vector_table.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 6</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 42 40 1 37 9 20 22 26 10</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\usertasks.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 15</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 34 39 41 35 37 9 20 22 26 10 14 8 4 36 30 32 43 1</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\ticks.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 17</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 11 37 9 20 22 26 10</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\unicorn.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 12</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 1 37 9 20 22 26 10 29 41 35 14 8 4 36 30 32 43</file>
+                    <file> 39 33 29 36 19 41 22 23 43 28 25 35</file>
                 </tool>
             </inputs>
         </file>
@@ -133,12 +70,57 @@
             <outputs>
                 <tool>
                     <name>ILINK</name>
-                    <file> 2 0</file>
+                    <file> 0 1</file>
                 </tool>
             </outputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\board_io.c</name>
+            <name>$PROJ_DIR$\main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 36</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 21 31 24 42 37 40 17 4 20 27 26 3 32 30 18 12 2 34 13 16</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\startup_vector_table.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 19</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 5 6 12 21 31 24 42 37 40</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\unicorn.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 22</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 12 21 31 24 42 37 40 38 4 20 27 26 3 32 30 18 16</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\usertasks.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
@@ -148,22 +130,7 @@
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 39 41 35 37 9 20 22 26 10 14 8 4 36 30 32</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\qpc\3rd_party\ek-tm4c123gxl\system_TM4C123GH6PM.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 27</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 37 9 20 22 26 10 41 35 14 8 4 36 30 32</file>
+                    <file> 13 17 4 20 21 31 24 42 37 40 27 26 3 32 30 18 16 12</file>
                 </tool>
             </inputs>
         </file>
@@ -172,63 +139,46 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 25</file>
+                    <file> 29</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 43 37 9 20 22 26 10</file>
+                    <file> 16 21 31 24 42 37 40</file>
                 </tool>
             </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\main.c</name>
+            <name>$PROJ_DIR$\qpc\3rd_party\ek-tm4c123gxl\system_TM4C123GH6PM.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 13</file>
+                    <file> 41</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 37 9 20 22 26 10 39 41 35 14 8 4 36 30 32 1 3 24 34 43</file>
+                    <file> 21 31 24 42 37 40 4 20 27 26 3 32 30 18</file>
                 </tool>
             </inputs>
         </file>
-        <forcedrebuild>
-            <name>[MULTI_TOOL]</name>
-            <tool>ILINK</tool>
-        </forcedrebuild>
-        <forcedrebuild>
-            <name>$PROJ_DIR$\startup_vector_table.c</name>
-            <tool>ICCARM</tool>
-        </forcedrebuild>
-        <forcedrebuild>
-            <name>$PROJ_DIR$\usertasks.c</name>
-            <tool>ICCARM</tool>
-        </forcedrebuild>
-        <forcedrebuild>
-            <name>$PROJ_DIR$\unicorn.c</name>
-            <tool>ICCARM</tool>
-        </forcedrebuild>
-        <forcedrebuild>
+        <file>
             <name>$PROJ_DIR$\board_io.c</name>
-            <tool>ICCARM</tool>
-        </forcedrebuild>
-        <forcedrebuild>
-            <name>$PROJ_DIR$\qpc\3rd_party\ek-tm4c123gxl\system_TM4C123GH6PM.c</name>
-            <tool>ICCARM</tool>
-        </forcedrebuild>
-        <forcedrebuild>
-            <name>$PROJ_DIR$\locks.c</name>
-            <tool>ICCARM</tool>
-        </forcedrebuild>
-        <forcedrebuild>
-            <name>$PROJ_DIR$\main.c</name>
-            <tool>ICCARM</tool>
-        </forcedrebuild>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 33</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 17 4 20 21 31 24 42 37 40 27 26 3 32 30 18</file>
+                </tool>
+            </inputs>
+        </file>
         <forcedrebuild>
             <name>[REBUILD_ALL]</name>
         </forcedrebuild>
