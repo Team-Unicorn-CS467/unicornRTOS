@@ -2,13 +2,13 @@
 
 "C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\bin\armLMIFTDI.dll" 
 
-"C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Exe\project.out" 
+"C:\Users\atoyn\Downloads\unicornRTOS\Debug\Exe\project.out" 
 
 --plugin="C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\bin\armbat.dll" 
 
---device_macro="C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm/config/debugger/TexasInstruments/TM4C123.dmac" 
+--device_macro="C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm/config/debugger/TexasInstruments/LM4F.dmac" 
 
---flash_loader="C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm/config/flashloader/TexasInstruments/FlashTC4_H6_o.board" 
+--flash_loader="C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm/config/flashloader/TexasInstruments/FlashLM4FxxxHxx.board" 
 
 
 

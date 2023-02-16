@@ -68,7 +68,7 @@ extern Task* volatile nextTask; //initialized in unicorn.c
 /*** Scheduling Stuff ***/
 
 // priority of a Task (higher number -> more priority) is 32 - (number of leading zeroes)
-#define getPriority(x) ( (32U - __CLZ(x)) - 1U)
+#define getHighestSetBit(x) ( (32U - __CLZ(x)) - 1U)
 
 
 //starting setup of the task table, idleTask

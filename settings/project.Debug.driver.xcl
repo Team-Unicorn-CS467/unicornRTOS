@@ -6,11 +6,11 @@
 
 "-p" 
 
-"C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\CONFIG\debugger\TexasInstruments\TM4C123GH6PM.ddf" 
+"C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\CONFIG\debugger\TexasInstruments\LM4F120H5QR.ddf" 
 
 "--semihosting" 
 
-"--device=TM4C123GH6PM" 
+"--device=LM4F120H5QR" 
 
 "--drv_interface_speed=500" 
 
