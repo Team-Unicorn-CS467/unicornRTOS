@@ -16,7 +16,7 @@
         <ShowSource>1</ShowSource>
     </Trace1>
     <DebugChecksum>
-        <Checksum>4251714081</Checksum>
+        <Checksum>1471733250</Checksum>
     </DebugChecksum>
     <Disassembly>
         <InstrCount>0</InstrCount>
@@ -66,33 +66,46 @@
         <MultiCoreRunAll>1</MultiCoreRunAll>
     </Simulator>
     <LmiFtdiDriver>
-        <LMIFTDIserialNo>0E235492</LMIFTDIserialNo>
-        <LMIFTDIfoundProbes />
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
         <CStepIntDis>_ 0</CStepIntDis>
         <LmiFtdiResetStyle>0</LmiFtdiResetStyle>
         <LmiFtdiResetStrategy>0</LmiFtdiResetStrategy>
+        <LMIFTDIserialNo>0E238FA6</LMIFTDIserialNo>
+        <LMIFTDIfoundProbes />
     </LmiFtdiDriver>
     <PlDriver>
-        <FirstRun>0</FirstRun>
         <MemConfigValue>C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\CONFIG\debugger\TexasInstruments\TM4C123GH6PM.ddf</MemConfigValue>
+        <FirstRun>0</FirstRun>
     </PlDriver>
     <ArmDriver>
-        <EnforceMemoryConfiguration>1</EnforceMemoryConfiguration>
         <EnableCache>0</EnableCache>
+        <EnforceMemoryConfiguration>1</EnforceMemoryConfiguration>
     </ArmDriver>
     <array_types>
         <Fmt0>uint32_t[64]	4	0</Fmt0>
     </array_types>
     <watch_formats>
         <Fmt0>{W}1:ledRedOn	4	0</Fmt0>
-        <Fmt1>{W}1:readyTasks	1	0</Fmt1>
-        <Fmt2>{W}1:stackEnd	4	0</Fmt2>
+        <Fmt1>{W}1:priorityBit	1	0</Fmt1>
+        <Fmt2>{W}1:readyTasks	1	0</Fmt2>
+        <Fmt3>{W}1:sleepingTasks	1	0</Fmt3>
+        <Fmt4>{W}1:stackEnd	4	0</Fmt4>
+        <Fmt5>{W}1:tasksToDecrement	1	0</Fmt5>
     </watch_formats>
     <Trace2>
         <Enabled>0</Enabled>
         <ShowSource>0</ShowSource>
     </Trace2>
+    <DisassembleMode>
+        <mode>0</mode>
+    </DisassembleMode>
+    <Breakpoints2>
+        <Count>0</Count>
+    </Breakpoints2>
+    <Aliases>
+        <Count>0</Count>
+        <SuppressDialog>0</SuppressDialog>
+    </Aliases>
     <TermIOLog>
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
@@ -102,15 +115,4 @@
         <LogFile>_ "$PROJ_DIR$\LogFile1.log"</LogFile>
         <Category2>_ 2</Category2>
     </LogFile>
-    <DisassembleMode>
-        <mode>0</mode>
-    </DisassembleMode>
-    <Breakpoints2>
-        <Bp0>_ 0 "EMUL_CODE" "{$PROJ_DIR$\usertasks.c}.18.3" 0 0 1 "" 0 "" 0</Bp0>
-        <Count>1</Count>
-    </Breakpoints2>
-    <Aliases>
-        <Count>0</Count>
-        <SuppressDialog>0</SuppressDialog>
-    </Aliases>
 </settings>

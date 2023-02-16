@@ -754,11 +754,11 @@
                 </option>
                 <option>
                     <name>IlinkIcfOverride</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>$TOOLKIT_DIR$/config/linker/TexasInstruments/TM4C123GH6.icf</state>
+                    <state>C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\project.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>

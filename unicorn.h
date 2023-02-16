@@ -59,13 +59,17 @@ typedef struct
   uint32_t* sp; //stack pointer
   uint32_t  stack[TASK_STACK_WORD_SIZE]; //memory allocation for the stack - ***later this will be alocated outside this struct and passed in via a pointer***
   uint32_t  timeout;                     // timer for sleep() function (unicorn.c)
-  //uint8_t   state;
+  uint8_t   priority;
 } Task;
 
 extern Task* volatile currentTask; //initialized in unicorn.c
 extern Task* volatile nextTask; //initialized in unicorn.c
 
 /*** Scheduling Stuff ***/
+
+// priority of a Task (higher number -> more priority) is 32 - (number of leading zeroes)
+#define getPriority(x) ( (32U - __CLZ(x)) - 1U)
+
 
 //starting setup of the task table, idleTask
 void initializeScheduler();
@@ -78,7 +82,7 @@ void decrementTimeouts(void);
 
 //initializes a new Task and marks it as ready to run
 //set's the Task's initial stack and member variables
-void readyNewTask(EntryFunction);
+void readyNewTask(EntryFunction, uint8_t priority);
 
 //a task calls this to exit itself
 void exitTask();
