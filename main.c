@@ -41,11 +41,11 @@ void blinkyB()
         for (int i=0; i<20; i++) 
         {
             ledRedOn();
-            sleep(100); 
+            for (int j=0; j<1000000; j++) {};
             ledRedOff(); 
-            sleep(100);
+            for (int j=0; j<1000000; j++) {};
         } // blink red in .1s intervals for 4 seconds
-        
+        ledBlueOn();
         sleep(6000);
         
     }
@@ -59,8 +59,9 @@ int main()
   //OS stuff
   initializeScheduler();
   
-  
+  // blinkyA Task is initialized with priority 1 (low) and blinks the blue LED
   readyNewTask(&blinkyA, 1);
+  // blinkyB Task is initialized with priority 2 (higher) and preempts blinkyA to flash the RED led 20 times
   readyNewTask(&blinkyB, 3);
   
   //__asm("CPSID I");
