@@ -1,5 +1,5 @@
 #include <stdint.h>
-#include "board_io.h"     // for the blink functions
+#include "bsp.h"     // for the blink functions
 //#include "ticks.h"        // for resetTicks()
 #include "TM4C123GH6PM.h" // map of named hardware addresses
 #include "unicorn.h"
@@ -10,7 +10,9 @@
 int main()
 { 
   // un-gateclock GPIOF AHB, set digital/direction , set Systick, set SysTck/PendSV priorities
-  boardStartup();
+  //boardStartup();
+  // using Kevin's SUPER bsp
+  BSP_init();
   
   //OS stuff
   initializeScheduler();
