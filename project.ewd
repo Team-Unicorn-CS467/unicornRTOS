@@ -44,7 +44,7 @@
                 </option>
                 <option>
                     <name>MemFile</name>
-                    <state>$TOOLKIT_DIR$\CONFIG\debugger\TexasInstruments\TM4C123GH6PM.ddf</state>
+                    <state>$TOOLKIT_DIR$\CONFIG\debugger\TexasInstruments\LM4F120H5QR.ddf</state>
                 </option>
                 <option>
                     <name>RunToEnable</name>
@@ -112,7 +112,7 @@
                 </option>
                 <option>
                     <name>FlashLoadersV3</name>
-                    <state>$TOOLKIT_DIR$/config/flashloader/TexasInstruments/FlashTC4_H6_o.board</state>
+                    <state>$TOOLKIT_DIR$/config/flashloader/TexasInstruments/FlashLM4FxxxHxx.board</state>
                 </option>
                 <option>
                     <name>OCImagesSuppressCheck1</name>

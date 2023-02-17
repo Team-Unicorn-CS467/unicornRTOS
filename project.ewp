@@ -78,7 +78,7 @@
                 </option>
                 <option>
                     <name>OGChipSelectEditMenu</name>
-                    <state>TM4C123GH6PM	TexasInstruments TM4C123GH6PM</state>
+                    <state>LM4F120H5QR	TexasInstruments LM4F120H5QR</state>
                 </option>
                 <option>
                     <name>GenLowLevelInterface</name>
@@ -124,7 +124,7 @@
                 </option>
                 <option>
                     <name>GFPUDeviceSlave</name>
-                    <state>TM4C123GH6PM	TexasInstruments TM4C123GH6PM</state>
+                    <state>LM4F120H5QR	TexasInstruments LM4F120H5QR</state>
                 </option>
                 <option>
                     <name>FPU2</name>
@@ -365,7 +365,7 @@
                 </option>
                 <option>
                     <name>CCOptLevel</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>CCOptStrategy</name>
@@ -374,7 +374,7 @@
                 </option>
                 <option>
                     <name>CCOptLevelSlave</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>CCPosIndRopi</name>
@@ -593,7 +593,7 @@
                 </option>
                 <option>
                     <name>AOutputFile</name>
-                    <state>$FILE_BNAME$.o</state>
+                    <state></state>
                 </option>
                 <option>
                     <name>ALimitErrorsCheck</name>
@@ -754,11 +754,11 @@
                 </option>
                 <option>
                     <name>IlinkIcfOverride</name>
-                    <state>1</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\project.icf</state>
+                    <state>$TOOLKIT_DIR$\config\generic_cortex.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
@@ -2153,15 +2153,6 @@
             <data />
         </settings>
     </configuration>
-    <group>
-        <name>ek-tm4c123gxl</name>
-        <file>
-            <name>$PROJ_DIR$\qpc\3rd_party\ek-tm4c123gxl\system_TM4C123GH6PM.c</name>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\qpc\3rd_party\ek-tm4c123gxl\TM4C123GH6PM.h</name>
-        </file>
-    </group>
     <file>
         <name>$PROJ_DIR$\board_io.c</name>
     </file>

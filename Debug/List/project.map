@@ -1,31 +1,27 @@
 ###############################################################################
 #
-# IAR ELF Linker V9.32.1.338/W64 for ARM                  14/Feb/2023  15:37:06
+# IAR ELF Linker V9.32.1.338/W64 for ARM                  15/Feb/2023  21:55:05
 # Copyright 2007-2022 IAR Systems AB.
 #
-#    Output file  =
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Exe\project.out
+#    Output file  =  C:\Users\atoyn\Downloads\unicornRTOS\Debug\Exe\project.out
 #    Map file     =
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\List\project.map
+#        C:\Users\atoyn\Downloads\unicornRTOS\Debug\List\project.map
 #    Command line =
-#        -f
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Exe\project.out.rsp
-#        (C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\board_io.o
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\locks.o
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\main.o
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\startup_vector_table.o
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\ek-tm4c123gxl\system_TM4C123GH6PM.o
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\unicorn.o
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\usertasks.o
+#        -f C:\Users\atoyn\Downloads\unicornRTOS\Debug\Exe\project.out.rsp
+#        (C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\board_io.o
+#        C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\locks.o
+#        C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\main.o
+#        C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\startup_vector_table.o
+#        C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\unicorn.o
+#        C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\usertasks.o
 #        --no_out_extension -o
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Exe\project.out
-#        --redirect _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb
-#        --map
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\List\project.map
-#        --config
-#        C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\project.icf
-#        --semihosting --entry __iar_program_start --vfe --text_out locale
-#        --cpu=Cortex-M4 --fpu=None)
+#        C:\Users\atoyn\Downloads\unicornRTOS\Debug\Exe\project.out --redirect
+#        _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb --map
+#        C:\Users\atoyn\Downloads\unicornRTOS\Debug\List\project.map --config
+#        "C:\Program Files\IAR Systems\Embedded Workbench
+#        9.1\arm/config/linker/TexasInstruments/LM4F120H5QR.icf" --semihosting
+#        --entry __iar_program_start --vfe --text_out locale --cpu=Cortex-M4
+#        --fpu=None)
 #
 ###############################################################################
 
@@ -54,58 +50,57 @@ be primarily optimized for speed.
 
 "A0":  place at address 0x0 { ro section .intvec };
 "P1":  place in [from 0x0 to 0x3'ffff] { ro };
-define block CSTACK with size = 8K, alignment = 8 { };
-define block HEAP with size = 4K, alignment = 8 { };
+define block CSTACK with size = 2K, alignment = 8 { };
+define block HEAP with size = 8K, alignment = 8 { };
 "P2":  place in [from 0x2000'0000 to 0x2000'7fff] {
           rw, block CSTACK, block HEAP };
 
-  Section          Kind         Address    Size  Object
-  -------          ----         -------    ----  ------
-"A0":                                      0x40
-  .intvec          const            0x0    0x40  startup_vector_table.o [1]
-                                 - 0x40    0x40
+  Section          Kind         Address   Size  Object
+  -------          ----         -------   ----  ------
+"A0":                                     0x40
+  .intvec          const            0x0   0x40  startup_vector_table.o [1]
+                                 - 0x40   0x40
 
-"P1":                                     0x54c
-  .text            ro code         0x40   0x24c  unicorn.o [1]
-  .text            ro code        0x28c    0x22  locks.o [1]
-  .text            ro code        0x2b0    0xd8  board_io.o [1]
-  .text            ro code        0x388    0xa4  main.o [1]
-  .text            ro code        0x42c    0x4c  startup_vector_table.o [1]
-  .rodata          const          0x478    0x40  unicorn.o [1]
-  .text            ro code        0x4b8    0x38  zero_init3.o [4]
-  .text            ro code        0x4f0    0x28  data_init.o [4]
-  .iar.init_table  const          0x518    0x10  - Linker created -
-  .text            ro code        0x528    0x1e  cmain.o [4]
-  .text            ro code        0x546     0x4  low_level_init.o [3]
-  .text            ro code        0x54a     0x4  exit.o [3]
-  .text            ro code        0x550     0xa  cexit.o [4]
-  .text            ro code        0x55c    0x14  exit.o [5]
-  .text            ro code        0x570    0x1c  cstartup_M.o [4]
-  .rodata          const          0x58c     0x0  zero_init3.o [4]
-                                - 0x58c   0x54c
+"P1":                                    0x5b4
+  .text            ro code         0x40  0x294  unicorn.o [1]
+  .text            ro code        0x2d4   0x22  locks.o [1]
+  .text            ro code        0x2f8   0xe4  board_io.o [1]
+  .text            ro code        0x3dc   0xa8  usertasks.o [1]
+  .text            ro code        0x484   0x4c  startup_vector_table.o [1]
+  .text            ro code        0x4d0   0x38  zero_init3.o [3]
+  .rodata          const          0x508   0x30  unicorn.o [1]
+  .text            ro code        0x538   0x28  data_init.o [3]
+  .iar.init_table  const          0x560   0x10  - Linker created -
+  .text            ro code        0x570   0x20  main.o [1]
+  .text            ro code        0x590   0x1e  cmain.o [3]
+  .text            ro code        0x5ae    0x4  low_level_init.o [2]
+  .text            ro code        0x5b2    0x4  exit.o [2]
+  .text            ro code        0x5b8    0xa  cexit.o [3]
+  .text            ro code        0x5c4   0x14  exit.o [4]
+  .text            ro code        0x5d8   0x1c  cstartup_M.o [3]
+  .rodata          const          0x5f4    0x0  zero_init3.o [3]
+                                - 0x5f4  0x5b4
 
-"P2", part 1 of 2:                        0x984
-  .bss             zero     0x2000'0000   0x96c  unicorn.o [1]
-  .bss             zero     0x2000'096c     0x4  unicorn.o [1]
-  .bss             zero     0x2000'0970     0x4  unicorn.o [1]
-  .bss             zero     0x2000'0974     0x4  unicorn.o [1]
-  .bss             zero     0x2000'0978     0x4  unicorn.o [1]
-  .bss             zero     0x2000'097c     0x4  unicorn.o [1]
-  .bss             zero     0x2000'0980     0x1  unicorn.o [1]
-                          - 0x2000'0981   0x981
+"P2", part 1 of 2:                       0x980
+  .bss             zero     0x2000'0000  0x96c  unicorn.o [1]
+  .bss             zero     0x2000'096c    0x4  unicorn.o [1]
+  .bss             zero     0x2000'0970    0x4  unicorn.o [1]
+  .bss             zero     0x2000'0974    0x4  unicorn.o [1]
+  .bss             zero     0x2000'0978    0x4  unicorn.o [1]
+  .bss             zero     0x2000'097c    0x4  unicorn.o [1]
+                          - 0x2000'0980  0x980
 
-"P2", part 2 of 2:                       0x2000
-  CSTACK                    0x2000'0988  0x2000  <Block>
-    CSTACK         uninit   0x2000'0988  0x2000  <Block tail>
-                          - 0x2000'2988  0x2000
+"P2", part 2 of 2:                       0x800
+  CSTACK                    0x2000'0980  0x800  <Block>
+    CSTACK         uninit   0x2000'0980  0x800  <Block tail>
+                          - 0x2000'1180  0x800
 
 Unused ranges:
 
          From           To      Size
          ----           --      ----
-        0x58c     0x3'ffff  0x3'fa74
-  0x2000'0984  0x2000'0987       0x4
-  0x2000'2988  0x2000'7fff    0x5678
+        0x5f4     0x3'ffff  0x3'fa0c
+  0x2000'1180  0x2000'7fff    0x6e80
 
 
 *******************************************************************************
@@ -115,8 +110,8 @@ Unused ranges:
           Address      Size
           -------      ----
 Zero (__iar_zero_init3)
-    1 destination range, total size 0x981:
-          0x2000'0000  0x981
+    1 destination range, total size 0x980:
+          0x2000'0000  0x980
 
 
 
@@ -130,26 +125,23 @@ command line/config:
     -------------------------------------------------
     Total:
 
-C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj: [1]
-    board_io.o                  216
+C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj: [1]
+    board_io.o                  228
     locks.o                      34
-    main.o                      164
+    main.o                       32
     startup_vector_table.o       76       64
-    unicorn.o                   588       64    2'433
+    unicorn.o                   660       48    2'432
+    usertasks.o                 168
     -------------------------------------------------
-    Total:                    1'078      128    2'433
+    Total:                    1'198      112    2'432
 
-C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\ek-tm4c123gxl: [2]
-    -------------------------------------------------
-    Total:
-
-dl7M_tln.a: [3]
+dl7M_tln.a: [2]
     exit.o                        4
     low_level_init.o              4
     -------------------------------------------------
     Total:                        8
 
-rt7M_tl.a: [4]
+rt7M_tl.a: [3]
     cexit.o                      10
     cmain.o                      30
     cstartup_M.o                 28
@@ -158,15 +150,15 @@ rt7M_tl.a: [4]
     -------------------------------------------------
     Total:                      164
 
-shb_l.a: [5]
+shb_l.a: [4]
     exit.o                       20
     -------------------------------------------------
     Total:                       20
 
     Gaps                          6
-    Linker created                        16    8'192
+    Linker created                        16    2'048
 -----------------------------------------------------
-    Grand Total:              1'276      144   10'625
+    Grand Total:              1'396      128    4'480
 
 
 *******************************************************************************
@@ -175,72 +167,75 @@ shb_l.a: [5]
 
 Entry                       Address   Size  Type      Object
 -----                       -------   ----  ----      ------
-.iar.init_table$$Base         0x518          --   Gb  - Linker created -
-.iar.init_table$$Limit        0x528          --   Gb  - Linker created -
-?main                         0x529         Code  Gb  cmain.o [4]
-CSTACK$$Base            0x2000'0988          --   Gb  - Linker created -
-CSTACK$$Limit           0x2000'2988         Data  Gb  - Linker created -
-Q_onAssert                    0x281    0xc  Code  Gb  unicorn.o [1]
-Q_this_module_                0x478   0x40  Data  Lc  unicorn.o [1]
-Region$$Table$$Base           0x518          --   Gb  - Linker created -
-Region$$Table$$Limit          0x528          --   Gb  - Linker created -
-__NVIC_SetPriority            0x2b1   0x2c  Code  Lc  board_io.o [1]
+.iar.init_table$$Base         0x560          --   Gb  - Linker created -
+.iar.init_table$$Limit        0x570          --   Gb  - Linker created -
+?main                         0x591         Code  Gb  cmain.o [3]
+CSTACK$$Base            0x2000'0980          --   Gb  - Linker created -
+CSTACK$$Limit           0x2000'1180         Data  Gb  - Linker created -
+Q_onAssert                    0x2cd    0x8  Code  Gb  unicorn.o [1]
+Q_this_module_                0x508   0x30  Data  Lc  unicorn.o [1]
+Region$$Table$$Base           0x560          --   Gb  - Linker created -
+Region$$Table$$Limit          0x570          --   Gb  - Linker created -
+__NVIC_SetPriority            0x2f9   0x24  Code  Lc  board_io.o [1]
 __NVIC_SystemReset             0x41   0x1a  Code  Lc  unicorn.o [1]
-__cmain                       0x529         Code  Gb  cmain.o [4]
-__exit                        0x55d   0x14  Code  Gb  exit.o [5]
-__iar_data_init3              0x4f1   0x28  Code  Gb  data_init.o [4]
-__iar_program_start           0x571         Code  Gb  cstartup_M.o [4]
-__iar_zero_init3              0x4b9   0x38  Code  Gb  zero_init3.o [4]
-__low_level_init              0x547    0x4  Code  Gb  low_level_init.o [3]
+__cmain                       0x591         Code  Gb  cmain.o [3]
+__exit                        0x5c5   0x14  Code  Gb  exit.o [4]
+__iar_data_init3              0x539   0x28  Code  Gb  data_init.o [3]
+__iar_program_start           0x5d9         Code  Gb  cstartup_M.o [3]
+__iar_zero_init3              0x4d1   0x38  Code  Gb  zero_init3.o [3]
+__low_level_init              0x5af    0x4  Code  Gb  low_level_init.o [2]
 __vector_table                  0x0   0x40  Data  Gb  startup_vector_table.o [1]
-_call_main                    0x535         Code  Gb  cmain.o [4]
-_exit                         0x551         Code  Gb  cexit.o [4]
-acquireLock                   0x299   0x16  Code  Gb  locks.o [1]
-blinkyA                       0x389   0x3a  Code  Gb  main.o [1]
-blinkyB                       0x3c3   0x36  Code  Gb  main.o [1]
-boardStartup                  0x2dd   0x5c  Code  Gb  board_io.o [1]
+_call_main                    0x59d         Code  Gb  cmain.o [3]
+_exit                         0x5b9         Code  Gb  cexit.o [3]
+acquireLock                   0x2e1   0x16  Code  Gb  locks.o [1]
+blinkBlue                     0x43d   0x24  Code  Gb  usertasks.o [1]
+blinkGreen                    0x461   0x24  Code  Gb  usertasks.o [1]
+blinkRed                      0x419   0x24  Code  Gb  usertasks.o [1]
+boardStartup                  0x31d   0x5c  Code  Gb  board_io.o [1]
 currentTask             0x2000'096c    0x4  Data  Gb  unicorn.o [1]
-decrementTimeouts              0x5b   0x64  Code  Gb  unicorn.o [1]
-exit                          0x54b    0x4  Code  Gb  exit.o [3]
-handler_BusFault              0x433    0x2  Code  Gb  startup_vector_table.o [1]
-handler_HardFault             0x42f    0x2  Code  Gb  startup_vector_table.o [1]
+decrementTimeouts             0x15d   0x64  Code  Gb  unicorn.o [1]
+exit                          0x5b3    0x4  Code  Gb  exit.o [2]
+exitTask                      0x219   0x52  Code  Gb  unicorn.o [1]
+handler_BusFault              0x48b    0x2  Code  Gb  startup_vector_table.o [1]
+handler_HardFault             0x487    0x2  Code  Gb  startup_vector_table.o [1]
 handler_MemoryManagementFault
-                              0x431    0x2  Code  Gb  startup_vector_table.o [1]
-handler_NMI                   0x42d    0x2  Code  Gb  startup_vector_table.o [1]
-handler_PendSV                0x439   0x28  Code  Gb  startup_vector_table.o [1]
-handler_SVCall                0x437    0x2  Code  Gb  startup_vector_table.o [1]
-handler_SysTick               0x469   0x10  Code  Gb  startup_vector_table.o [1]
-handler_UsageFault            0x435    0x2  Code  Gb  startup_vector_table.o [1]
-initLock                      0x28d    0x6  Code  Gb  locks.o [1]
-initializeFirstFrame          0x10b   0x42  Code  Gb  unicorn.o [1]
-initializeScheduler           0x14f   0x30  Code  Gb  unicorn.o [1]
-ledBlueOff                    0x351    0x8  Code  Gb  board_io.o [1]
-ledBlueOn                     0x349    0x8  Code  Gb  board_io.o [1]
-ledRedOff                     0x341    0x8  Code  Gb  board_io.o [1]
-ledRedOn                      0x339    0x8  Code  Gb  board_io.o [1]
-main                          0x3f9   0x24  Code  Gb  main.o [1]
+                              0x489    0x2  Code  Gb  startup_vector_table.o [1]
+handler_NMI                   0x485    0x2  Code  Gb  startup_vector_table.o [1]
+handler_PendSV                0x491   0x28  Code  Gb  startup_vector_table.o [1]
+handler_SVCall                0x48f    0x2  Code  Gb  startup_vector_table.o [1]
+handler_SysTick               0x4c1   0x10  Code  Gb  startup_vector_table.o [1]
+handler_UsageFault            0x48d    0x2  Code  Gb  startup_vector_table.o [1]
+initLock                      0x2d5    0x6  Code  Gb  locks.o [1]
+initializeFirstFrame           0x5b   0x42  Code  Gb  unicorn.o [1]
+initializeScheduler            0x9f   0x2a  Code  Gb  unicorn.o [1]
+ledBlueOff                    0x3a1    0x8  Code  Gb  board_io.o [1]
+ledBlueOn                     0x399    0x8  Code  Gb  board_io.o [1]
+ledGreenOff                   0x391    0x8  Code  Gb  board_io.o [1]
+ledGreenOn                    0x389    0x8  Code  Gb  board_io.o [1]
+ledRedOff                     0x381    0x8  Code  Gb  board_io.o [1]
+ledRedOn                      0x379    0x8  Code  Gb  board_io.o [1]
+main                          0x571   0x20  Code  Gb  main.o [1]
 nextTask                0x2000'0970    0x4  Data  Gb  unicorn.o [1]
-numTasks                0x2000'0980    0x1  Data  Gb  unicorn.o [1]
-onIdle                        0x14d    0x2  Code  Gb  unicorn.o [1]
-readyNewTask                  0x17f   0x7a  Code  Gb  unicorn.o [1]
+onIdle                         0x9d    0x2  Code  Gb  unicorn.o [1]
+readyNewTask                   0xc9   0x94  Code  Gb  unicorn.o [1]
 readyTasks              0x2000'0974    0x4  Data  Gb  unicorn.o [1]
-releaseLock                   0x293    0x6  Code  Gb  locks.o [1]
-sched                         0x1f9   0x54  Code  Gb  unicorn.o [1]
-sleep                          0xc1   0x4a  Code  Gb  unicorn.o [1]
+releaseLock                   0x2db    0x6  Code  Gb  locks.o [1]
+sched                         0x26b   0x34  Code  Gb  unicorn.o [1]
+sleep                         0x1c1   0x58  Code  Gb  unicorn.o [1]
 sleepingTasks           0x2000'0978    0x4  Data  Gb  unicorn.o [1]
 taskChangeLock          0x2000'097c    0x4  Data  Gb  unicorn.o [1]
 taskTable               0x2000'0000  0x96c  Data  Gb  unicorn.o [1]
+userTaskLoad                  0x3dd   0x3a  Code  Gb  usertasks.o [1]
 
 
-[1] = C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj
-[2] = C:\Users\RJ\Desktop\programming\osu467\unicornRTOS\Debug\Obj\ek-tm4c123gxl
-[3] = dl7M_tln.a
-[4] = rt7M_tl.a
-[5] = shb_l.a
+[1] = C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj
+[2] = dl7M_tln.a
+[3] = rt7M_tl.a
+[4] = shb_l.a
 
-   1'276 bytes of readonly  code memory
-     144 bytes of readonly  data memory
-  10'625 bytes of readwrite data memory
+  1'396 bytes of readonly  code memory
+    128 bytes of readonly  data memory
+  4'480 bytes of readwrite data memory
 
 Errors: none
 Warnings: none
