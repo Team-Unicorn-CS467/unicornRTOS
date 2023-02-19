@@ -14,6 +14,11 @@ int main()
   // using Kevin's SUPER bsp
   BSP_init();
   
+
+  BSP_setLED(LED_RED, ON);
+  BSP_setLED(LED_GREEN, ON);
+  BSP_setLED(LED_BLUE, ON);
+  
   //OS stuff
   initializeScheduler();
   

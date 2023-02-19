@@ -93,7 +93,9 @@ void BSP_setGPIO(GPIOA_Type* GPIOx, uint8_t Pin, GPIO_PinState PinState)
 /* Abstraction for setting the state of an LED on the TivaC Launchpad Board */
 /* param led, the led being set (LED_x) */
 /* param state, ON or Off  */
-void BSP_setLED(uint8_t led, uint8_t state)
+void BSP_setLED(uint8_t led, GPIO_LEDState state)
 {
-    BSP_setGPIO(GPIOF_AHB, led, state);
+    /* casted state for readability */
+    BSP_setGPIO(GPIOF_AHB, led, (GPIO_PinState)state);
 }
+

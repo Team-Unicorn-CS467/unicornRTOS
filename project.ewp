@@ -350,6 +350,8 @@
                     <state>$PROJ_DIR$\qpc\3rd_party\CMSIS\Include</state>
                     <state>$PROJ_DIR$\qpc\include</state>
                     <state>$PROJ_DIR$\qpc\3rd_party\ek-tm4c123gxl</state>
+                    <state>C:\Users\AsynchronousGalaxy\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include</state>
+                    <state>C:\Users\AsynchronousGalaxy\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -593,7 +595,7 @@
                 </option>
                 <option>
                     <name>AOutputFile</name>
-                    <state></state>
+                    <state>$FILE_BNAME$.o</state>
                 </option>
                 <option>
                     <name>ALimitErrorsCheck</name>
@@ -647,7 +649,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state></state>
+                    <state>project.srec</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
