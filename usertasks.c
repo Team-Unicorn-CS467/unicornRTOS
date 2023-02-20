@@ -1,7 +1,7 @@
 #include "usertasks.h"
 
 
-//static int taskTimer = 50000;
+static int taskTimer = 1000000;
 
 //***user tasks to be loaded at startup***
 void userTaskLoad()
@@ -13,13 +13,20 @@ void userTaskLoad()
 
   while(1)
   {
-    readyNewTask(blinkRed, 1);
-    sleep(500);
-    readyNewTask(blinkBlue, 2);
-    sleep(500);
-    readyNewTask(blinkGreen, 3);
+    startNewTask(blinkRed, 1);
     
-    sleep(4000);
+    //sleep(500);
+    for (int i = 0; i < taskTimer / 3; ++i);
+    
+    startNewTask(blinkBlue, 1);
+    
+    //sleep(500);
+    for (int i = 0; i < taskTimer / 3 ; ++i);
+    
+    startNewTask(blinkGreen, 1);
+    
+    //sleep(4000);
+    for (int i = 0; i < taskTimer; ++i);
   }
   
   //exitTask();
@@ -44,7 +51,10 @@ void blinkRed()
   ledGreenOff();
   
   ledRedOn();
-  sleep(3000);
+  
+  //sleep(3000);
+  for (int i = 0; i < taskTimer; ++i);
+  
   ledRedOff();
   
   exitTask();
@@ -57,7 +67,10 @@ void blinkBlue()
   ledGreenOff();
   
   ledBlueOn();
-  sleep(2000);
+  
+  //sleep(2000);
+  for (int i = 0; i < taskTimer; ++i);
+  
   ledBlueOff();
   
   exitTask();
@@ -70,7 +83,10 @@ void blinkGreen()
   ledGreenOff();
   
   ledGreenOn();
-  sleep(1000);
+  
+  //sleep(1000);
+  for (int i = 0; i < taskTimer; ++i);
+  
   ledGreenOff();
   
   exitTask();
@@ -81,9 +97,9 @@ void blinky1()
     while (1) 
     {
         ledBlueOn();
-        sleep(500);
+        //sleep(500);
         ledBlueOff();
-        sleep(250);;
+        //sleep(250);;
         //ledBlueOff();
         //sleep(1);
     }
@@ -94,9 +110,9 @@ void blinky2()
     while (1) 
     {
         ledRedOn();
-        sleep(300);
+        //sleep(300);
         ledRedOff();
-        sleep(300);;
+        //sleep(300);;
         //ledRedOff();
         //sleep(1);
     }

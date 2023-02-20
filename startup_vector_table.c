@@ -93,11 +93,8 @@ void handler_PendSV(void)
 
 void handler_SysTick(void) //incrementing ticks, scheduling/switching task
 {  
-  __asm("CPSID I"); //disable interrupts
-  decrementTimeouts();
+  //decrementTimeouts();
   sched(); //schedule next task and set PendSV to trigger (as soon as interrupts are enabled)
-  __asm("CPSIE I"); //enable interrupts)
-  
 }
 
 int const __vector_table[] @ ".intvec" = //the @ ".intvec" syntax is not standard c, but IAR supports it for replacing the generic vector table IAR generates in the linking process from its own library???

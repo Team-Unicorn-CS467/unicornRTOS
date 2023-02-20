@@ -7,6 +7,7 @@ C:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\unicorn.pbi: \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Defaults.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Config_Normal.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Product.h \
+  C:\Users\atoyn\Downloads\unicornRTOS\locks.h \
   C:\Users\atoyn\Downloads\unicornRTOS\qpc\include\qassert.h \
   C:\Users\atoyn\Downloads\unicornRTOS\qpc\3rd_party\ek-tm4c123gxl\TM4C123GH6PM.h \
   C:\Users\atoyn\Downloads\unicornRTOS\qpc\3rd_party\CMSIS\Include\core_cm4.h \
@@ -15,5 +16,4 @@ C:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\unicorn.pbi: \
   C:\Users\atoyn\Downloads\unicornRTOS\qpc\3rd_party\CMSIS\Include\cmsis_iccarm.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\aarch32\iccarm_builtin.h \
   C:\Users\atoyn\Downloads\unicornRTOS\qpc\3rd_party\CMSIS\Include\mpu_armv7.h \
-  C:\Users\atoyn\Downloads\unicornRTOS\qpc\3rd_party\ek-tm4c123gxl\system_TM4C123GH6PM.h \
-  C:\Users\atoyn\Downloads\unicornRTOS\locks.h
+  C:\Users\atoyn\Downloads\unicornRTOS\qpc\3rd_party\ek-tm4c123gxl\system_TM4C123GH6PM.h

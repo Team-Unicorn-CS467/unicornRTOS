@@ -9,21 +9,19 @@
 
 int main()
 { 
+  __asm("CPSID I"); //disable interrupts
+
   // un-gateclock GPIOF AHB, set digital/direction , set Systick, set SysTck/PendSV priorities
   boardStartup();
   
   //OS stuff
   initializeScheduler();
+
+  readyNewTask(userTaskLoad, 1U); //ready the task to run without scheduling
   
-  readyNewTask(userTaskLoad, 8U); //max priority
+  __asm("CPSIE I"); //enable interrupts)
   
-  //__asm("CPSID I");
-  __asm("CPSID I");
-  sched(); //schedule first task and set PendSV to trigger (as soon as interrupts are enabled)
-  __asm("CPSIE I");
-  
-  //after the initial PendSV trigger following sched(),
-  //we will never return here
+  //after the initial systick sched() call, we will never return here
   while(1); 
     
   //return 0;

@@ -4,17 +4,18 @@
 
 #include <stdint.h>
 
-/***SpinLock Stuff***/
+/***MutexLock Stuff***/
 typedef struct
 {
   uint32_t held; //stores 0 if available, 1 if held
-} SpinLock;
+} MutexLock;
 
-void initLock(SpinLock*);
+void initLock(MutexLock*);
 
-void releaseLock(SpinLock*);
+void releaseLock(MutexLock*);
 
-void acquireLock(SpinLock*); //blocking function
+void acquireLock(MutexLock*); //blocking function
 
+uint32_t tryAquireLock(MutexLock*); //non blocking function
 
 #endif //LOCKS_H

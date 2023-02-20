@@ -16,7 +16,7 @@ C:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\main.pbi: \
   C:\Users\atoyn\Downloads\unicornRTOS\qpc\3rd_party\CMSIS\Include\mpu_armv7.h \
   C:\Users\atoyn\Downloads\unicornRTOS\qpc\3rd_party\ek-tm4c123gxl\system_TM4C123GH6PM.h \
   C:\Users\atoyn\Downloads\unicornRTOS\unicorn.h \
+  C:\Users\atoyn\Downloads\unicornRTOS\locks.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\aarch32\intrinsics.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\aarch32\iar_intrinsics_common.h \
-  C:\Users\atoyn\Downloads\unicornRTOS\usertasks.h \
-  C:\Users\atoyn\Downloads\unicornRTOS\locks.h
+  C:\Users\atoyn\Downloads\unicornRTOS\usertasks.h

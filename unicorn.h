@@ -2,10 +2,12 @@
 #define UNICORN_H
 
 #include <stdint.h>
+#include "locks.h" //for MutexLock
 
 #define TASK_STACK_WORD_SIZE 64U     // later this will not be a constant value
 #define BYTES_PER_WORD       4U      // for 32 bit architecture
 #define MAX_TASKS            8U
+#define PRIORITY_COUNT       8U      // number of different priority levels (0 - 7)
 
 /*** note: the ARM Application Procedure Call Standard (AAPCS) disallows
     clobbering of registers R4 through R11. I believe this means the compiler
@@ -54,35 +56,38 @@ typedef struct
 
 } ContextFrame;
 
-typedef struct
+struct Task
 {
-  uint32_t* sp; //stack pointer
-  uint32_t  stack[TASK_STACK_WORD_SIZE]; //memory allocation for the stack - ***later this will be alocated outside this struct and passed in via a pointer***
-  uint32_t  timeout;                     // timer for sleep() function (unicorn.c)
-  uint8_t   priority;
-} Task;
+  uint32_t*     sp;                             // stack pointer
+  uint32_t      stack[TASK_STACK_WORD_SIZE];    // memory allocation for the stack - ***later this will be alocated outside this struct and passed in via a pointer***
+  uint8_t       priority;                       // priority level (also corresponds to index in taskTable)
+  uint32_t      timeout;                        // timer for sleep() function (unicorn.c)
+  MutexLock*    lockChannel;                    // the lock with which this task is associated (if any)
+  struct Task*         next;                           // used in the readyTasks structure
+};
 
-extern Task* volatile currentTask; //initialized in unicorn.c
-extern Task* volatile nextTask; //initialized in unicorn.c
+extern struct Task* volatile currentTask; //initialized in unicorn.c
+extern struct Task* volatile nextTask; //initialized in unicorn.c
+
 
 /*** Scheduling Stuff ***/
-
-// priority of a Task (higher number -> more priority) is 32 - (number of leading zeroes)
-#define getHighestSetBit(x) ( (32U - __CLZ(x)) - 1U)
-
 
 //starting setup of the task table, idleTask
 void initializeScheduler();
 
-// set's the Task->timeout to 'ticks' and sets readyTasks[Task] to 0
-void sleep(uint32_t ticks);
-
-// decrements Task->tieout for all Tasks in taskTable
+// decrements Task->timeout for all Tasks in taskTable
 void decrementTimeouts(void);
 
-//initializes a new Task and marks it as ready to run
+// set's the Task->timeout to 'ticks' and sets readyTasks[Task] to 0
+void timeoutSleep(uint32_t ticks);
+
+//initializes a new Task and marks it as ready to run without scheduling
+//(safe to run this with interrupts disabled)
 //set's the Task's initial stack and member variables
 void readyNewTask(EntryFunction, uint8_t priority);
+
+//does everything readyNewTask does, but also schedules the task to run
+void startNewTask(EntryFunction, uint8_t priority);
 
 //a task calls this to exit itself
 void exitTask();
