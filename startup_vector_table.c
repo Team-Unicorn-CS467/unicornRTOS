@@ -56,20 +56,15 @@ void handler_PendSV(void)
   
   //disable interrupts
   __asm("CPSID I\n" 
-
-    "LDR        R2, =currentTask\n"
-    "LDR        R0, [R2]\n"
-        
-   // if (currentTask != (Task *)0);
-    "CBZ        R0, PendSV_restore\n"
   
   // save r4-r11 onto stack
     "PUSH       {r4-r11}\n"
   
   // currentTask->sp = sp;
+    "LDR        R2, =currentTask\n"
+    "LDR        R0, [R2]\n"
     "STR        SP, [R0]\n" 
     
-    "PendSV_restore:\n\n"
   // sp = nextTask->sp;
     "LDR        R1, =nextTask\n"
     "LDR        R0, [R1]\n"
@@ -93,8 +88,7 @@ void handler_PendSV(void)
 
 void handler_SysTick(void) //incrementing ticks, scheduling/switching task
 {  
-  //decrementTimeouts();
-  sched(); //schedule next task and set PendSV to trigger (as soon as interrupts are enabled)
+  decrementTimeouts();
 }
 
 int const __vector_table[] @ ".intvec" = //the @ ".intvec" syntax is not standard c, but IAR supports it for replacing the generic vector table IAR generates in the linking process from its own library???

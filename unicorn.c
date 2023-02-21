@@ -7,6 +7,11 @@
 Q_DEFINE_THIS_FILE   // required for using Q_ASSERT
 
 
+#define LOC_RUNNING         0U      // currentTask can return to readyTasks
+#define LOC_DORMANT         1U      // currentTask is in dormantStack
+#define LOC_TICKSLEEP       2U      // currentTask is in tickSleepHeap
+
+
 struct Task tasks[MAX_TASKS + 1]; // table used for storing task resources; not used for direct access
 
 ///////////////////////////////////////////////////////////////////
@@ -29,7 +34,6 @@ MutexLock dormantStackLock;
 
 /*** READY STATE ***/
 
-
 // linked list of tasks which share the same priority
 typedef struct
 {
@@ -40,148 +44,50 @@ typedef struct
 
 // data structure to index into different priority levels
 PriorityLevel readyTasks[PRIORITY_COUNT];
-uint32_t readyCount;            //the total number of tasks ready to run in readyTasks
-uint32_t topPriority;           //this gets set to the highest priority available in readyNewTask()
+uint32_t readyCount;                            //the total number of tasks ready to run in readyTasks
+uint32_t readyMask;                             //bit mask to mark any priority level(s) with currently ready task(s)
 MutexLock readyTasksLock;
+
 
 // assumes readyTasksLock is held when called
 // assumes taskToAdd != NULL
 // assumes taskToAdd->priority is within range
 void addTaskToReadyTasks(struct Task* taskToAdd)
 {
-    uint32_t p = taskToAdd->priority;
-    if (p > topPriority) // a new top priority is established, taskToAdd is the only node at this priority
+    uint32_t taskP = taskToAdd->priority;
+
+    // one or more tasks currently ready at this priority level
+    if (readyMask & (1U << taskP))
     {
-      topPriority = p;
-      readyTasks[p].head = taskToAdd;
-      readyTasks[p].tail = taskToAdd;
+      readyTasks[taskP].tail->next = taskToAdd;
+      readyTasks[taskP].tail = taskToAdd;
     }
-    else
+    else // no tasks currently ready at this priority level
     {
-      
-      // empty at this priority level
-      if(readyTasks[p].tail == (struct Task*)(0U))
-      {
-        readyTasks[p].head = taskToAdd;
-        readyTasks[p].tail = taskToAdd;        
-      }
-      
-      // not empty at this priority level
-      else
-      {
-        readyTasks[p].tail->next = taskToAdd;
-        readyTasks[p].tail = taskToAdd;
-      }
-      
+      readyMask |= (1U << taskP);
+      readyTasks[taskP].head = taskToAdd;
+      readyTasks[taskP].tail = taskToAdd;
     }
+
     taskToAdd->next = (struct Task*)(0U);
     ++readyCount;
 }
 
 // assumes readyTasksLock is held when called
 // pops/returns the next ready task in line at top priority
+// assumes at least one task is ready (e.g. idle task) when called
 struct Task* getNextReadyTask()
 {
+  uint32_t topPriority = getTopSetBitIndex(readyMask);
   struct Task* returnTask = readyTasks[topPriority].head;
   readyTasks[topPriority].head = returnTask->next;
   if (readyTasks[topPriority].head == (struct Task*)(0U)) // now empty at this priority level
   {
     readyTasks[topPriority].tail = (struct Task*)(0U);
-    do
-    {
-      --topPriority; // find the next highest populated priority level
-    }while(readyTasks[topPriority].head == (struct Task*)(0U));
+    readyMask &= ~(1U << topPriority);
   }
   --readyCount;
   return returnTask;
-}
-    
-/*
-
-Task* readyHeap[MAX_TASKS + 1];
-
-
-
-// assumes taskToAdd != NULL
-// assumes readySize <= MAX_TASKS before call
-void addTaskToReadyHeap(Task* taskToAdd)
-{
-  uint32_t i = readySize;
-  
-  // percolate up in the heap
-  while(i > 0)
-  {
-    uint32_t j = (i - 1) / 2; //index of parent node in the heap
-    if (readyHeap[j]->priority >= taskToAdd->priority)
-      break; // i is correct heap position for taskToAdd
-    
-    readyHeap[i] = readyHeap[j]; // move the parent down
-    i = j; // the parent index is the new child index
-  }
-  readyHeap[i] = taskToAdd;
-  ++readySize;
-}
-
-
-// returns the highest priority READY, popping it off of readyHeap
-// reduces readySize by 1
-// assumes that readySize > 0 at the time of calling
-Task* popTaskFromReadyHeap()
-{
-  --readySize;
-  Task* lowPrioTask = readyHeap[readySize];
-  Task* maxPrioTask = readyHeap[0U];
-  
-  // find good new position for lowPrioTask
-  uint32_t i = 0U;  
-  uint32_t j = 1U; // left child
-  uint32_t k = 2U; //right child
-  while (j < readySize)
-  {
-    if (k < readySize)
-    {
-      if (readyHeap[k]->priority > readyHeap[j]->priority)
-        j = k;
-    }
-    
-    // j now the index of the higher priority both child nodes
-    
-    if (lowPrioTask->priority >= readyHeap[j]->priority)
-      break; //heap integrity maintained
-    
-    readyHeap[i] = readyHeap[j]; // shift node up
-    i = j; // child index is the new parent index
-    j = (i * 2) + 1; // left child
-    k = j + 1; // right child      
-  }
-  readyHeap[i] = lowPrioTask;
-  return maxPrioTask;
-}
-
-*/
-
-//used to create the starting, mostly fake, ContextFrame in a new task's stack memory
-void initializeFirstFrame(ContextFrame* target, EntryFunction taskFunc)
-{
-  //throw away values which will be easy to spot in stack memory
-  target->r4  = 0x0000000DU;
-  target->r5  = 0x0000000CU;
-  target->r6  = 0x0000000BU;
-  target->r7  = 0x0000000AU;
-  target->r8  = 0x00000009U;
-  target->r9  = 0x00000008U;
-  target->r10 = 0x00000007U;
-  target->r11 = 0x00000006U;
-  target->r0  = 0x00000005U;
-  target->r1  = 0x00000004U; 
-  target->r2  = 0x00000003U; 
-  target->r3  = 0x00000002U;
-  target->r12 = 0x00000001U;
-  target->lr  = 0x00000000U;
-  
-  //values which actually matter
-  target->pc   = (uint32_t)(taskFunc); //task function entry point
-  target->xpsr = (1U << 24); //program status register value for "thumb state"
 }
 
 
@@ -199,53 +105,207 @@ void readyNewTask(EntryFunction taskFunc, uint8_t priority)
   struct Task* tsk = dormantStack[dormantCount];
   releaseLock(&dormantStackLock);
   
-  // initial task stack setup (with the first, mostly fabricated context frame)
+  // initial task stack setup
   uint32_t stackEnd   = (uint32_t)(tsk->stack) + (TASK_STACK_WORD_SIZE * BYTES_PER_WORD); //later the stack size will be parameterized
   uint32_t remainder  = stackEnd % 8U;
   stackEnd -= remainder; //Cortex-M stack must be alligned at 8-byte boundary
   tsk->sp = (uint32_t*)(stackEnd - sizeof(ContextFrame));
+  
+  // starting context frame
   ContextFrame* firstFrame = (ContextFrame*)(tsk->sp);
-  initializeFirstFrame(firstFrame, taskFunc);
+  firstFrame->r4  = 0x0000000DU;                // throw-away value, easy to spont in memory
+  firstFrame->r5  = 0x0000000CU;                // throw-away value, easy to spont in memory
+  firstFrame->r6  = 0x0000000BU;                // throw-away value, easy to spont in memory
+  firstFrame->r7  = 0x0000000AU;                // throw-away value, easy to spont in memory
+  firstFrame->r8  = 0x00000009U;                // throw-away value, easy to spont in memory
+  firstFrame->r9  = 0x00000008U;                // throw-away value, easy to spont in memory
+  firstFrame->r10 = 0x00000007U;                // throw-away value, easy to spont in memory
+  firstFrame->r11 = 0x00000006U;                // throw-away value, easy to spont in memory
+  firstFrame->r0  = 0x00000005U;                // throw-away value, easy to spont in memory
+  firstFrame->r1  = 0x00000004U;                // throw-away value, easy to spont in memory 
+  firstFrame->r2  = 0x00000003U;                // throw-away value, easy to spont in memory 
+  firstFrame->r3  = 0x00000002U;                // throw-away value, easy to spont in memory
+  firstFrame->r12 = 0x00000001U;                // throw-away value, easy to spont in memory
+  firstFrame->lr  = 0x00000000U;                // throw-away value, easy to spont in memory
+  firstFrame->pc   = (uint32_t)(taskFunc);      // task function entry point
+  firstFrame->xpsr = (1U << 24);                // program status register value for "thumb state"
   
   // tsk->sp now points to the last used word in stack memory
 
-  // initialize other task properties
+  // initialize other properties
   Q_ASSERT(priority < PRIORITY_COUNT);  
   tsk->priority = priority;
   tsk->timeout = 0U;
   tsk->lockChannel = (MutexLock*)(0U);
   
   //add the task to readyTasks structure
-  acquireLock(&readyTasksLock); //prevent concurrent changes to readyHeap
+  acquireLock(&readyTasksLock); //prevent concurrent changes to readyTasks
   addTaskToReadyTasks(tsk);
   releaseLock(&readyTasksLock);
 }
 
 
+// performs same tasks as readyNewTask but also calls sched()
 void startNewTask(EntryFunction taskFunc, uint8_t priority)
 {
   readyNewTask(taskFunc, priority);
+  __asm("CPSID I"); // disable interrupts heading into sched()
   sched();
 }
 
 
 /*** TICK_SLEEP STATE ***/
 
+struct Task* tickSleepHeap[MAX_TASKS + 1];
+uint32_t tickSleepCount;
+uint32_t elapsed;
+MutexLock tickSleepLock;
+
+
+// assumes taskToAdd != NULL
+// assumes tickSleepCount <= MAX_TASKS before call
+// assumes tickSleepLock is held at the time of calling
+// assumes taskToAdd->timeout is already set
+void addTaskToTickSleepHeap(struct Task* taskToAdd)
+{  
+  uint32_t i = tickSleepCount;
+  
+  // percolate up in the heap
+  while(i > 0)
+  {
+    uint32_t j = (i - 1) / 2; //index of parent node in the heap
+    if (tickSleepHeap[j]->timeout <= taskToAdd->timeout)
+      break; // i is correct heap position for taskToAdd
+    
+    tickSleepHeap[i] = tickSleepHeap[j]; // move the parent down
+    i = j; // the parent index is the new child index
+  }
+  tickSleepHeap[i] = taskToAdd;
+  ++tickSleepCount;
+}
+
+
+// returns the task with min timeout, popping it off tickSleepHeap
+// reduces tickSleepCount by 1
+// assumes that tickSleepCount > 0 at the time of calling
+// assumes tickSleepLock is held at the time of calling
+struct Task* popTaskFromTickSleepHeap()
+{
+  --tickSleepCount;
+  struct Task* highTimeoutTask = tickSleepHeap[tickSleepCount];
+  struct Task* minTimeoutTask = tickSleepHeap[0U];
+  
+  // find good new position for highTimeoutTask
+  uint32_t i = 0U;  
+  uint32_t j = 1U; // left child
+  uint32_t k = 2U; //right child
+  while (j < tickSleepCount)
+  {
+    if (k < tickSleepCount)
+    {
+      if (tickSleepHeap[k]->timeout < tickSleepHeap[j]->timeout)
+        j = k;
+    }
+    
+    // j now the index of the lower timeout both child nodes
+    
+    if (highTimeoutTask->timeout <= tickSleepHeap[j]->timeout)
+      break; // i is correct heap position for highTimeoutTask
+    
+    tickSleepHeap[i] = tickSleepHeap[j]; // shift node up
+    i = j; // child index is the new parent index
+    j = (i * 2) + 1; // left child
+    k = j + 1; // right child      
+  }
+  tickSleepHeap[i] = highTimeoutTask;
+  return minTimeoutTask;
+}
 
 
 /*** LOCK_SLEEP STATE ***/
+
 
 
 /*** RUNNING STATE ***/
 
 struct Task* volatile currentTask;     // must be here because it gets labelled for easier access in assembly code
 struct Task* volatile nextTask;        // must be here because it gets labelled for easier access in assembly code
-MutexLock runningLock;
+uint32_t currentTaskLoc;               // encodes the location of currentTask heading into the next sched() call
 
 
+// marks the caller as dormant and enters the scheduler, never to return to the caller
+// this would cause problems if it were ever somehow called on the idle task
+void exitTask()
+{
+  acquireLock(&dormantStackLock); // prevent concurrent changes to dormantStack
+
+  __asm("CPSID I"); // disable interrupts to avoid any race conditions on currentTask
+  
+  dormantStack[dormantCount] = currentTask; // add currentTask to dormant stack
+  ++dormantCount;
+  currentTaskLoc = LOC_DORMANT;
+  
+  releaseLock(&dormantStackLock);
+  
+  sched(); // schedule next task and set PendSV to trigger (as soon as interrupts are enabled)  
+  
+  // here we should be diverted to PendSV handler never to return
+  while(1); // just in case sched doesn't work on this first attempt
+}
 
 
+// put currentTask in blocking unready state for 'ticks' number of SysTick cycles
+void timeoutSleep(uint32_t ticks)
+{   
+  acquireLock(&tickSleepLock);
 
+  __asm("CPSID I"); // disable interrupts to avoid any race conditions on currentTask
+  
+  // decrement timeouts of any currently sleeping tasks by elapsed
+  // which represents the number of ticks since a task was last
+  // added to or removed from tickSleepHeap
+  for (uint32_t i = 0; i < tickSleepCount; ++i)
+  {
+    if (tickSleepHeap[i]->timeout >= elapsed)
+      tickSleepHeap[i]->timeout -= elapsed;
+    else
+      tickSleepHeap[i]->timeout = 0U;
+  }
+  currentTask->timeout = ticks;
+  elapsed = 0U; // reset elapsed value now that all timeouts are up to date
+  
+  addTaskToTickSleepHeap(currentTask);
+  currentTaskLoc = LOC_TICKSLEEP;
+  
+  releaseLock(&tickSleepLock);
+  
+  sched(); // schedule next task and set PendSV to trigger (as soon as interrupts are enabled)  
+}   
+
+
+// increment elapsed and compare to timeout of task (if any) at top of tickSleepHeap
+void decrementTimeouts(void)
+{
+  acquireLock(&tickSleepLock);
+  if (tickSleepCount != 0) // 1 or more sleeping tasks
+  {
+    ++elapsed;
+    while (elapsed >= tickSleepHeap[0]->timeout)
+    {
+      struct Task* wokeTask = popTaskFromTickSleepHeap();
+      
+      acquireLock(&readyTasksLock);
+      addTaskToReadyTasks(wokeTask);
+      releaseLock(&readyTasksLock);
+      
+      if (tickSleepCount == 0)
+        break;
+    }
+  }
+  releaseLock(&tickSleepLock);
+  __asm("CPSID I"); // disable interrupts heading into sched()
+  sched(); // schedule next task and set PendSV to trigger (as soon as interrupts are enabled)
+}
 
 
 // busy work for the idle task to perform
@@ -256,22 +316,23 @@ void onIdle()
 
 
 //starting setup of everything the scheduler needs to run
+// assumes interrupts are disabled for the durration of this function
 void initializeScheduler()
 {
   
-  // locks
+  // initialize locks
   initLock(&dormantStackLock);
   initLock(&readyTasksLock);
-  initLock(&runningLock);
+  initLock(&tickSleepLock);
   
-  // initialize dormantStack (populate with every member of tasks)
+  // initialize DORMANT structure
   acquireLock(&dormantStackLock);
-  for(int i = MAX_TASKS; i >= 0; --i)
+  for(uint32_t i = 0; i <=  MAX_TASKS; ++i)
     dormantStack[i] = &(tasks[i]);
   dormantCount = MAX_TASKS + 1;
   releaseLock(&dormantStackLock);
 
-  // initialize readyTasks
+  // initialize READY structure
   acquireLock(&readyTasksLock);
   for(int i = 0; i < PRIORITY_COUNT; ++i)
   {
@@ -279,69 +340,32 @@ void initializeScheduler()
     readyTasks[i].tail = (struct Task*)(0U);
   }
   readyCount = 0U;
-  topPriority = 0U; // assumes idle task is about to be loaded
+  readyMask = 0U;
   releaseLock(&readyTasksLock);
-  
-  acquireLock(&runningLock);
-  currentTask = (struct Task*)0U;
-  releaseLock(&runningLock);
 
-  // start the idle task at lowest priority
+  // initialize TICK_SLEEP structure
+  acquireLock(&tickSleepLock);
+  tickSleepCount = 0U;
+  releaseLock(&tickSleepLock);
+
+  // initialize RUNNING structure
+  
+  // artificially mark an uninitialized dormant task as currentTask
+  // (can't use an initialized task because the first call to sched()
+  // will push registers representing the program state from main()
+  // since we don't want to return there, this is behaving as though
+  // as though we just exited from main() as the currentTask and it's
+  // memory has just been recaptured
+  currentTask = &(tasks[0]);
+  currentTaskLoc = LOC_DORMANT; // artificially mark currentTask DORMANT (exited)
+
+  // ready the idle task at the lowest priority
   readyNewTask(onIdle, 0);
+  
 }
 
 
 /*
-
-// decrement timeout on sleepingTasks bitmask
-// inspired by the great Miro Samek's version: https://github.com/QuantumLeaps/modern-embedded-programming-course/tree/main/lesson-26
-// assumes that interrupts are disabled when called, so no taskChangeLock is aquired
-void decrementTimeouts(void)
-{
-  uint32_t tasksToDecrement = timeoutSleepTasks;
-  uint32_t priorityBit;
-  
-  while(tasksToDecrement != 0U)
-  {
-    Task *tsk = &(taskTable[getHighestSetBit(tasksToDecrement)]);  // get highest priority task
-    
-    Q_ASSERT(tsk->timeout != 0U);     // if a timeout was already zero we got issues
-    
-    priorityBit = (1U << (tsk->priority));
-    --tsk->timeout;
-    if(tsk->timeout == 0U) // Task timeout just reached 0
-    {
-      timeoutSleepTasks &= ~priorityBit;  // remove Task from timeoutSleepTasks
-
-      if ((channelSleepTasks & priorityBit) == 0U) // Task is not currently also sleeping on any sleep channel
-        readyTasks |= priorityBit;  // set Task to ready
-    }
-    
-    tasksToDecrement &= ~priorityBit;  // remove task from task timeouts to decrement
-  }
-}
-
-
-// put currentTask in blocking unready state for 'ticks' number of SysTick cycles
-void timeoutSleep(uint32_t ticks)
-{   
-    acquireLock(&taskChangeLock); //prevent any other tasks from making concurrent changes to the task table
-    
-    // don't allow idleTask to enter sleep (REQUIRE same as ASSERT)
-    Q_REQUIRE(currentTask != &(taskTable[0]));
-    
-    currentTask->timeout = ticks;
-
-    timeoutSleepTasks   |=  (1U << (currentTask->priority));       // set task as sleeping
-    readyTasks          &= ~(1U << (currentTask->priority));       // set task to not ready
-
-    releaseLock(&taskChangeLock);
-    
-    __asm("CPSID I"); //disable interrupts
-    sched();                                                 // schedule to another task
-    __asm("CPSIE I");
-}   
-
 
 //currentTask joins the specified sleep channel
 void joinSleepChannel(uint8_t channel)
@@ -355,14 +379,6 @@ void joinSleepChannel(uint8_t channel)
 
     releaseLock(&taskChangeLock);  
 }
-
-
-
-
-// WORK FROM HERE - THIS IS A CONCERN BECAUSE LEAVING WHILE ANOTHER TASK IS ASLEEP ON THE SAME CHANNEL COULD LEAVE THAT TASK HIGH AND DRY (AT LEAST UNTIL ANOTHER TASK JOINS THE SAME CHANNEL)
-
-
-
 
 
 //currentTask leaves its current sleep channel, if any
@@ -401,33 +417,10 @@ void sleepOnChannel()
 */
 
 
-// marks the caller as dormant and enters the scheduler, never to return to the caller
-// this would cause problems if it were ever somehow called on the idle task
-void exitTask()
-{
-  acquireLock(&dormantStackLock); // prevent concurrent changes to dormantStack
-  acquireLock(&runningLock); // prevent concurrent changes to RUNNING task
-  
-  dormantStack[dormantCount] = currentTask; // return RUNNING task to dormant stack
-  ++dormantCount;
-  currentTask = (struct Task*)(0U); // mark as no RUNNING task
-  
-  releaseLock(&runningLock);
-  releaseLock(&dormantStackLock);
-  
-  sched(); // schedule next task and set PendSV to trigger (as soon as interrupts are enabled)  
-  
-  // here we should be diverted to PendSV handler never to return
-  while(1); // just in case sched doesn't work on this first attempt
-}
-
-
-// updates nextTaskIdx and nextTask
+// updates currentTask and sets things up for a context shift
 // interrupts must be disabled when this function is called
 void sched()
 {
-
-  __asm("CPSID I"); // disable interrupts
   
   // try to aquire the locks and if they are held elsewhere, abort
   if (tryAquireLock(&readyTasksLock) == 1U) // aquire lock failed
@@ -435,37 +428,32 @@ void sched()
     __asm("CPSIE I"); //enable interrupts) 
     return;
   }
-  if (tryAquireLock(&runningLock) == 1U) // aquire lock failed
-  {
-    
-    releaseLock(&readyTasksLock);
-    __asm("CPSIE I"); // enable interrupts) 
-    return;
-  }
   
-  // readyHeapLock and runningLock are now aquired   
+  // readyHeapLock is now aquired   
 
-  // at least one task other than currentTask is ready
-  if (readyCount > 0)
+  if (currentTaskLoc == LOC_RUNNING) //currentTask is runnable (can be returned to readyTasks
   {
-
-    if (currentTask != (struct Task*)(0U)) // currentTask is not NULL
-      addTaskToReadyTasks(currentTask); // put currentTask back into readyTasks
-    nextTask = getNextReadyTask(); // pop the next-in-line highest priority task from readyTasks to set nextTask
-
-
-    // comparing currentTask and nextTask (two volatile variables) is leads to
-    // unpredictable access order *Warning[Pa082]* see:
-    // https://www.iar.com/knowledge/support/technical-notes/compiler/warningpa082-undefined-behavior-the-order-of-volatile-accesses-is-undefined-in-this-statement/
-    struct Task const *next = nextTask;    
-    if (next != currentTask)
+    if (readyCount > 0)
     {
+      addTaskToReadyTasks(currentTask); // put currentTask back into readyTasks
+      nextTask = getNextReadyTask(); // pop the next-in-line highest priority task from readyTasks to set nextTask
+      
       //NVIC_INT_CTRL_R |= 0x10000000U; //trigger PendSV exception via interrupt control and state register in system control block
       *(uint32_t volatile *)0xE000ED04 = (1U << 28U);
     }
+    // else - currentTask will remain unchanged and no context switch will trigger
   }
-
-  releaseLock(&runningLock);
+  else //currentTaskLoc == LOC_TICKSLEEP || currentTaskLoc == LOC_DORMANT
+  {
+    // assume readyTaskCount > 0 since idle task should never sleep or exit
+    nextTask = getNextReadyTask(); // pop the next-in-line highest priority task from readyTasks to set nextTask
+    
+    //NVIC_INT_CTRL_R |= 0x10000000U; //trigger PendSV exception via interrupt control and state register in system control block
+    *(uint32_t volatile *)0xE000ED04 = (1U << 28U);
+    
+    currentTaskLoc = LOC_RUNNING;
+  }
+  
   releaseLock(&readyTasksLock);
   __asm("CPSIE I"); //enable interrupts)   
   

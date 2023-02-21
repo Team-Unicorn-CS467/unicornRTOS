@@ -11,25 +11,30 @@ void userTaskLoad()
   // ADD STARTUP TASKS BELOW THIS LINE
   ///////////////////////////////////////////////////////////////////
 
-  while(1)
+/*  
+  
+  // basic test w/ task exit
+  int i;
+  for(i = 0; i < 3; ++i)
   {
+    int j;
     startNewTask(blinkRed, 1);
-    
-    //sleep(500);
-    for (int i = 0; i < taskTimer / 3; ++i);
+    for (j = 0; j < taskTimer / 3; ++j);
     
     startNewTask(blinkBlue, 1);
-    
-    //sleep(500);
-    for (int i = 0; i < taskTimer / 3 ; ++i);
+    for (j = 0; j < taskTimer / 3 ; ++j);
     
     startNewTask(blinkGreen, 1);
-    
-    //sleep(4000);
-    for (int i = 0; i < taskTimer; ++i);
+    for (j = 0; j < taskTimer; ++j);
   }
   
-  //exitTask();
+*/
+  
+  // timeoutSleep test
+  startNewTask(blinky1, 2);
+  startNewTask(blinky2, 3);
+  
+  exitTask();
   
   ///////////////////////////////////////////////////////////////////
   // NO CHANGES BELOW THIS LINE IN THIS FUNCTION
@@ -52,7 +57,6 @@ void blinkRed()
   
   ledRedOn();
   
-  //sleep(3000);
   for (int i = 0; i < taskTimer; ++i);
   
   ledRedOff();
@@ -68,7 +72,6 @@ void blinkBlue()
   
   ledBlueOn();
   
-  //sleep(2000);
   for (int i = 0; i < taskTimer; ++i);
   
   ledBlueOff();
@@ -84,7 +87,6 @@ void blinkGreen()
   
   ledGreenOn();
   
-  //sleep(1000);
   for (int i = 0; i < taskTimer; ++i);
   
   ledGreenOff();
@@ -97,11 +99,9 @@ void blinky1()
     while (1) 
     {
         ledBlueOn();
-        //sleep(500);
+        timeoutSleep(500);
         ledBlueOff();
-        //sleep(250);;
-        //ledBlueOff();
-        //sleep(1);
+        timeoutSleep(500);
     }
 }
 
@@ -110,11 +110,9 @@ void blinky2()
     while (1) 
     {
         ledRedOn();
-        //sleep(300);
+        timeoutSleep(350);
         ledRedOff();
-        //sleep(300);;
-        //ledRedOff();
-        //sleep(1);
+        timeoutSleep(350);
     }
 }
 

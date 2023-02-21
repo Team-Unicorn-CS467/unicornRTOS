@@ -9,6 +9,10 @@
 #define MAX_TASKS            8U
 #define PRIORITY_COUNT       8U      // number of different priority levels (0 - 7)
 
+
+// returns the bit index of the highest set bit in a 32-bit bitmask
+#define getTopSetBitIndex(bitmask_32) ((32U - __CLZ(bitmask_32)) - 1U)
+
 /*** note: the ARM Application Procedure Call Standard (AAPCS) disallows
     clobbering of registers R4 through R11. I believe this means the compiler
     has responsibility to ensure these register values, by the time of procedure exit,
@@ -58,12 +62,12 @@ typedef struct
 
 struct Task
 {
-  uint32_t*     sp;                             // stack pointer
-  uint32_t      stack[TASK_STACK_WORD_SIZE];    // memory allocation for the stack - ***later this will be alocated outside this struct and passed in via a pointer***
-  uint8_t       priority;                       // priority level (also corresponds to index in taskTable)
-  uint32_t      timeout;                        // timer for sleep() function (unicorn.c)
-  MutexLock*    lockChannel;                    // the lock with which this task is associated (if any)
-  struct Task*         next;                           // used in the readyTasks structure
+  uint32_t*             sp;                             // stack pointer
+  uint32_t              stack[TASK_STACK_WORD_SIZE];    // memory allocation for the stack - ***later this will be alocated outside this struct and passed in via a pointer***
+  uint8_t               priority;                       // priority level (also corresponds to index in taskTable)
+  uint32_t              timeout;                        // timer for sleep() function (unicorn.c)
+  MutexLock*            lockChannel;                    // the lock with which this task is associated (if any)
+  struct Task*          next;                           // used in the readyTasks structure
 };
 
 extern struct Task* volatile currentTask; //initialized in unicorn.c

@@ -9,19 +9,17 @@
 
 int main()
 { 
-  __asm("CPSID I"); //disable interrupts
+  __asm("CPSID I"); // disable interrupts
 
   // un-gateclock GPIOF AHB, set digital/direction , set Systick, set SysTck/PendSV priorities
   boardStartup();
   
-  //OS stuff
+  // OS stuff
   initializeScheduler();
 
-  readyNewTask(userTaskLoad, 1U); //ready the task to run without scheduling
+  startNewTask(userTaskLoad, 1U); // start userTaskLoad (will enable interrupts and call sched()
   
-  __asm("CPSIE I"); //enable interrupts)
-  
-  //after the initial systick sched() call, we will never return here
+  // we should probably never get to this point
   while(1); 
     
   //return 0;
