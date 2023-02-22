@@ -1,5 +1,5 @@
 #include "usertasks.h"
-
+#include "bsp.h"
 
 //static int taskTimer = 50000;
 
@@ -39,39 +39,39 @@ void userTaskLoad()
 
 void blinkRed()
 {
-  ledRedOff();
-  ledBlueOff();
-  ledGreenOff();
+  BSP_setLED(LED_RED, OFF);
+  BSP_setLED(LED_BLUE, OFF);
+  BSP_setLED(LED_GREEN, OFF);
   
-  ledRedOn();
+  BSP_setLED(LED_RED, ON);
   sleep(3000);
-  ledRedOff();
+  BSP_setLED(LED_RED, OFF);
   
   exitTask();
 }
 
 void blinkBlue()
 {
-  ledRedOff();
-  ledBlueOff();
-  ledGreenOff();
+  BSP_setLED(LED_RED, OFF);
+  BSP_setLED(LED_BLUE, OFF);
+  BSP_setLED(LED_GREEN, OFF);
   
-  ledBlueOn();
+  BSP_setLED(LED_BLUE, ON);
   sleep(2000);
-  ledBlueOff();
+  BSP_setLED(LED_BLUE, OFF);
   
   exitTask();
 }
 
 void blinkGreen()
 {
-  ledRedOff();
-  ledBlueOff();
-  ledGreenOff();
+  BSP_setLED(LED_RED, OFF);
+  BSP_setLED(LED_BLUE, OFF);
+  BSP_setLED(LED_GREEN, OFF);
   
-  ledGreenOn();
+  BSP_setLED(LED_GREEN, ON);
   sleep(1000);
-  ledGreenOff();
+  BSP_setLED(LED_GREEN, OFF);
   
   exitTask();
 }
@@ -80,11 +80,11 @@ void blinky1()
 {
     while (1) 
     {
-        ledBlueOn();
+        BSP_setLED(LED_BLUE, ON);
         sleep(500);
-        ledBlueOff();
+        BSP_setLED(LED_BLUE, OFF);
         sleep(250);;
-        //ledBlueOff();
+        //BSP_setLED(LED_BLUE, OFF);
         //sleep(1);
     }
 }
@@ -93,18 +93,18 @@ void blinky2()
 {
     while (1) 
     {
-        ledRedOn();
+        BSP_setLED(LED_RED, ON);
         sleep(300);
-        ledRedOff();
+        BSP_setLED(LED_RED, OFF);
         sleep(300);;
-        //ledRedOff();
+        //BSP_setLED(LED_RED, OFF);
         //sleep(1);
     }
 }
 
 void anti_blinky() 
 {
-  ledRedOff();
-  ledBlueOff();
+  BSP_setLED(LED_RED, OFF);
+  BSP_setLED(LED_BLUE, OFF);
   exitTask();
 }

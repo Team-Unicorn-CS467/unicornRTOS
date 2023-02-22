@@ -350,6 +350,8 @@
                     <state>$PROJ_DIR$\qpc\3rd_party\CMSIS\Include</state>
                     <state>$PROJ_DIR$\qpc\include</state>
                     <state>$PROJ_DIR$\qpc\3rd_party\ek-tm4c123gxl</state>
+                    <state>C:\Users\AsynchronousGalaxy\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include</state>
+                    <state>C:\Users\AsynchronousGalaxy\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123</state>
                 </option>
                 <option>
                     <name>CCStdIncCheck</name>
@@ -593,7 +595,7 @@
                 </option>
                 <option>
                     <name>AOutputFile</name>
-                    <state></state>
+                    <state>$FILE_BNAME$.o</state>
                 </option>
                 <option>
                     <name>ALimitErrorsCheck</name>
@@ -647,7 +649,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state></state>
+                    <state>project.srec</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -758,7 +760,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>$TOOLKIT_DIR$\config\generic_cortex.icf</state>
+                    <state>$TOOLKIT_DIR$/config/linker/TexasInstruments/LM4F120H5QR.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
@@ -2154,10 +2156,10 @@
         </settings>
     </configuration>
     <file>
-        <name>$PROJ_DIR$\board_io.c</name>
+        <name>$PROJ_DIR$\bsp.c</name>
     </file>
     <file>
-        <name>$PROJ_DIR$\board_io.h</name>
+        <name>$PROJ_DIR$\bsp.h</name>
     </file>
     <file>
         <name>$PROJ_DIR$\exception_handlers.h</name>
