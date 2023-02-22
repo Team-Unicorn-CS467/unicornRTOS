@@ -7,9 +7,10 @@
 Q_DEFINE_THIS_FILE   // required for using Q_ASSERT
 
 
-#define LOC_RUNNING         0U      // currentTask can return to readyTasks
-#define LOC_DORMANT         1U      // currentTask is in dormantStack
-#define LOC_TICKSLEEP       2U      // currentTask is in tickSleepHeap
+#define LOC_RUNNING     0U      // currentTask can return to readyTasks
+#define LOC_DORMANT     1U      // currentTask is in dormantStack
+#define LOC_TICKSLEEP   2U      // currentTask is in tickSleepHeap
+#define LOC_LOCKSLEEP   3U      // currentTask in one of lockChannels
 
 
 struct Task tasks[MAX_TASKS + 1]; // table used for storing task resources; not used for direct access
@@ -34,16 +35,8 @@ MutexLock dormantStackLock;
 
 /*** READY STATE ***/
 
-// linked list of tasks which share the same priority
-typedef struct
-{
-  struct Task* head;
-  struct Task* tail;
-} PriorityLevel;
-
-
 // data structure to index into different priority levels
-PriorityLevel readyTasks[PRIORITY_COUNT];
+TaskList readyTasks[PRIORITY_COUNT];            // array of linked lists of READY tasks by priority level
 uint32_t readyCount;                            //the total number of tasks ready to run in readyTasks
 uint32_t readyMask;                             //bit mask to mark any priority level(s) with currently ready task(s)
 MutexLock readyTasksLock;
@@ -58,17 +51,15 @@ void addTaskToReadyTasks(struct Task* taskToAdd)
 
     // one or more tasks currently ready at this priority level
     if (readyMask & (1U << taskP))
-    {
       readyTasks[taskP].tail->next = taskToAdd;
-      readyTasks[taskP].tail = taskToAdd;
-    }
+    
     else // no tasks currently ready at this priority level
     {
       readyMask |= (1U << taskP);
       readyTasks[taskP].head = taskToAdd;
-      readyTasks[taskP].tail = taskToAdd;
     }
 
+    readyTasks[taskP].tail = taskToAdd;
     taskToAdd->next = (struct Task*)(0U);
     ++readyCount;
 }
@@ -98,8 +89,11 @@ struct Task* getNextReadyTask()
 */
 void readyNewTask(EntryFunction taskFunc, uint8_t priority)
 {  
+  // sanity check
+  Q_ASSERT(priority < PRIORITY_COUNT);  
+
   // aqcuire a dormant task
-  acquireLock(&dormantStackLock); //prevent concurrent changes to dormantStack
+  acquireLock(&dormantStackLock); // prevent concurrent changes to dormantStack
   Q_ASSERT(dormantCount > 0);
   --dormantCount;
   struct Task* tsk = dormantStack[dormantCount];
@@ -133,12 +127,10 @@ void readyNewTask(EntryFunction taskFunc, uint8_t priority)
   // tsk->sp now points to the last used word in stack memory
 
   // initialize other properties
-  Q_ASSERT(priority < PRIORITY_COUNT);  
   tsk->priority = priority;
   tsk->timeout = 0U;
-  tsk->lockChannel = (MutexLock*)(0U);
   
-  //add the task to readyTasks structure
+  // add the task to readyTasks structure
   acquireLock(&readyTasksLock); //prevent concurrent changes to readyTasks
   addTaskToReadyTasks(tsk);
   releaseLock(&readyTasksLock);
@@ -224,6 +216,44 @@ struct Task* popTaskFromTickSleepHeap()
 
 /*** LOCK_SLEEP STATE ***/
 
+// data structure to index into different lock sleep groups
+LockChannel lockChannels[MAX_LOCKS];            // OS-managed semaphore locks w/ associated lists of sleeping tasks
+MutexLock lockSleepLock;
+
+
+// assumes lockSleepLock is held when called
+// assumes chan < MAX_LOCKS
+// pops/returns the next-in-line task sleeping on chan, if any
+// returns NULL if there are no tasks sleeping on chan
+struct Task* getNextTaskSleepingOnChannel(uint32_t chan)
+{
+    struct Task* returnTask = lockChannels[chan].sleepingTasks.head;
+    if(returnTask != (struct Task*)(0U)) // task(s) sleeping on chan
+    {
+      if (returnTask->next == (struct Task*)(0U)) // only one task sleeping on chan
+        lockChannels[chan].sleepingTasks.tail = returnTask->next; // sets to NULL
+      lockChannels[chan].sleepingTasks.head = returnTask->next;
+    }
+    return returnTask;
+}
+
+
+// assumes lockSleepLock is held when called
+// assumes taskToSleep is not NULL
+// assumes chan < MAX_LOCKS
+void addTaskToSleepChannel(struct Task* taskToSleep, uint32_t chan)
+{
+  struct Task* chanTail = lockChannels[chan].sleepingTasks.tail;
+  
+  if (chanTail != (struct Task*)(0U)) // task(s) sleeping on chan
+    chanTail->next = taskToSleep;
+  
+  else // no task sleeping on chan
+    lockChannels[chan].sleepingTasks.head = taskToSleep;
+
+  lockChannels[chan].sleepingTasks.tail = taskToSleep;    
+  taskToSleep->next = (struct Task*)(0U);  
+}
 
 
 /*** RUNNING STATE ***/
@@ -308,6 +338,68 @@ void decrementTimeouts(void)
 }
 
 
+// currentTask calls this to try and acquire a lock,
+// sleeps the task if it cannot be immediately acquired
+// and reschedules (when the task is later awoken, the
+// implementation of releaseUnicornSemaphore() should
+// guarantee that this task acquires the lock on chan in due turn)
+void aquireUnicornSemaphore(uint32_t chan)
+{
+  Q_ASSERT(chan < MAX_LOCKS); 
+
+  acquireLock(&lockSleepLock);
+  
+  if (tryAquireLock(&(lockChannels[chan].lock)) == LOCK_AQUIRED)
+  {
+    releaseLock(&lockSleepLock);
+    return; // lock acquired and currentTask can continue on with its business
+  }
+  
+  __asm("CPSID I"); // disable interrupts to avoid any race conditions on currentTask
+  
+  addTaskToSleepChannel(currentTask, chan);
+  currentTaskLoc = LOC_LOCKSLEEP;
+  
+  releaseLock(&lockSleepLock);
+  
+  sched(); // schedule next task and set PendSV to trigger (as soon as interrupts are enabled)    
+}
+
+// currentTask calls this to wake and transfer holding of the
+// lock on chan to the next-in-line task sleeping on chan
+// immediately reschedules if there are any tasks leeping on chan
+// and holding of the lock on chan is transferred in this way
+// if there are no tasks sleeping on chan, then simply releases the lock on chan
+// assumes currentTask is the current holder of the lock on chan
+void releaseUnicornSemaphore(uint32_t chan)
+{
+  Q_ASSERT(chan < MAX_LOCKS); 
+
+  acquireLock(&lockSleepLock);
+  
+  struct Task* wokeTask = getNextTaskSleepingOnChannel(chan);
+  if(wokeTask != (struct Task*)(0U)) // a task was sleeping on chan
+  {  
+    // we don't even release the lock on chan, we just keep it held and
+    // make the next-in-line wokeTask available to be scheduled
+    releaseLock(&lockSleepLock);
+
+    acquireLock(&readyTasksLock);
+    addTaskToReadyTasks(wokeTask); // mark wokeTask as ready
+    releaseLock(&readyTasksLock);
+
+    __asm("CPSID I"); // disable interrupts to avoid any race conditions on currentTask  
+    sched(); // schedule next task and set PendSV to trigger (as soon as interrupts are enabled)   
+  }
+  
+  else // no tasks were sleeping on chan
+  {
+    releaseLock(&(lockChannels[chan].lock)); // release the lock on chan  
+    releaseLock(&lockSleepLock);     
+  }
+}
+
+
 // busy work for the idle task to perform
 void onIdle()
 {
@@ -315,9 +407,9 @@ void onIdle()
 }
 
 
-//starting setup of everything the scheduler needs to run
+// starting setup of everything the scheduler needs to run
 // assumes interrupts are disabled for the durration of this function
-void initializeScheduler()
+void initializeScheduler(EntryFunction userTasksLoader, uint8_t loaderPriority)
 {
   
   // initialize locks
@@ -348,73 +440,31 @@ void initializeScheduler()
   tickSleepCount = 0U;
   releaseLock(&tickSleepLock);
 
+  // initialized LOCK_SLEEP structure
+  acquireLock(&lockSleepLock);
+  for(int i = 0; i < MAX_LOCKS; ++i)
+    initLock(&(lockChannels[i].lock));  
+  releaseLock(&lockSleepLock);
+  
   // initialize RUNNING structure
   
   // artificially mark an uninitialized dormant task as currentTask
-  // (can't use an initialized task because the first call to sched()
-  // will push registers representing the program state from main()
-  // since we don't want to return there, this is behaving as though
-  // as though we just exited from main() as the currentTask and it's
-  // memory has just been recaptured
+  // (we can't use an initialized task because the first call to sched()
+  // will push registers representing the program state from main();
+  // since we don't want to return there, we here set up the starting
+  // state as though we had called exitTask() from main such that
+  // currentTask's memory, &(tasks[0]), has just been recaptured into dormantStack;
+  // this only will work if we have READY task(s) cueued up before interrupts are enabled
   currentTask = &(tasks[0]);
-  currentTaskLoc = LOC_DORMANT; // artificially mark currentTask DORMANT (exited)
+  currentTaskLoc = LOC_DORMANT;
 
   // ready the idle task at the lowest priority
   readyNewTask(onIdle, 0);
   
+  // start the userTaskLoader, entering the scheduler then enabling interrupts
+  startNewTask(userTasksLoader, loaderPriority);
+  
 }
-
-
-/*
-
-//currentTask joins the specified sleep channel
-void joinSleepChannel(uint8_t channel)
-{
-    acquireLock(&taskChangeLock); //prevent any other tasks from making concurrent changes to the task table
-    
-    Q_ASSERT(currentTask != &(taskTable[0])); // don't allow idleTask to enter sleep
-    Q_ASSERT(channel < MAX_SLEEP_CHANNELS); //ensure sleep channel is valid
-    
-    currentTask->sleepChannel = channel;
-
-    releaseLock(&taskChangeLock);  
-}
-
-
-//currentTask leaves its current sleep channel, if any
-void leaveSleepChannel()
-{
-    acquireLock(&taskChangeLock); //prevent any other tasks from making concurrent changes to the task table
-    currentTask->sleepChannel = MAX_SLEEP_CHANNELS; //flags no sleep channel
-    //currentTask can't be sleeping if it has entered this function so it is unneccessary to unset a bit in channelSleepTasks
-    releaseLock(&taskChangeLock);  
-}
-
-//currentTask sleeps on its current sleep channel, if any,
-//waking the highest priority task on this channel, if any other than currentTask
-void sleepOnChannel()
-{
-    acquireLock(&taskChangeLock); //prevent any other tasks from making concurrent changes to the task table
-    
-    uint8_t channel = currentTask->sleepChannel;
-    if(channel >= MAX_SLEEP_CHANNELS)
-    {
-      releaseLock(&taskChangeLock);
-      return; //no effect because currentTask is not a member of any sleep channel
-    }
-    
-    channelSleepTasks   |=  (1U << (currentTask->priority));       // set task as sleeping
-    readyTasks          &= ~(1U << (currentTask->priority));       // set task to not ready
-    
-
-    releaseLock(&taskChangeLock);  
-    
-    __asm("CPSID I"); //disable interrupts
-    sched();                                                 // schedule to another task
-    __asm("CPSIE I");
-}
-
-*/
 
 
 // updates currentTask and sets things up for a context shift
@@ -423,7 +473,7 @@ void sched()
 {
   
   // try to aquire the locks and if they are held elsewhere, abort
-  if (tryAquireLock(&readyTasksLock) == 1U) // aquire lock failed
+  if (tryAquireLock(&readyTasksLock) == LOCK_UNAVAILABLE) // aquire lock failed
   {
     __asm("CPSIE I"); //enable interrupts) 
     return;

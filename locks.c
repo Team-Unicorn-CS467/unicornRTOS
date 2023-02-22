@@ -30,7 +30,7 @@ void acquireLock(MutexLock* target)
 }
 
 //assumes initLock() has previously been called
-//returns 0 if the lock was available/aquired, 1 otherwise
+//returns 0 (LOCK_AQUIRED) if the lock was available/aquired, 1 (LOCK_UNAVAILABLE) otherwise
 uint32_t tryAquireLock(MutexLock* target)
 {
   __asm("MOV R1, #1                             \n" //load value of 1U into R1

@@ -8,6 +8,7 @@
 #define BYTES_PER_WORD       4U      // for 32 bit architecture
 #define MAX_TASKS            8U
 #define PRIORITY_COUNT       8U      // number of different priority levels (0 - 7)
+#define MAX_LOCKS            8U      // maximum number of OS-supported semaphore locks ???
 
 
 // returns the bit index of the highest set bit in a 32-bit bitmask
@@ -66,18 +67,30 @@ struct Task
   uint32_t              stack[TASK_STACK_WORD_SIZE];    // memory allocation for the stack - ***later this will be alocated outside this struct and passed in via a pointer***
   uint8_t               priority;                       // priority level (also corresponds to index in taskTable)
   uint32_t              timeout;                        // timer for sleep() function (unicorn.c)
-  MutexLock*            lockChannel;                    // the lock with which this task is associated (if any)
   struct Task*          next;                           // used in the readyTasks structure
 };
 
 extern struct Task* volatile currentTask; //initialized in unicorn.c
 extern struct Task* volatile nextTask; //initialized in unicorn.c
 
+// linked list of tasks used to group like tasks (same priority, or same mutext lock)
+typedef struct
+{
+  struct Task* head;
+  struct Task* tail;
+} TaskList;
+
+// used to implement an OS-managed semaphore 
+typedef struct
+{
+  MutexLock lock;
+  TaskList sleepingTasks;
+} LockChannel;
 
 /*** Scheduling Stuff ***/
 
-//starting setup of the task table, idleTask
-void initializeScheduler();
+//starting setup of the task table, idleTask, user task loader
+void initializeScheduler(EntryFunction, uint8_t);
 
 // decrements Task->timeout for all Tasks in taskTable
 void decrementTimeouts(void);
@@ -95,6 +108,12 @@ void startNewTask(EntryFunction, uint8_t priority);
 
 //a task calls this to exit itself
 void exitTask();
+
+// acquire a semaphore lock managed by the OS
+void aquireUnicornSemaphore(uint32_t);
+
+// release a semaphore lock managed by the OS
+void releaseUnicornSemaphore(uint32_t);
 
 //potentially schedules a new stack and context switches
 void sched();

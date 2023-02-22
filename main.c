@@ -14,10 +14,8 @@ int main()
   // un-gateclock GPIOF AHB, set digital/direction , set Systick, set SysTck/PendSV priorities
   boardStartup();
   
-  // OS stuff
-  initializeScheduler();
-
-  startNewTask(userTaskLoad, 1U); // start userTaskLoad (will enable interrupts and call sched()
+  // perform all scheduler startup, then load/start userTaskLoad (will enable interrupts and call sched()
+  initializeScheduler(userTaskLoad, 1U);
   
   // we should probably never get to this point
   while(1); 

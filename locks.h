@@ -4,6 +4,10 @@
 
 #include <stdint.h>
 
+#define LOCK_AQUIRED            0U
+#define LOCK_UNAVAILABLE        1U
+
+
 /***MutexLock Stuff***/
 typedef struct
 {
@@ -17,5 +21,6 @@ void releaseLock(MutexLock*);
 void acquireLock(MutexLock*); //blocking function
 
 uint32_t tryAquireLock(MutexLock*); //non blocking function
+
 
 #endif //LOCKS_H
