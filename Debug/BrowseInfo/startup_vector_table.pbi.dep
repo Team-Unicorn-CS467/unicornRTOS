@@ -1,8 +1,7 @@
-C:\Users\AsynchronousGalaxy\Documents\GitHub\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi: \
-  C:\Users\AsynchronousGalaxy\Documents\GitHub\unicornRTOS\startup_vector_table.c \
-  C:\Users\AsynchronousGalaxy\Documents\GitHub\unicornRTOS\exception_handlers.h \
-  C:\Users\AsynchronousGalaxy\Documents\GitHub\unicornRTOS\lm4f120h5qr.h \
-  C:\Users\AsynchronousGalaxy\Documents\GitHub\unicornRTOS\unicorn.h \
+C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi: \
+  C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\startup_vector_table.c \
+  C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\exception_handlers.h \
+  C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\unicorn.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\stdint.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\ycheck.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\yvals.h \

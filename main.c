@@ -1,6 +1,5 @@
 #include <stdint.h>
 #include "bsp.h"     // for the blink functions
-//#include "ticks.h"        // for resetTicks()
 #include "TM4C123GH6PM.h" // map of named hardware addresses
 #include "unicorn.h"
 #include <intrinsics.h>

@@ -1,6 +1,4 @@
-//#include "ticks.h" //for incrementTicks()
 #include "exception_handlers.h"
-#include "lm4f120h5qr.h"
 #include "unicorn.h"
 
 //used to substitute instead of the IAR generic definition of the interrupt vector table
