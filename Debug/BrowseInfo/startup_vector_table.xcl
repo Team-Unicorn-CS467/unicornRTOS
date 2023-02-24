@@ -1,25 +1,19 @@
-"C:\Users\AsynchronousGalaxy\Documents\GitHub\unicornRTOS\startup_vector_table.c"
+"C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\startup_vector_table.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -funsigned-char
 -MD
 -MF
-C:\Users\AsynchronousGalaxy\Documents\GitHub\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi.dep
+C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi.dep
 -o
-C:\Users\AsynchronousGalaxy\Documents\GitHub\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi
+C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi
 -I
-C:\Users\AsynchronousGalaxy\Documents\GitHub\unicornRTOS
+C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS
 -I
-C:\Users\AsynchronousGalaxy\Documents\GitHub\unicornRTOS\qpc\3rd_party\CMSIS\Include
+C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\CMSIS\Include
 -I
-C:\Users\AsynchronousGalaxy\Documents\GitHub\unicornRTOS\qpc\include
--I
-C:\Users\AsynchronousGalaxy\Documents\GitHub\unicornRTOS\qpc\3rd_party\ek-tm4c123gxl
--I
-C:\Users\AsynchronousGalaxy\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include
--I
-C:\Users\AsynchronousGalaxy\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123
+C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\TM4C123GH6PM
 -I
 C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c\aarch32
 -I
@@ -27,15 +21,9 @@ C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc
 -I
 C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c
 -I
-C:\Users\AsynchronousGalaxy\Documents\GitHub\unicornRTOS\qpc\3rd_party\CMSIS\Include
+C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\CMSIS\Include
 -I
-C:\Users\AsynchronousGalaxy\Documents\GitHub\unicornRTOS\qpc\include
--I
-C:\Users\AsynchronousGalaxy\Documents\GitHub\unicornRTOS\qpc\3rd_party\ek-tm4c123gxl
--I
-C:\Users\AsynchronousGalaxy\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include
--I
-C:\Users\AsynchronousGalaxy\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123
+C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\TM4C123GH6PM
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0
@@ -238,7 +226,7 @@ C:\Users\AsynchronousGalaxy\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\I
 -D__UINTPTR_T_MAX__=0xffffffffU
 -D__INTPTR_SIZE_PREFIX__=""
 -D__JMP_BUF_ELEMENT_TYPE__=unsigned long long int
--D__JMP_BUF_NUM_ELEMENTS__=8
+-D__JMP_BUF_NUM_ELEMENTS__=16
 -D__TID__=0xcf60
 -D__VER__=9032001
 -D__BUILD_NUMBER__=338
@@ -276,7 +264,7 @@ C:\Users\AsynchronousGalaxy\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\I
 -D__PRAGMA_PACK_ON__=1
 -D__MULTIPLE_INHERITANCE__=1
 -D__FOR_DEBUG__=
--D__AAPCS__=1
+-D__AAPCS_VFP__=1
 -D__ARM4TM__=4
 -D__ARM5TM__=5
 -D__ARM5T__=5
@@ -289,6 +277,16 @@ C:\Users\AsynchronousGalaxy\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\I
 -D__ARM7EM__=13
 -D__ARM7M__=7
 -D__ARM7__=7
+-D__ARMVFPV1__=1
+-D__ARMVFPV2__=2
+-D__ARMVFPV3_D16__=1
+-D__ARMVFPV3_FP16__=1
+-D__ARMVFPV3__=3
+-D__ARMVFPV4__=4
+-D__ARMVFP_D16__=1
+-D__ARMVFP_FP16__=1
+-D__ARMVFP_SP__=1
+-D__ARMVFP__=__ARMVFPV4__
 -D__ARM_32BIT_STATE=1
 -D__ARM_ACLE=201
 -D__ARM_ALIGN_MAX_PWR=8
@@ -299,6 +297,7 @@ C:\Users\AsynchronousGalaxy\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\I
 -D__ARM_FEATURE_CLZ=1
 -D__ARM_FEATURE_COPROC=15
 -D__ARM_FEATURE_DSP=1
+-D__ARM_FEATURE_FMA=1
 -D__ARM_FEATURE_IDIV=1
 -D__ARM_FEATURE_LDREX=7
 -D__ARM_FEATURE_MVE=0
@@ -306,10 +305,11 @@ C:\Users\AsynchronousGalaxy\AppData\Local\Arm\Packs\Keil\TM4C_DFP\1.1.0\Device\I
 -D__ARM_FEATURE_SAT=1
 -D__ARM_FEATURE_SIMD32=1
 -D__ARM_FEATURE_UNALIGNED=1
+-D__ARM_FP=6
 -D__ARM_FP16_ARGS=1
 -D__ARM_FP16_FORMAT_IEEE=1
 -D__ARM_MEDIA__=1
--D__ARM_PCS=1
+-D__ARM_PCS_VFP=1
 -D__ARM_PROFILE_M__=1
 -D__ARM_SIZEOF_MINIMAL_ENUM=1
 -D__ARM_SIZEOF_WCHAR_T=4

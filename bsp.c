@@ -48,7 +48,7 @@ void BSP_init(void)
 #ifdef unicornRTOS
 		//systick stuff
     // register abstractions in core_cm4h.h (CMSIS directory)
-    SysTick->LOAD = (uint32_t)1000000U;
+    SysTick->LOAD = (uint32_t)15999U;
     SysTick->VAL  = 0U;                          //clear on write (so clears the counter value)
     SysTick->CTRL = (uint32_t)0b00000111U;    //clock source, interrupt enable, counter enable in 'multi-shot' (repeating mode)
 		
