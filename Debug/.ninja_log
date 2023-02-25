@@ -67,3 +67,11 @@
 271	422	6988306926208545	C:/Users/atoyn/Downloads/unicornRTOS_clone/unicornRTOS/Debug/Obj/unicorn.o	5732cff49279545a
 418	523	6988306927367733	C:/Users/atoyn/Downloads/unicornRTOS_clone/unicornRTOS/Debug/Obj/usertasks.o	f4ade4a9cd1ff92
 525	588	6988306928057882	C:/Users/atoyn/Downloads/unicornRTOS_clone/unicornRTOS/Debug/Exe/project.out	75d15f34c8a96f7e
+7	164	6990399025502741	C:/Users/atoyn/Downloads/unicornRTOS/Debug/Obj/locks.o	3dbb162d20349d15
+2	249	6990399026349080	C:/Users/atoyn/Downloads/unicornRTOS/Debug/Obj/main.o	af6d18729eacac38
+165	277	6990399026661703	C:/Users/atoyn/Downloads/unicornRTOS/Debug/Obj/bsp.o	a51cc256cc35dd75
+251	370	6990399027665123	C:/Users/atoyn/Downloads/unicornRTOS/Debug/Obj/board_io.o	8bc32fb95b124aea
+278	437	6990399028355212	C:/Users/atoyn/Downloads/unicornRTOS/Debug/Obj/unicorn.o	8c9c52928c69535b
+371	515	6990399029136566	C:/Users/atoyn/Downloads/unicornRTOS/Debug/Obj/usertasks.o	db3bbc4b631e2534
+438	546	6990399029357891	C:/Users/atoyn/Downloads/unicornRTOS/Debug/Obj/startup_vector_table.o	38fa79347b349ba4
+548	625	6990399030139293	C:/Users/atoyn/Downloads/unicornRTOS/Debug/Exe/project.out	94ab4b2cf24c29f

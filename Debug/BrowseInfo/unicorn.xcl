@@ -1,19 +1,19 @@
-"C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\unicorn.c"
+"C:\Users\atoyn\Downloads\unicornRTOS\unicorn.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512
 -funsigned-char
 -MD
 -MF
-C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\Debug\BrowseInfo\unicorn.pbi.dep
+C:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\unicorn.pbi.dep
 -o
-C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\Debug\BrowseInfo\unicorn.pbi
+C:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\unicorn.pbi
 -I
-C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS
+C:\Users\atoyn\Downloads\unicornRTOS
 -I
-C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\CMSIS\Include
+C:\Users\atoyn\Downloads\unicornRTOS\CMSIS\Include
 -I
-C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\TM4C123GH6PM
+C:\Users\atoyn\Downloads\unicornRTOS\TM4C123GH6PM
 -I
 C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c\aarch32
 -I
@@ -21,9 +21,9 @@ C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc
 -I
 C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c
 -I
-C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\CMSIS\Include
+C:\Users\atoyn\Downloads\unicornRTOS\CMSIS\Include
 -I
-C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\TM4C123GH6PM
+C:\Users\atoyn\Downloads\unicornRTOS\TM4C123GH6PM
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0

@@ -13,15 +13,10 @@ int main()
   // using Kevin's SUPER bsp
   BSP_init();
   
-
-  BSP_setLED(LED_RED, ON);
-  BSP_setLED(LED_GREEN, ON);
-  BSP_setLED(LED_BLUE, ON);
-  
   //OS stuff
   initializeScheduler();
   
-  readyNewTask(userTaskLoad, 8U); //max priority
+  readyNewTask(userTaskLoad, MAX_TASKS); // MAX_TASKS is max priority
   
   //__asm("CPSID I");
   __asm("CPSID I");

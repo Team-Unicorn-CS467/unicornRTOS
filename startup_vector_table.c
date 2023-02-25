@@ -1,6 +1,10 @@
 #include "exception_handlers.h"
 #include "unicorn.h"
+
+// FOR TESTING ONLY
 #include "bsp.h"
+uint32_t FirstPinAHBAddress = (uint32_t)(GPIOF_AHB); // redefined here to provide easy access in inline assembly
+// FOR TESTING ONLY
 
 //used to substitute instead of the IAR generic definition of the interrupt vector table
 
@@ -56,6 +60,16 @@ void handler_PendSV(void)
   //disable interrupts
   __asm("CPSID I\n" 
 
+  // FOR TESTING ONLY
+  // modifying these registers is ok because they were already pushed upon interrupt entry
+  // equivalent to BSP_setGPIO(GPIOF_AHB, GPIO_PF2, HIGH) which asserts the first pin 
+    "LDR        R1, =FirstPinAHBAddress\n"
+    "LDR        R0, [R1]\n"
+    "MOVS       R1, #4\n"
+    "MOVS       R2, #4\n"
+    "STR        R2, [R0, R1, LSL #2]\n"
+  // FOR TESTING ONLY      
+        
     "LDR        R2, =currentTask\n"
     "LDR        R0, [R2]\n"
         
@@ -64,7 +78,7 @@ void handler_PendSV(void)
   
   // save r4-r11 onto stack
     "PUSH       {r4-r11}\n"
-  
+    
   // currentTask->sp = sp;
     "STR        SP, [R0]\n" 
     
@@ -82,7 +96,17 @@ void handler_PendSV(void)
       
   // restore nextTask's r4-r11 regs
     "POP        {r4-r11}\n"
-    
+
+  // FOR TESTING ONLY
+  // modifying these registers is ok because they were already pushed upon interrupt entry
+  // equivalent to BSP_setGPIO(GPIOF_AHB, GPIO_PF2, LOW) which deasserts the first pin 
+    "LDR        R1, =FirstPinAHBAddress\n"
+    "LDR        R0, [R1]\n"
+    "MOVS       R1, #4\n"
+    "MOVS       R2, #0\n"
+    "STR        R2, [R0, R1, LSL #2]\n"
+  // FOR TESTING ONLY
+      
   // enable interrupts:
     "CPSIE I\n"
   
@@ -93,8 +117,19 @@ void handler_PendSV(void)
 void handler_SysTick(void) //incrementing ticks, scheduling/switching task
 {  
   __asm("CPSID I"); //disable interrupts
+  
+  // FOR TESTING ONLY
+  BSP_setGPIO(GPIOF_AHB, GPIO_PF3, HIGH); // second pin
+  // FOR TESTING ONLY
+  
   decrementTimeouts();
+  
   sched(); //schedule next task and set PendSV to trigger (as soon as interrupts are enabled)
+  
+  // FOR TESTING ONLY
+  BSP_setGPIO(GPIOF_AHB, GPIO_PF3, LOW); // second pin
+  // FOR TESTING ONLY
+  
   __asm("CPSIE I"); //enable interrupts)
   
 }
