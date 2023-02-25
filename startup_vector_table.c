@@ -1,5 +1,6 @@
 #include "exception_handlers.h"
 #include "unicorn.h"
+#include "bsp.h"
 
 //used to substitute instead of the IAR generic definition of the interrupt vector table
 
@@ -13,7 +14,7 @@ void handler_NMI(void) //denial of service for now
 
 void handler_HardFault(void) //denial of service for now
 {
-  while(1) {}
+  while(1) { NVIC_SystemReset(); }
 }
 
 void handler_MemoryManagementFault(void) //denial of service for now
