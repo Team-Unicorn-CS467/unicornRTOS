@@ -5,7 +5,7 @@
 
 #define TASK_STACK_WORD_SIZE 64U     // later this will not be a constant value
 #define BYTES_PER_WORD       4U      // for 32 bit architecture
-#define MAX_TASKS            8U
+#define MAX_TASKS            16U
 
 /*** note: the ARM Application Procedure Call Standard (AAPCS) disallows
     clobbering of registers R4 through R11. I believe this means the compiler

@@ -3,6 +3,10 @@
 #include "TM4C123GH6PM.h" // NVIC_SystemReset()
 #include "locks.h"
 
+// FOR TESTING ONLY
+#include "bsp.h"
+// FOR TESTING ONLY
+
 Q_DEFINE_THIS_FILE   // required for using Q_ASSERT
 
 Task taskTable[MAX_TASKS + 1];
@@ -180,6 +184,10 @@ void exitTask()
 void sched()
 {
   
+  // FOR TESTING ONLY
+  BSP_setGPIO(GPIOB_AHB, GPIO_PB3, HIGH); // third pin
+  // FOR TESTING ONLY
+  
   // set nextTask to Task with most sig. bit set in readyTasks
   // (this can be the idle task if no tasks of higher priority are ready)
   nextTask = &(taskTable[getHighestSetBit(readyTasks)]);
@@ -193,7 +201,12 @@ void sched()
   Task const *next = nextTask;
   if (currentTask != next)
   //NVIC_INT_CTRL_R |= 0x10000000U; //trigger PendSV exception via interrupt control and state register in system control block
-    *(uint32_t volatile *)0xE000ED04 = (1U << 28U);  
+    *(uint32_t volatile *)0xE000ED04 = (1U << 28U);
+  
+  // FOR TESTING ONLY
+  BSP_setGPIO(GPIOB_AHB, GPIO_PB3, LOW); // third pin
+  // FOR TESTING ONLY
+  
 }
 
 

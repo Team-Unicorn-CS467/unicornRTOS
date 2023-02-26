@@ -1,20 +1,20 @@
-C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\Debug\BrowseInfo\usertasks.pbi: \
-  C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\usertasks.c \
-  C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\usertasks.h \
-  C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\bsp.h \
+C:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\usertasks.pbi: \
+  C:\Users\atoyn\Downloads\unicornRTOS\usertasks.c \
+  C:\Users\atoyn\Downloads\unicornRTOS\usertasks.h \
+  C:\Users\atoyn\Downloads\unicornRTOS\bsp.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\stdint.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\ycheck.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\yvals.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Defaults.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Config_Normal.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\DLib_Product.h \
-  C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\TM4C123GH6PM\TM4C123GH6PM.h \
-  C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\CMSIS\Include\core_cm4.h \
-  C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\CMSIS\Include\cmsis_version.h \
-  C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\CMSIS\Include\cmsis_compiler.h \
-  C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\CMSIS\Include\cmsis_iccarm.h \
+  C:\Users\atoyn\Downloads\unicornRTOS\TM4C123GH6PM\TM4C123GH6PM.h \
+  C:\Users\atoyn\Downloads\unicornRTOS\CMSIS\Include\core_cm4.h \
+  C:\Users\atoyn\Downloads\unicornRTOS\CMSIS\Include\cmsis_version.h \
+  C:\Users\atoyn\Downloads\unicornRTOS\CMSIS\Include\cmsis_compiler.h \
+  C:\Users\atoyn\Downloads\unicornRTOS\CMSIS\Include\cmsis_iccarm.h \
   C:\Program\ Files\IAR\ Systems\Embedded\ Workbench\ 9.1\arm\inc\c\aarch32\iccarm_builtin.h \
-  C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\CMSIS\Include\mpu_armv7.h \
-  C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\TM4C123GH6PM\system_TM4C123GH6PM.h \
-  C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\locks.h \
-  C:\Users\atoyn\Downloads\unicornRTOS_clone\unicornRTOS\unicorn.h
+  C:\Users\atoyn\Downloads\unicornRTOS\CMSIS\Include\mpu_armv7.h \
+  C:\Users\atoyn\Downloads\unicornRTOS\TM4C123GH6PM\system_TM4C123GH6PM.h \
+  C:\Users\atoyn\Downloads\unicornRTOS\locks.h \
+  C:\Users\atoyn\Downloads\unicornRTOS\unicorn.h

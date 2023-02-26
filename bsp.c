@@ -48,9 +48,9 @@ void BSP_init(void)
 #ifdef unicornRTOS
 		//systick stuff
     // register abstractions in core_cm4h.h (CMSIS directory)
-    SysTick->LOAD = (uint32_t)15999U;
-    SysTick->VAL  = 0U;                          //clear on write (so clears the counter value)
-    SysTick->CTRL = (uint32_t)0b00000111U;    //clock source, interrupt enable, counter enable in 'multi-shot' (repeating mode)
+    SysTick->LOAD = (uint32_t)15999U;           //sets a tick rate of 1000 ticks per sec???
+    SysTick->VAL  = 0U;                         //clear on write (so clears the counter value)
+    SysTick->CTRL = (uint32_t)0b00000111U;      //clock source, interrupt enable, counter enable in 'multi-shot' (repeating mode)
 		
     //exception handler preemption priorty stuff
     NVIC_SetPriority(SysTick_IRQn, 0U); // set Systick to higherst priority
