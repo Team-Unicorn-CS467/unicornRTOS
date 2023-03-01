@@ -3,6 +3,10 @@
 #include "TM4C123GH6PM.h" // NVIC_SystemReset()
 #include "locks.h"
 
+// FOR TESTING ONLY
+#include "bsp.h"
+// FOR TESTING ONLY
+
 
 Q_DEFINE_THIS_FILE   // required for using Q_ASSERT
 
@@ -316,6 +320,11 @@ void timeoutSleep(uint32_t ticks)
 // increment elapsed and compare to timeout of task (if any) at top of tickSleepHeap
 void decrementTimeouts(void)
 {
+
+  // FOR TESTING ONLY
+  BSP_setGPIO(GPIOF_AHB, GPIO_PF3, HIGH); // second pin
+  // FOR TESTING ONLY
+
   acquireLock(&tickSleepLock);
   if (tickSleepCount != 0) // 1 or more sleeping tasks
   {
@@ -333,7 +342,13 @@ void decrementTimeouts(void)
     }
   }
   releaseLock(&tickSleepLock);
+  
   __asm("CPSID I"); // disable interrupts heading into sched()
+  
+  // FOR TESTING ONLY
+  BSP_setGPIO(GPIOF_AHB, GPIO_PF3, LOW); // second pin
+  // FOR TESTING ONLY
+  
   sched(); // schedule next task and set PendSV to trigger (as soon as interrupts are enabled)
 }
 
@@ -471,10 +486,19 @@ void initializeScheduler(EntryFunction userTasksLoader, uint8_t loaderPriority)
 // interrupts must be disabled when this function is called
 void sched()
 {
+
+  // FOR TESTING ONLY
+  BSP_setGPIO(GPIOB_AHB, GPIO_PB3, HIGH);
+  // FOR TESTING ONLY
   
   // try to aquire the locks and if they are held elsewhere, abort
   if (tryAquireLock(&readyTasksLock) == LOCK_UNAVAILABLE) // aquire lock failed
   {
+
+    // FOR TESTING ONLY
+    BSP_setGPIO(GPIOB_AHB, GPIO_PB3, LOW);
+    // FOR TESTING ONLY
+    
     __asm("CPSIE I"); //enable interrupts) 
     return;
   }
@@ -505,6 +529,11 @@ void sched()
   }
   
   releaseLock(&readyTasksLock);
+  
+  // FOR TESTING ONLY
+  BSP_setGPIO(GPIOB_AHB, GPIO_PB3, LOW);
+  // FOR TESTING ONLY
+  
   __asm("CPSIE I"); //enable interrupts)   
   
 }

@@ -2,6 +2,11 @@
 #include "exception_handlers.h"
 #include "unicorn.h"
 
+// FOR TESTING ONLY
+#include "bsp.h"
+uint32_t FirstPinAHBAddress = (uint32_t)(GPIOF_AHB); // redefined here to provide easy access in inline assembly
+// FOR TESTING ONLY
+
 //used to substitute instead of the IAR generic definition of the interrupt vector table
 
 extern int CSTACK$$Limit; //just introducing the symbol to the compiler know this value will be pulled in later (during linking???)
@@ -14,7 +19,7 @@ void handler_NMI(void) //denial of service for now
 
 void handler_HardFault(void) //denial of service for now
 {
-  while(1) {}
+  while(1) { NVIC_SystemReset(); }
 }
 
 void handler_MemoryManagementFault(void) //denial of service for now
@@ -55,7 +60,17 @@ void handler_PendSV(void)
   
   //disable interrupts
   __asm("CPSID I\n" 
-  
+
+  // FOR TESTING ONLY
+  // modifying these registers is ok because they were already pushed upon interrupt entry
+  // equivalent to BSP_setGPIO(GPIOF_AHB, GPIO_PF2, HIGH) which asserts the first pin 
+    "LDR        R1, =FirstPinAHBAddress\n"
+    "LDR        R0, [R1]\n"
+    "MOVS       R1, #4\n"
+    "MOVS       R2, #4\n"
+    "STR        R2, [R0, R1, LSL #2]\n"
+  // FOR TESTING ONLY  
+        
   // save r4-r11 onto stack
     "PUSH       {r4-r11}\n"
   
@@ -77,7 +92,17 @@ void handler_PendSV(void)
       
   // restore nextTask's r4-r11 regs
     "POP        {r4-r11}\n"
-    
+
+  // FOR TESTING ONLY
+  // modifying these registers is ok because they were already pushed upon interrupt entry
+  // equivalent to BSP_setGPIO(GPIOF_AHB, GPIO_PF2, LOW) which deasserts the first pin 
+    "LDR        R1, =FirstPinAHBAddress\n"
+    "LDR        R0, [R1]\n"
+    "MOVS       R1, #4\n"
+    "MOVS       R2, #0\n"
+    "STR        R2, [R0, R1, LSL #2]\n"
+  // FOR TESTING ONLY
+      
   // enable interrupts:
     "CPSIE I\n"
   

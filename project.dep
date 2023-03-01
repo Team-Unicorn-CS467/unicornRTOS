@@ -5,75 +5,69 @@
     <configuration>
         <name>Debug</name>
         <outputs>
-            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
             <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Normal.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
             <file>$TOOLKIT_DIR$\inc\c\aarch32\iccarm_builtin.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
             <file>$PROJ_DIR$\Debug\Obj\locks.o</file>
-            <file>$PROJ_DIR$\main.c</file>
-            <file>$PROJ_DIR$\locks.c</file>
-            <file>$PROJ_DIR$\locks.h</file>
-            <file>$PROJ_DIR$\unicorn.h</file>
+            <file>$PROJ_DIR$\unicorn.c</file>
             <file>$PROJ_DIR$\usertasks.c</file>
-            <file>$PROJ_DIR$\usertasks.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\unicorn.o</file>
+            <file>$PROJ_DIR$\CMSIS\Include\mpu_armv7.h</file>
             <file>$TOOLKIT_DIR$\inc\c\aarch32\iar_intrinsics_common.h</file>
             <file>$TOOLKIT_DIR$\inc\c\aarch32\intrinsics.h</file>
-            <file>$PROJ_DIR$\exception_handlers.h</file>
-            <file>$PROJ_DIR$\qassert.h</file>
-            <file>$PROJ_DIR$\unicorn.c</file>
-            <file>$PROJ_DIR$\startup_vector_table.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\unicorn.o</file>
+            <file>$PROJ_DIR$\unicorn.h</file>
+            <file>$PROJ_DIR$\TM4C123GH6PM\TM4C123GH6PM.h</file>
+            <file>$PROJ_DIR$\usertasks.h</file>
+            <file>$PROJ_DIR$\CMSIS\Include\cmsis_compiler.h</file>
+            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
             <file>$PROJ_DIR$\Debug\Obj\startup_vector_table.o</file>
             <file>$PROJ_DIR$\CMSIS\Include\cmsis_version.h</file>
             <file>$PROJ_DIR$\Debug\Obj\main.o</file>
-            <file>$PROJ_DIR$\CMSIS\Include\cmsis_compiler.h</file>
-            <file>$PROJ_DIR$\CMSIS\Include\mpu_armv7.h</file>
-            <file>$PROJ_DIR$\TM4C123GH6PM\TM4C123GH6PM.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
-            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
-            <file>$TOOLKIT_DIR$\config\linker\TexasInstruments\LM4F120H5QR.icf</file>
-            <file>$PROJ_DIR$\Debug\Exe\project.out</file>
+            <file>$PROJ_DIR$\startup_vector_table.c</file>
+            <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+            <file>$PROJ_DIR$\bsp.c</file>
+            <file>$PROJ_DIR$\bsp.h</file>
+            <file>$PROJ_DIR$\locks.c</file>
+            <file>$PROJ_DIR$\locks.h</file>
+            <file>$PROJ_DIR$\main.c</file>
+            <file>$PROJ_DIR$\qassert.h</file>
+            <file>$PROJ_DIR$\exception_handlers.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\usertasks.o</file>
+            <file>$PROJ_DIR$\Debug\Obj\bsp.o</file>
             <file>$PROJ_DIR$\CMSIS\Include\core_cm4.h</file>
+            <file>$PROJ_DIR$\CMSIS\Include\cmsis_iccarm.h</file>
+            <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
+            <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
+            <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+            <file>$PROJ_DIR$\Debug\Exe\project.out</file>
+            <file>$PROJ_DIR$\Debug\List\project.map</file>
             <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
             <file>$TOOLKIT_DIR$\lib\m7M_tl.a</file>
-            <file>$TOOLKIT_DIR$\lib\dl7M_tln.a</file>
-            <file>$PROJ_DIR$\TM4C123GH6PM\system_TM4C123GH6PM.h</file>
-            <file>$PROJ_DIR$\Debug\Obj\usertasks.o</file>
-            <file>$PROJ_DIR$\Debug\List\project.map</file>
+            <file>$TOOLKIT_DIR$\config\linker\TexasInstruments\LM4F120H5QR.icf</file>
             <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
-            <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
-            <file>$PROJ_DIR$\CMSIS\Include\cmsis_iccarm.h</file>
-            <file>$PROJ_DIR$\bsp.h</file>
-            <file>$PROJ_DIR$\bsp.c</file>
-            <file>$PROJ_DIR$\Debug\Obj\bsp.o</file>
+            <file>$PROJ_DIR$\TM4C123GH6PM\system_TM4C123GH6PM.h</file>
         </outputs>
         <file>
-            <name>$PROJ_DIR$\main.c</name>
+            <name>[ROOT_NODE]</name>
             <outputs>
                 <tool>
-                    <name>ICCARM</name>
-                    <file> 20</file>
+                    <name>ILINK</name>
+                    <file> 34 35</file>
                 </tool>
             </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 24 0 2 35 1 25 38 23 28 19 21 37 3 22 32 8 7 13 12 10</file>
-                </tool>
-            </inputs>
         </file>
         <file>
-            <name>$PROJ_DIR$\locks.c</name>
+            <name>$PROJ_DIR$\unicorn.c</name>
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 4</file>
+                    <file> 9</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 7 24 0 2 35 1 25</file>
+                    <file> 10 14 19 2 39 0 33 23 25 11 29 16 13 30 1 6 40 21</file>
                 </tool>
             </inputs>
         </file>
@@ -82,28 +76,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 33</file>
+                    <file> 27</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 10 38 24 0 2 35 1 25 23 28 19 21 37 3 22 32 7 8</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\unicorn.c</name>
-            <outputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 11</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ICCARM</name>
-                    <file> 8 24 0 2 35 1 25 7 15 23 28 19 21 37 3 22 32</file>
+                    <file> 12 21 14 19 2 39 0 33 11 29 16 13 30 1 6 40 23 10</file>
                 </tool>
             </inputs>
         </file>
@@ -112,37 +91,13 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 18</file>
+                    <file> 15</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 14 8 24 0 2 35 1 25 7</file>
-                </tool>
-            </inputs>
-        </file>
-        <file>
-            <name>[ROOT_NODE]</name>
-            <outputs>
-                <tool>
-                    <name>ILINK</name>
-                    <file> 27 34</file>
-                </tool>
-            </outputs>
-        </file>
-        <file>
-            <name>$PROJ_DIR$\Debug\Exe\project.out</name>
-            <outputs>
-                <tool>
-                    <name>ILINK</name>
-                    <file> 34</file>
-                </tool>
-            </outputs>
-            <inputs>
-                <tool>
-                    <name>ILINK</name>
-                    <file> 26 40 4 20 18 11 33 36 29 30 31</file>
+                    <file> 26 10 14 19 2 39 0 33 23 21 11 29 16 13 30 1 6 40</file>
                 </tool>
             </inputs>
         </file>
@@ -151,13 +106,58 @@
             <outputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 40</file>
+                    <file> 28</file>
                 </tool>
             </outputs>
             <inputs>
                 <tool>
                     <name>ICCARM</name>
-                    <file> 38 24 0 2 35 1 25 23 28 19 21 37 3 22 32</file>
+                    <file> 21 14 19 2 39 0 33 11 29 16 13 30 1 6 40</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\locks.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 3</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 23 14 19 2 39 0 33</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 17</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ICCARM</name>
+                    <file> 14 19 2 39 0 33 21 11 29 16 13 30 1 6 40 10 23 8 7 12</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\Debug\Exe\project.out</name>
+            <outputs>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 35</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>ILINK</name>
+                    <file> 38 28 3 17 15 9 27 31 36 37 32</file>
                 </tool>
             </inputs>
         </file>

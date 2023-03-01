@@ -45395,13 +45395,27 @@
     "scope": null
   },
   {
+    "ID": "c:@FirstPinAHBAddress",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "FirstPinAHBAddress",
+    "location": {
+      "column": "10",
+      "line": "7",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\startup_vector_table.c"
+    },
+    "name": "FirstPinAHBAddress",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
     "ID": "c:@CSTACK$$Limit",
     "What": "Variable",
     "defdec": "Dec",
     "display": "CSTACK$$Limit",
     "location": {
       "column": "12",
-      "line": "7",
+      "line": "12",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\startup_vector_table.c"
     },
     "name": "CSTACK$$Limit",
@@ -45415,7 +45429,7 @@
     "display": "void __iar_program_start(void)",
     "location": {
       "column": "6",
-      "line": "8",
+      "line": "13",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\startup_vector_table.c"
     },
     "name": "__iar_program_start",
@@ -45429,7 +45443,7 @@
     "display": "void handler_NMI(void)",
     "location": {
       "column": "6",
-      "line": "10",
+      "line": "15",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\startup_vector_table.c"
     },
     "name": "handler_NMI",
@@ -45443,7 +45457,7 @@
     "display": "void handler_HardFault(void)",
     "location": {
       "column": "6",
-      "line": "15",
+      "line": "20",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\startup_vector_table.c"
     },
     "name": "handler_HardFault",
@@ -45457,7 +45471,7 @@
     "display": "void handler_MemoryManagementFault(void)",
     "location": {
       "column": "6",
-      "line": "20",
+      "line": "25",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\startup_vector_table.c"
     },
     "name": "handler_MemoryManagementFault",
@@ -45471,7 +45485,7 @@
     "display": "void handler_BusFault(void)",
     "location": {
       "column": "6",
-      "line": "25",
+      "line": "30",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\startup_vector_table.c"
     },
     "name": "handler_BusFault",
@@ -45485,7 +45499,7 @@
     "display": "void handler_UsageFault(void)",
     "location": {
       "column": "6",
-      "line": "30",
+      "line": "35",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\startup_vector_table.c"
     },
     "name": "handler_UsageFault",
@@ -45499,7 +45513,7 @@
     "display": "void handler_SVCall(void)",
     "location": {
       "column": "6",
-      "line": "35",
+      "line": "40",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\startup_vector_table.c"
     },
     "name": "handler_SVCall",
@@ -45513,7 +45527,7 @@
     "display": "void handler_PendSV(void)",
     "location": {
       "column": "6",
-      "line": "41",
+      "line": "46",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\startup_vector_table.c"
     },
     "name": "handler_PendSV",
@@ -45527,7 +45541,7 @@
     "display": "void handler_SysTick(void)",
     "location": {
       "column": "6",
-      "line": "88",
+      "line": "113",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\startup_vector_table.c"
     },
     "name": "handler_SysTick",
@@ -45541,7 +45555,7 @@
     "display": "__vector_table",
     "location": {
       "column": "11",
-      "line": "93",
+      "line": "118",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\startup_vector_table.c"
     },
     "name": "__vector_table",
@@ -45555,7 +45569,7 @@
     "display": "Q_this_module_",
     "location": {
       "column": "1",
-      "line": "7",
+      "line": "11",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "Q_this_module_",
@@ -45563,13 +45577,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@194@macro@LOC_RUNNING",
+    "ID": "c:unicorn.c@256@macro@LOC_RUNNING",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "LOC_RUNNING",
     "location": {
       "column": "9",
-      "line": "10",
+      "line": "14",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "LOC_RUNNING",
@@ -45577,13 +45591,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@267@macro@LOC_DORMANT",
+    "ID": "c:unicorn.c@329@macro@LOC_DORMANT",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "LOC_DORMANT",
     "location": {
       "column": "9",
-      "line": "11",
+      "line": "15",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "LOC_DORMANT",
@@ -45591,13 +45605,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@334@macro@LOC_TICKSLEEP",
+    "ID": "c:unicorn.c@396@macro@LOC_TICKSLEEP",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "LOC_TICKSLEEP",
     "location": {
       "column": "9",
-      "line": "12",
+      "line": "16",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "LOC_TICKSLEEP",
@@ -45605,13 +45619,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@402@macro@LOC_LOCKSLEEP",
+    "ID": "c:unicorn.c@464@macro@LOC_LOCKSLEEP",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "LOC_LOCKSLEEP",
     "location": {
       "column": "9",
-      "line": "13",
+      "line": "17",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "LOC_LOCKSLEEP",
@@ -45625,7 +45639,7 @@
     "display": "tasks",
     "location": {
       "column": "13",
-      "line": "16",
+      "line": "20",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "tasks",
@@ -45639,7 +45653,7 @@
     "display": "dormantStack",
     "location": {
       "column": "14",
-      "line": "31",
+      "line": "35",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "dormantStack",
@@ -45653,7 +45667,7 @@
     "display": "dormantCount",
     "location": {
       "column": "10",
-      "line": "32",
+      "line": "36",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "dormantCount",
@@ -45667,7 +45681,7 @@
     "display": "dormantStackLock",
     "location": {
       "column": "11",
-      "line": "33",
+      "line": "37",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "dormantStackLock",
@@ -45681,7 +45695,7 @@
     "display": "readyTasks",
     "location": {
       "column": "10",
-      "line": "39",
+      "line": "43",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "readyTasks",
@@ -45695,7 +45709,7 @@
     "display": "readyCount",
     "location": {
       "column": "10",
-      "line": "40",
+      "line": "44",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "readyCount",
@@ -45709,7 +45723,7 @@
     "display": "readyMask",
     "location": {
       "column": "10",
-      "line": "41",
+      "line": "45",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "readyMask",
@@ -45723,7 +45737,7 @@
     "display": "readyTasksLock",
     "location": {
       "column": "11",
-      "line": "42",
+      "line": "46",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "readyTasksLock",
@@ -45737,7 +45751,7 @@
     "display": "void addTaskToReadyTasks(struct Task *)",
     "location": {
       "column": "6",
-      "line": "48",
+      "line": "52",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "addTaskToReadyTasks",
@@ -45745,13 +45759,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@1677@F@addTaskToReadyTasks@taskP",
+    "ID": "c:unicorn.c@1739@F@addTaskToReadyTasks@taskP",
     "What": "Variable",
     "defdec": "Def",
     "display": "taskP",
     "location": {
       "column": "14",
-      "line": "50",
+      "line": "54",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "taskP",
@@ -45765,7 +45779,7 @@
     "display": "struct Task * getNextReadyTask(void)",
     "location": {
       "column": "14",
-      "line": "70",
+      "line": "74",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "getNextReadyTask",
@@ -45773,13 +45787,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@2351@F@getNextReadyTask@topPriority",
+    "ID": "c:unicorn.c@2413@F@getNextReadyTask@topPriority",
     "What": "Variable",
     "defdec": "Def",
     "display": "topPriority",
     "location": {
       "column": "12",
-      "line": "72",
+      "line": "76",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "topPriority",
@@ -45787,13 +45801,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@2407@F@getNextReadyTask@returnTask",
+    "ID": "c:unicorn.c@2469@F@getNextReadyTask@returnTask",
     "What": "Variable",
     "defdec": "Def",
     "display": "returnTask",
     "location": {
       "column": "16",
-      "line": "73",
+      "line": "77",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "returnTask",
@@ -45807,7 +45821,7 @@
     "display": "void readyNewTask(EntryFunction, uint8_t)",
     "location": {
       "column": "6",
-      "line": "90",
+      "line": "94",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "readyNewTask",
@@ -45815,13 +45829,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@3292@F@readyNewTask@tsk",
+    "ID": "c:unicorn.c@3354@F@readyNewTask@tsk",
     "What": "Variable",
     "defdec": "Def",
     "display": "tsk",
     "location": {
       "column": "16",
-      "line": "99",
+      "line": "103",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "tsk",
@@ -45829,13 +45843,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@3412@F@readyNewTask@stackEnd",
+    "ID": "c:unicorn.c@3474@F@readyNewTask@stackEnd",
     "What": "Variable",
     "defdec": "Def",
     "display": "stackEnd",
     "location": {
       "column": "12",
-      "line": "103",
+      "line": "107",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "stackEnd",
@@ -45843,13 +45857,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@3548@F@readyNewTask@remainder",
+    "ID": "c:unicorn.c@3610@F@readyNewTask@remainder",
     "What": "Variable",
     "defdec": "Def",
     "display": "remainder",
     "location": {
       "column": "12",
-      "line": "104",
+      "line": "108",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "remainder",
@@ -45857,13 +45871,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@3759@F@readyNewTask@firstFrame",
+    "ID": "c:unicorn.c@3821@F@readyNewTask@firstFrame",
     "What": "Variable",
     "defdec": "Def",
     "display": "firstFrame",
     "location": {
       "column": "17",
-      "line": "109",
+      "line": "113",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "firstFrame",
@@ -45877,7 +45891,7 @@
     "display": "void startNewTask(EntryFunction, uint8_t)",
     "location": {
       "column": "6",
-      "line": "141",
+      "line": "145",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "startNewTask",
@@ -45891,7 +45905,7 @@
     "display": "tickSleepHeap",
     "location": {
       "column": "14",
-      "line": "151",
+      "line": "155",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "tickSleepHeap",
@@ -45905,7 +45919,7 @@
     "display": "tickSleepCount",
     "location": {
       "column": "10",
-      "line": "152",
+      "line": "156",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "tickSleepCount",
@@ -45919,7 +45933,7 @@
     "display": "elapsed",
     "location": {
       "column": "10",
-      "line": "153",
+      "line": "157",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "elapsed",
@@ -45933,7 +45947,7 @@
     "display": "tickSleepLock",
     "location": {
       "column": "11",
-      "line": "154",
+      "line": "158",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "tickSleepLock",
@@ -45947,7 +45961,7 @@
     "display": "void addTaskToTickSleepHeap(struct Task *)",
     "location": {
       "column": "6",
-      "line": "161",
+      "line": "165",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "addTaskToTickSleepHeap",
@@ -45955,13 +45969,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@6296@F@addTaskToTickSleepHeap@i",
+    "ID": "c:unicorn.c@6358@F@addTaskToTickSleepHeap@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
       "column": "12",
-      "line": "163",
+      "line": "167",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "i",
@@ -45969,13 +45983,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@6386@F@addTaskToTickSleepHeap@j",
+    "ID": "c:unicorn.c@6448@F@addTaskToTickSleepHeap@j",
     "What": "Variable",
     "defdec": "Def",
     "display": "j",
     "location": {
       "column": "14",
-      "line": "168",
+      "line": "172",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "j",
@@ -45989,7 +46003,7 @@
     "display": "struct Task * popTaskFromTickSleepHeap(void)",
     "location": {
       "column": "14",
-      "line": "184",
+      "line": "188",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "popTaskFromTickSleepHeap",
@@ -45997,13 +46011,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@7040@F@popTaskFromTickSleepHeap@highTimeoutTask",
+    "ID": "c:unicorn.c@7102@F@popTaskFromTickSleepHeap@highTimeoutTask",
     "What": "Variable",
     "defdec": "Def",
     "display": "highTimeoutTask",
     "location": {
       "column": "16",
-      "line": "187",
+      "line": "191",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "highTimeoutTask",
@@ -46011,13 +46025,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@7105@F@popTaskFromTickSleepHeap@minTimeoutTask",
+    "ID": "c:unicorn.c@7167@F@popTaskFromTickSleepHeap@minTimeoutTask",
     "What": "Variable",
     "defdec": "Def",
     "display": "minTimeoutTask",
     "location": {
       "column": "16",
-      "line": "188",
+      "line": "192",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "minTimeoutTask",
@@ -46025,13 +46039,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@7210@F@popTaskFromTickSleepHeap@i",
+    "ID": "c:unicorn.c@7272@F@popTaskFromTickSleepHeap@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
       "column": "12",
-      "line": "191",
+      "line": "195",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "i",
@@ -46039,13 +46053,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@7232@F@popTaskFromTickSleepHeap@j",
+    "ID": "c:unicorn.c@7294@F@popTaskFromTickSleepHeap@j",
     "What": "Variable",
     "defdec": "Def",
     "display": "j",
     "location": {
       "column": "12",
-      "line": "192",
+      "line": "196",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "j",
@@ -46053,13 +46067,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@7266@F@popTaskFromTickSleepHeap@k",
+    "ID": "c:unicorn.c@7328@F@popTaskFromTickSleepHeap@k",
     "What": "Variable",
     "defdec": "Def",
     "display": "k",
     "location": {
       "column": "12",
-      "line": "193",
+      "line": "197",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "k",
@@ -46073,7 +46087,7 @@
     "display": "lockChannels",
     "location": {
       "column": "13",
-      "line": "220",
+      "line": "224",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "lockChannels",
@@ -46087,7 +46101,7 @@
     "display": "lockSleepLock",
     "location": {
       "column": "11",
-      "line": "221",
+      "line": "225",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "lockSleepLock",
@@ -46101,7 +46115,7 @@
     "display": "struct Task * getNextTaskSleepingOnChannel(uint32_t)",
     "location": {
       "column": "14",
-      "line": "228",
+      "line": "232",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "getNextTaskSleepingOnChannel",
@@ -46109,13 +46123,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@8424@F@getNextTaskSleepingOnChannel@returnTask",
+    "ID": "c:unicorn.c@8486@F@getNextTaskSleepingOnChannel@returnTask",
     "What": "Variable",
     "defdec": "Def",
     "display": "returnTask",
     "location": {
       "column": "18",
-      "line": "230",
+      "line": "234",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "returnTask",
@@ -46129,7 +46143,7 @@
     "display": "void addTaskToSleepChannel(struct Task *, uint32_t)",
     "location": {
       "column": "6",
-      "line": "244",
+      "line": "248",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "addTaskToSleepChannel",
@@ -46137,13 +46151,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@9023@F@addTaskToSleepChannel@chanTail",
+    "ID": "c:unicorn.c@9085@F@addTaskToSleepChannel@chanTail",
     "What": "Variable",
     "defdec": "Def",
     "display": "chanTail",
     "location": {
       "column": "16",
-      "line": "246",
+      "line": "250",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "chanTail",
@@ -46157,7 +46171,7 @@
     "display": "currentTask",
     "location": {
       "column": "23",
-      "line": "261",
+      "line": "265",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "currentTask",
@@ -46171,7 +46185,7 @@
     "display": "nextTask",
     "location": {
       "column": "23",
-      "line": "262",
+      "line": "266",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "nextTask",
@@ -46185,7 +46199,7 @@
     "display": "currentTaskLoc",
     "location": {
       "column": "10",
-      "line": "263",
+      "line": "267",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "currentTaskLoc",
@@ -46199,7 +46213,7 @@
     "display": "void exitTask(void)",
     "location": {
       "column": "6",
-      "line": "268",
+      "line": "272",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "exitTask",
@@ -46213,7 +46227,7 @@
     "display": "void timeoutSleep(uint32_t)",
     "location": {
       "column": "6",
-      "line": "288",
+      "line": "292",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "timeoutSleep",
@@ -46221,13 +46235,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@10998@F@timeoutSleep@i",
+    "ID": "c:unicorn.c@11060@F@timeoutSleep@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
       "column": "17",
-      "line": "297",
+      "line": "301",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "i",
@@ -46241,7 +46255,7 @@
     "display": "void decrementTimeouts(void)",
     "location": {
       "column": "6",
-      "line": "317",
+      "line": "321",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "decrementTimeouts",
@@ -46249,13 +46263,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@11819@F@decrementTimeouts@wokeTask",
+    "ID": "c:unicorn.c@11988@F@decrementTimeouts@wokeTask",
     "What": "Variable",
     "defdec": "Def",
     "display": "wokeTask",
     "location": {
       "column": "20",
-      "line": "325",
+      "line": "334",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "wokeTask",
@@ -46269,7 +46283,7 @@
     "display": "void aquireUnicornSemaphore(uint32_t)",
     "location": {
       "column": "6",
-      "line": "346",
+      "line": "361",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "aquireUnicornSemaphore",
@@ -46283,7 +46297,7 @@
     "display": "void releaseUnicornSemaphore(uint32_t)",
     "location": {
       "column": "6",
-      "line": "374",
+      "line": "389",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "releaseUnicornSemaphore",
@@ -46291,13 +46305,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@13696@F@releaseUnicornSemaphore@wokeTask",
+    "ID": "c:unicorn.c@13979@F@releaseUnicornSemaphore@wokeTask",
     "What": "Variable",
     "defdec": "Def",
     "display": "wokeTask",
     "location": {
       "column": "16",
-      "line": "380",
+      "line": "395",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "wokeTask",
@@ -46311,7 +46325,7 @@
     "display": "void onIdle(void)",
     "location": {
       "column": "6",
-      "line": "404",
+      "line": "419",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "onIdle",
@@ -46325,7 +46339,7 @@
     "display": "void initializeScheduler(EntryFunction, uint8_t)",
     "location": {
       "column": "6",
-      "line": "412",
+      "line": "427",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "initializeScheduler",
@@ -46333,13 +46347,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@15009@F@initializeScheduler@i",
+    "ID": "c:unicorn.c@15292@F@initializeScheduler@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
       "column": "16",
-      "line": "422",
+      "line": "437",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "i",
@@ -46347,13 +46361,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@15226@F@initializeScheduler@i",
+    "ID": "c:unicorn.c@15509@F@initializeScheduler@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
       "column": "11",
-      "line": "429",
+      "line": "444",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "i",
@@ -46361,13 +46375,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@15644@F@initializeScheduler@i",
+    "ID": "c:unicorn.c@15927@F@initializeScheduler@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
       "column": "11",
-      "line": "445",
+      "line": "460",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "i",
@@ -46381,7 +46395,7 @@
     "display": "void sched(void)",
     "location": {
       "column": "6",
-      "line": "472",
+      "line": "487",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "sched",
@@ -46395,7 +46409,7 @@
     "display": "void Q_onAssert(const char *, int)",
     "location": {
       "column": "6",
-      "line": "513",
+      "line": "542",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "Q_onAssert",
@@ -46711,13 +46725,13 @@
     "scope": null
   },
   {
-    "ID": "c:usertasks.c@553@F@longPulseRedSemaphore@j",
+    "ID": "c:usertasks.c@870@F@longPulseRedSemaphore@j",
     "What": "Variable",
     "defdec": "Def",
     "display": "j",
     "location": {
       "column": "16",
-      "line": "23",
+      "line": "29",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "j",
@@ -46731,7 +46745,7 @@
     "display": "void longPulseBlueSemaphore(void)",
     "location": {
       "column": "6",
-      "line": "29",
+      "line": "35",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "longPulseBlueSemaphore",
@@ -46739,13 +46753,13 @@
     "scope": null
   },
   {
-    "ID": "c:usertasks.c@889@F@longPulseBlueSemaphore@j",
+    "ID": "c:usertasks.c@1576@F@longPulseBlueSemaphore@j",
     "What": "Variable",
     "defdec": "Def",
     "display": "j",
     "location": {
       "column": "16",
-      "line": "40",
+      "line": "53",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "j",
@@ -46759,7 +46773,7 @@
     "display": "void longPulseGreenSemaphore(void)",
     "location": {
       "column": "6",
-      "line": "46",
+      "line": "59",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "longPulseGreenSemaphore",
@@ -46767,13 +46781,13 @@
     "scope": null
   },
   {
-    "ID": "c:usertasks.c@1227@F@longPulseGreenSemaphore@j",
+    "ID": "c:usertasks.c@2237@F@longPulseGreenSemaphore@j",
     "What": "Variable",
     "defdec": "Def",
     "display": "j",
     "location": {
       "column": "16",
-      "line": "57",
+      "line": "76",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "j",
@@ -46787,7 +46801,7 @@
     "display": "void userTaskLoad(void)",
     "location": {
       "column": "6",
-      "line": "64",
+      "line": "83",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "userTaskLoad",

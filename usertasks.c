@@ -14,13 +14,19 @@ void longPulseRedSemaphore()
     while(1)
     {
       aquireUnicornSemaphore(0);
+
+      //send task signal on 4th pin
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW);
       
-      BSP_setLED(LED_RED, OFF);
-      BSP_setLED(LED_BLUE, OFF);
-      BSP_setLED(LED_GREEN, OFF);
-    
-      BSP_setLED(LED_RED, ON);
-      for (int j = 0; j < 2000000; ++j);
+      for (int j = 0; j < 1000000; ++j);
       
       releaseUnicornSemaphore(0);
     }
@@ -32,12 +38,19 @@ void longPulseBlueSemaphore()
     {
       aquireUnicornSemaphore(0);
       
-      BSP_setLED(LED_RED, OFF);
-      BSP_setLED(LED_BLUE, OFF);
-      BSP_setLED(LED_GREEN, OFF);
-    
-      BSP_setLED(LED_BLUE, ON);
-      for (int j = 0; j < 2000000; ++j);
+      //send task signal on 4th pin
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW);
+      
+      for (int j = 0; j < 1000000; ++j);
       
       releaseUnicornSemaphore(0);
     }
@@ -49,12 +62,18 @@ void longPulseGreenSemaphore()
     {
       aquireUnicornSemaphore(0);
       
-      BSP_setLED(LED_RED, OFF);
-      BSP_setLED(LED_BLUE, OFF);
-      BSP_setLED(LED_GREEN, OFF);
-    
-      BSP_setLED(LED_GREEN, ON);
-      for (int j = 0; j < 2000000; ++j);
+      //send task signal on 4th pin
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
+      BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW);
+      
+      for (int j = 0; j < 1000000; ++j);
       
       releaseUnicornSemaphore(0);
     }
