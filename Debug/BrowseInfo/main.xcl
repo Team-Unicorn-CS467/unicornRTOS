@@ -11,11 +11,9 @@ C:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\main.pbi
 -I
 C:\Users\atoyn\Downloads\unicornRTOS
 -I
-C:\Users\atoyn\Downloads\unicornRTOS\qpc\3rd_party\CMSIS\Include
+C:\Users\atoyn\Downloads\unicornRTOS\CMSIS\Include
 -I
-C:\Users\atoyn\Downloads\unicornRTOS\qpc\include
--I
-C:\Users\atoyn\Downloads\unicornRTOS\qpc\3rd_party\ek-tm4c123gxl
+C:\Users\atoyn\Downloads\unicornRTOS\TM4C123GH6PM
 -I
 C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c\aarch32
 -I
@@ -23,11 +21,9 @@ C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc
 -I
 C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\inc\c
 -I
-C:\Users\atoyn\Downloads\unicornRTOS\qpc\3rd_party\CMSIS\Include
+C:\Users\atoyn\Downloads\unicornRTOS\CMSIS\Include
 -I
-C:\Users\atoyn\Downloads\unicornRTOS\qpc\include
--I
-C:\Users\atoyn\Downloads\unicornRTOS\qpc\3rd_party\ek-tm4c123gxl
+C:\Users\atoyn\Downloads\unicornRTOS\TM4C123GH6PM
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0
