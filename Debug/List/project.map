@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V9.32.1.338/W64 for ARM                  25/Feb/2023  06:51:43
+# IAR ELF Linker V9.32.1.338/W64 for ARM                  02/Mar/2023  05:27:56
 # Copyright 2007-2022 IAR Systems AB.
 #
 #    Output file  =  C:\Users\atoyn\Downloads\unicornRTOS\Debug\Exe\project.out
@@ -8,8 +8,7 @@
 #        C:\Users\atoyn\Downloads\unicornRTOS\Debug\List\project.map
 #    Command line =
 #        -f C:\Users\atoyn\Downloads\unicornRTOS\Debug\Exe\project.out.rsp
-#        (C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\board_io.o
-#        C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\bsp.o
+#        (C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\bsp.o
 #        C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\locks.o
 #        C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\main.o
 #        C:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\startup_vector_table.o

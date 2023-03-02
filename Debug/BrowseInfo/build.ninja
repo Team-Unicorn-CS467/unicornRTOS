@@ -24,11 +24,6 @@ rule PDBLINK
 
 
 #Build steps
-build C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\board_io.xcl : COMPILER_XCL 
-  xclcommand = -source_file C$:\Users\atoyn\Downloads\unicornRTOS\board_io.c -xcl_file C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\board_io.xcl -macro_file C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\board_io.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
-  flags = C$:\Users\atoyn\Downloads\unicornRTOS\board_io.c -o C$:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -I C$:\Users\atoyn\Downloads\unicornRTOS\CMSIS\Include\ -I C$:\Users\atoyn\Downloads\unicornRTOS\TM4C123GH6PM\ -Ol --predef_macros C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\board_io.tmp
-  rspfile_name = C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\board_io.xcl.rsp
-
 build C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\bsp.xcl : COMPILER_XCL 
   xclcommand = -source_file C$:\Users\atoyn\Downloads\unicornRTOS\bsp.c -xcl_file C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\bsp.xcl -macro_file C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\bsp.tmp -icc_path "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\bin\iccarm.exe"
   flags = C$:\Users\atoyn\Downloads\unicornRTOS\bsp.c -o C$:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -I C$:\Users\atoyn\Downloads\unicornRTOS\CMSIS\Include\ -I C$:\Users\atoyn\Downloads\unicornRTOS\TM4C123GH6PM\ -Ol --predef_macros C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\bsp.tmp
@@ -59,10 +54,6 @@ build C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\usertasks.xcl : COM
   flags = C$:\Users\atoyn\Downloads\unicornRTOS\usertasks.c -o C$:\Users\atoyn\Downloads\unicornRTOS\Debug\Obj\ --no_cse --no_unroll --no_inline --no_code_motion --no_tbaa --no_clustering --no_scheduling --debug --endian=little --cpu=Cortex-M4 -e --fpu=VFPv4_sp --dlib_config "C$:\Program$ Files\IAR$ Systems\Embedded$ Workbench$ 9.1\arm\inc\c\DLib_Config_Normal.h" -I C$:\Users\atoyn\Downloads\unicornRTOS\CMSIS\Include\ -I C$:\Users\atoyn\Downloads\unicornRTOS\TM4C123GH6PM\ -Ol --predef_macros C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\usertasks.tmp
   rspfile_name = C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\usertasks.xcl.rsp
 
-build C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\board_io.pbi : INDEXER C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\board_io.xcl |  $
-C$:\Users\atoyn\Downloads\unicornRTOS\board_io.c
-  flags = -out=C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\board_io.pbi -f C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\board_io.xcl
-
 build C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\bsp.pbi : INDEXER C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\bsp.xcl |  $
 C$:\Users\atoyn\Downloads\unicornRTOS\bsp.c
   flags = -out=C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\bsp.pbi -f C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\bsp.xcl
@@ -90,18 +81,17 @@ C$:\Users\atoyn\Downloads\unicornRTOS\usertasks.c
 build C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\project.pbw : MAKEBROWSE C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\project.pbd
   flags = C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\project.pbd -output C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\project.pbw
 
-build C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\project_part0.pbi : PDBLINK C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\board_io.pbi |  $
-C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\bsp.pbi $
+build C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\project_part0.pbi : PDBLINK C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\bsp.pbi |  $
 C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\locks.pbi
-  flags = -M C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\project_part0.pbi C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\board_io.pbi C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\bsp.pbi C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\locks.pbi
+  flags = -M C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\project_part0.pbi C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\bsp.pbi C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\locks.pbi
 
 build C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\project_part1.pbi : PDBLINK C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\main.pbi |  $
-C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi $
-C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\unicorn.pbi
-  flags = -M C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\project_part1.pbi C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\main.pbi C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\unicorn.pbi
+C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi
+  flags = -M C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\project_part1.pbi C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\main.pbi C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\startup_vector_table.pbi
 
-build C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\project_part2.pbi : PDBLINK C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\usertasks.pbi
-  flags = -M C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\project_part2.pbi C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\usertasks.pbi
+build C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\project_part2.pbi : PDBLINK C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\unicorn.pbi |  $
+C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\usertasks.pbi
+  flags = -M C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\project_part2.pbi C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\unicorn.pbi C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\usertasks.pbi
 
 build C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\project.pbd : PDBLINK C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\project_part0.pbi |  $
 C$:\Users\atoyn\Downloads\unicornRTOS\Debug\BrowseInfo\project_part1.pbi $
