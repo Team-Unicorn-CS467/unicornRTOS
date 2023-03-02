@@ -26,7 +26,7 @@ void longPulseRedSemaphore()
       BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
       BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW);
       
-      for (int j = 0; j < 1000000; ++j);
+      //for (int j = 0; j < 100000; ++j);
       
       releaseUnicornSemaphore(0);
     }
@@ -50,7 +50,7 @@ void longPulseBlueSemaphore()
       BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
       BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW);
       
-      for (int j = 0; j < 1000000; ++j);
+      //for (int j = 0; j < 100000; ++j);
       
       releaseUnicornSemaphore(0);
     }
@@ -73,7 +73,7 @@ void longPulseGreenSemaphore()
       BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH);
       BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW);
       
-      for (int j = 0; j < 1000000; ++j);
+      //for (int j = 0; j < 100000; ++j);
       
       releaseUnicornSemaphore(0);
     }

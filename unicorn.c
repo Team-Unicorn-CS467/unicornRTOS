@@ -364,13 +364,18 @@ void aquireUnicornSemaphore(uint32_t chan)
 
   acquireLock(&lockSleepLock);
   
+  // we want to ensure the tryAquireLock is not failing
+  // on account of being interrupted in this case
+  // if the aquisition legitimately failes because the lock is held,
+  // we also then want to avoid any race conditions on currentTask
+  __asm("CPSID I");
+  
   if (tryAquireLock(&(lockChannels[chan].lock)) == LOCK_AQUIRED)
   {
     releaseLock(&lockSleepLock);
+    __asm("CPSIE I"); //enable interrupts) 
     return; // lock acquired and currentTask can continue on with its business
-  }
-  
-  __asm("CPSID I"); // disable interrupts to avoid any race conditions on currentTask
+  }  
   
   addTaskToSleepChannel(currentTask, chan);
   currentTaskLoc = LOC_LOCKSLEEP;
@@ -380,11 +385,9 @@ void aquireUnicornSemaphore(uint32_t chan)
   sched(); // schedule next task and set PendSV to trigger (as soon as interrupts are enabled)    
 }
 
-// currentTask calls this to wake and transfer holding of the
-// lock on chan to the next-in-line task sleeping on chan
-// immediately reschedules if there are any tasks leeping on chan
-// and holding of the lock on chan is transferred in this way
-// if there are no tasks sleeping on chan, then simply releases the lock on chan
+// currentTask calls this to release a held lock on chan and to
+// then next-in-line task which was sleeping on chan (if any)
+// immediately reschedules
 // assumes currentTask is the current holder of the lock on chan
 void releaseUnicornSemaphore(uint32_t chan)
 {
@@ -393,25 +396,19 @@ void releaseUnicornSemaphore(uint32_t chan)
   acquireLock(&lockSleepLock);
   
   struct Task* wokeTask = getNextTaskSleepingOnChannel(chan);
+  releaseLock(&(lockChannels[chan].lock)); // release the lock on chan
+  
+  releaseLock(&lockSleepLock);    
+
   if(wokeTask != (struct Task*)(0U)) // a task was sleeping on chan
   {  
-    // we don't even release the lock on chan, we just keep it held and
-    // make the next-in-line wokeTask available to be scheduled
-    releaseLock(&lockSleepLock);
-
     acquireLock(&readyTasksLock);
     addTaskToReadyTasks(wokeTask); // mark wokeTask as ready
-    releaseLock(&readyTasksLock);
+    releaseLock(&readyTasksLock); 
+  }
 
-    __asm("CPSID I"); // disable interrupts to avoid any race conditions on currentTask  
-    sched(); // schedule next task and set PendSV to trigger (as soon as interrupts are enabled)   
-  }
-  
-  else // no tasks were sleeping on chan
-  {
-    releaseLock(&(lockChannels[chan].lock)); // release the lock on chan  
-    releaseLock(&lockSleepLock);     
-  }
+  __asm("CPSID I"); // disable interrupts to avoid any race conditions on currentTask  
+  sched(); // schedule next task and set PendSV to trigger (as soon as interrupts are enabled)  
 }
 
 

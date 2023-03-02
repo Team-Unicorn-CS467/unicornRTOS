@@ -46297,7 +46297,7 @@
     "display": "void releaseUnicornSemaphore(uint32_t)",
     "location": {
       "column": "6",
-      "line": "389",
+      "line": "392",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "releaseUnicornSemaphore",
@@ -46305,13 +46305,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@13979@F@releaseUnicornSemaphore@wokeTask",
+    "ID": "c:unicorn.c@14028@F@releaseUnicornSemaphore@wokeTask",
     "What": "Variable",
     "defdec": "Def",
     "display": "wokeTask",
     "location": {
       "column": "16",
-      "line": "395",
+      "line": "398",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "wokeTask",
@@ -46325,7 +46325,7 @@
     "display": "void onIdle(void)",
     "location": {
       "column": "6",
-      "line": "419",
+      "line": "416",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "onIdle",
@@ -46339,7 +46339,7 @@
     "display": "void initializeScheduler(EntryFunction, uint8_t)",
     "location": {
       "column": "6",
-      "line": "427",
+      "line": "424",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "initializeScheduler",
@@ -46347,13 +46347,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@15292@F@initializeScheduler@i",
+    "ID": "c:unicorn.c@15106@F@initializeScheduler@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
       "column": "16",
-      "line": "437",
+      "line": "434",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "i",
@@ -46361,13 +46361,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@15509@F@initializeScheduler@i",
+    "ID": "c:unicorn.c@15323@F@initializeScheduler@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
       "column": "11",
-      "line": "444",
+      "line": "441",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "i",
@@ -46375,13 +46375,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@15927@F@initializeScheduler@i",
+    "ID": "c:unicorn.c@15741@F@initializeScheduler@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
       "column": "11",
-      "line": "460",
+      "line": "457",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "i",
@@ -46395,7 +46395,7 @@
     "display": "void sched(void)",
     "location": {
       "column": "6",
-      "line": "487",
+      "line": "484",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "sched",
@@ -46409,7 +46409,7 @@
     "display": "void Q_onAssert(const char *, int)",
     "location": {
       "column": "6",
-      "line": "542",
+      "line": "539",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "Q_onAssert",
@@ -46725,20 +46725,6 @@
     "scope": null
   },
   {
-    "ID": "c:usertasks.c@870@F@longPulseRedSemaphore@j",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "j",
-    "location": {
-      "column": "16",
-      "line": "29",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
-    },
-    "name": "j",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
     "ID": "c:@F@longPulseBlueSemaphore",
     "What": "Function",
     "defdec": "Def",
@@ -46753,20 +46739,6 @@
     "scope": null
   },
   {
-    "ID": "c:usertasks.c@1576@F@longPulseBlueSemaphore@j",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "j",
-    "location": {
-      "column": "16",
-      "line": "53",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
-    },
-    "name": "j",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
     "ID": "c:@F@longPulseGreenSemaphore",
     "What": "Function",
     "defdec": "Def",
@@ -46777,20 +46749,6 @@
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "longPulseGreenSemaphore",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:usertasks.c@2237@F@longPulseGreenSemaphore@j",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "j",
-    "location": {
-      "column": "16",
-      "line": "76",
-      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
-    },
-    "name": "j",
     "origin": "project_file",
     "scope": null
   },
