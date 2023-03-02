@@ -9,110 +9,47 @@
 //each function below assumes necessary initial
 //setup completed to support I/O
 
+//{GPIOF_AHB, GPIO_PF1} - RED LED
+//{GPIOF_AHB, GPIO_PF2} - BLUE LED
+//{GPIOF_AHB, GPIO_PF3} - GREEN LED
+//{GPIOB_AHB, GPIO_PB3} - PendSV Signal to LA
+//{GPIOC_AHB, GPIO_PC4} - SysTick Signal to LA
+//{GPIOC_AHB, GPIO_PC5} - Sched Signal to LA
+//{GPIOC_AHB, GPIO_PC6} - External Interrupt
+//{GPIOC_AHB, GPIO_PC7} - Task(s) Signal to LA
 
-//BSP_setGPIO(GPIOF_AHB, GPIO_PF2, LOW); // first pin
-//BSP_setGPIO(GPIOF_AHB, GPIO_PF3, LOW); // second pin
-//BSP_setGPIO(GPIOB_AHB, GPIO_PB3, LOW); // third pin
-//BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW); // fourth pin
-//BSP_setGPIO(GPIOC_AHB, GPIO_PC5, LOW); // fifth pin
-//BSP_setGPIO(GPIOC_AHB, GPIO_PC6, LOW); // sixth pin
-//BSP_setGPIO(GPIOC_AHB, GPIO_PC7, LOW); // seventh pin
-//BSP_setGPIO(GPIOD_AHB, GPIO_PD6, LOW); // eighth pin
-
-GPIOA_Type* taskSignalTypes[10][2] =
+void taskSignal(uint8_t taskIndex)
 {
+  uint32_t leadSpace = (17U - taskIndex) / 2; // assumes a max of 16 tasks
+  uint32_t lagSpace = 17U - (taskIndex + leadSpace); // assumes a max of 16 tasks
+  
+  // entry flag
+  BSP_setGPIO(GPIOC_AHB, GPIO_PC7, HIGH);
+  BSP_setGPIO(GPIOC_AHB, GPIO_PC7, HIGH);
+
+  // representation of task index
+  while(leadSpace > 0U)
   {
-    GPIOC_AHB,  // pin 4 base
-    GPIOC_AHB   // pin 5 base    
-  },
-  {
-    GPIOC_AHB,  // pin 4 base
-    GPIOC_AHB   // pin 6 base    
-  },
-  {
-    GPIOC_AHB,  // pin 4 base
-    GPIOC_AHB   // pin 7 base    
-  },
-  {
-    GPIOC_AHB,  // pin 4 base
-    GPIOD_AHB   // pin 8 base    
-  },
-  {
-    GPIOC_AHB,  // pin 5 base
-    GPIOC_AHB   // pin 6 base    
-  },
-  {
-    GPIOC_AHB,  // pin 5 base
-    GPIOC_AHB   // pin 7 base    
-  },
-  {
-    GPIOC_AHB,  // pin 5 base
-    GPIOD_AHB   // pin 8 base    
-  },
-  {
-    GPIOC_AHB,  // pin 6 base
-    GPIOC_AHB   // pin 7 base    
-  },
-  {
-    GPIOC_AHB,  // pin 6 base
-    GPIOD_AHB   // pin 8 base    
-  },
-  {
-    GPIOC_AHB,  // pin 7 base
-    GPIOD_AHB   // pin 8 base
+    BSP_setGPIO(GPIOC_AHB, GPIO_PC7, LOW);
+    --leadSpace;
   }
-};
+  while(taskIndex > 0U)
+  {
+    BSP_setGPIO(GPIOC_AHB, GPIO_PC7, HIGH);
+    BSP_setGPIO(GPIOC_AHB, GPIO_PC7, LOW);
+    --taskIndex;
+  }
+  while(lagSpace > 0U)
+  {
+    BSP_setGPIO(GPIOC_AHB, GPIO_PC7, LOW);
+    --lagSpace;
+  }
 
-const uint8_t taskSignalPins[10][2] =
-{
-  {
-    GPIO_PC4,   // pin 4 base-relative offset
-    GPIO_PC5    // pin 5 base-relative offset
-  },
-  {
-    GPIO_PC4,   // pin 4 base-relative offset
-    GPIO_PC6    // pin 6 base-relative offset
-  },
-  {
-    GPIO_PC4,   // pin 4 base-relative offset
-    GPIO_PC7    // pin 7 base-relative offset
-  },
-  {
-    GPIO_PC4,   // pin 4 base-relative offset
-    GPIO_PD6    // pin 8 base-relative offset
-  },
-  {
-    GPIO_PC5,   // pin 5 base-relative offset
-    GPIO_PC6    // pin 6 base-relative offset
-  },
-  {
-    GPIO_PC5,   // pin 5 base-relative offset
-    GPIO_PC7    // pin 7 base-relative offset
-  },
-  {
-    GPIO_PC5,   // pin 5 base-relative offset
-    GPIO_PD6    // pin 8 base-relative offset
-  },
-  {
-    GPIO_PC6,   // pin 6 base-relative offset
-    GPIO_PC7    // pin 7 base-relative offset
-  },
-  {
-    GPIO_PC6,   // pin 6 base-relative offset
-    GPIO_PD6    // pin 8 base-relative offset
-  },
-  {
-    GPIO_PC7,   // pin 7 base-relative offset
-    GPIO_PD6    // pin 8 base-relative offset
-  }  
-};
-
-// helper function
-
-void taskSignal(uint8_t taskIndex, GPIO_PinState pState)
-{
-    BSP_setGPIO(taskSignalTypes[taskIndex][0], taskSignalPins[taskIndex][0], pState);
-    BSP_setGPIO(taskSignalTypes[taskIndex][1], taskSignalPins[taskIndex][1], pState);
+  // exit flag
+  BSP_setGPIO(GPIOC_AHB, GPIO_PC7, HIGH);
+  BSP_setGPIO(GPIOC_AHB, GPIO_PC7, HIGH);
+  
+  BSP_setGPIO(GPIOC_AHB, GPIO_PC7, LOW);
 }
 
 // task functions
@@ -121,9 +58,8 @@ void task_sleepBlink1()
 {
   for(int j = 0; j < 2; ++j)
   {
-    taskSignal(0U, HIGH);
+    taskSignal(0U);
     for(int  i = 0; i < 25; ++i);
-    taskSignal(0U, LOW);
     sleep(4);    
   }
   exitTask();
@@ -133,9 +69,8 @@ void task_sleepBlink2()
 {
   for(int j = 0; j < 2; ++j)
   {
-    taskSignal(1U, HIGH);
+    taskSignal(1U);
     for(int  i = 0; i < 25; ++i);
-    taskSignal(1U, LOW);
     sleep(4);    
   }
   exitTask();
@@ -145,9 +80,8 @@ void task_sleepBlink3()
 {
   for(int j = 0; j < 2; ++j)
   {
-    taskSignal(2U, HIGH);
+    taskSignal(2U);
     for(int  i = 0; i < 25; ++i);
-    taskSignal(2U, LOW);
     sleep(4);   
   }
   exitTask();
@@ -157,9 +91,8 @@ void task_sleepBlink4()
 {
   for(int j = 0; j < 2; ++j)
   {
-    taskSignal(3U, HIGH);
+    taskSignal(3U);
     for(int  i = 0; i < 25; ++i);
-    taskSignal(3U, LOW);
     sleep(4);     
   }
   exitTask();
@@ -169,9 +102,8 @@ void task_sleepBlink5()
 {
   for(int j = 0; j < 2; ++j)
   {
-    taskSignal(4U, HIGH);
+    taskSignal(4U);
     for(int  i = 0; i < 25; ++i);
-    taskSignal(4U, LOW);
     sleep(4);   
   }
   exitTask();
@@ -181,9 +113,8 @@ void task_sleepBlink6()
 {
   for(int j = 0; j < 2; ++j)
   {
-    taskSignal(5U, HIGH);
+    taskSignal(5U);
     for(int  i = 0; i < 25; ++i);
-    taskSignal(5U, LOW);
     sleep(4);    
   }
   exitTask();
@@ -193,9 +124,8 @@ void task_sleepBlink7()
 {
   for(int j = 0; j < 2; ++j)
   {
-    taskSignal(6U, HIGH);
+    taskSignal(6U);
     for(int  i = 0; i < 25; ++i);
-    taskSignal(6U, LOW);
     sleep(4);   
   }
   exitTask();
@@ -205,9 +135,8 @@ void task_sleepBlink8()
 {
   for(int j = 0; j < 2; ++j)
   {
-    taskSignal(7U, HIGH);
+    taskSignal(7U);
     for(int  i = 0; i < 25; ++i);
-    taskSignal(7U, LOW);
     sleep(4);     
   }
   exitTask();
@@ -217,9 +146,8 @@ void task_sleepBlink9()
 {
   for(int j = 0; j < 2; ++j)
   {
-    taskSignal(8U, HIGH);
+    taskSignal(8U);
     for(int  i = 0; i < 25; ++i);
-    taskSignal(8U, LOW);
     sleep(4);     
   }
   exitTask();
@@ -229,9 +157,8 @@ void task_sleepBlink10()
 {
   for(int j = 0; j < 2; ++j)
   {
-    taskSignal(9U, HIGH);
+    taskSignal(9U);
     for(int  i = 0; i < 25; ++i);
-    taskSignal(9U, LOW);
     sleep(4);    
   }
   exitTask();
@@ -262,15 +189,14 @@ void userTaskLoad()
   ///////////////////////////////////////////////////////////////////
   
   // set all the pins low to start
-  BSP_setGPIO(GPIOF_AHB, GPIO_PF2, LOW); // first pin
-  BSP_setGPIO(GPIOF_AHB, GPIO_PF3, LOW); // second pin
-  BSP_setGPIO(GPIOB_AHB, GPIO_PB3, LOW); // third pin
-  BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW); // fourth pin
-  BSP_setGPIO(GPIOC_AHB, GPIO_PC5, LOW); // fifth pin
-  BSP_setGPIO(GPIOC_AHB, GPIO_PC6, LOW); // sixth pin
-  BSP_setGPIO(GPIOC_AHB, GPIO_PC7, LOW); // seventh pin
-  BSP_setGPIO(GPIOD_AHB, GPIO_PD6, LOW); // eighth pin
-
+  BSP_setGPIO(GPIOF_AHB, GPIO_PF2, LOW); // BLUE LED
+  BSP_setGPIO(GPIOF_AHB, GPIO_PF3, LOW); // GREEN LED
+  BSP_setGPIO(GPIOB_AHB, GPIO_PB3, LOW); // PendSV Signal to LA
+  BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW); // SysTick Signal to LA
+  BSP_setGPIO(GPIOC_AHB, GPIO_PC5, LOW); // Sched Signal to LA
+  BSP_setGPIO(GPIOC_AHB, GPIO_PC6, LOW); // External Interrupt
+  BSP_setGPIO(GPIOC_AHB, GPIO_PC7, LOW); // Task(s) Signal to LA
+  
   for(int i = 0; i < 5; ++i)
   {
     for(int j = 0; j < taskCounts[i]; ++j)
