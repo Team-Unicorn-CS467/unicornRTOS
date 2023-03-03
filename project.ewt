@@ -2846,12 +2846,6 @@
         </settings>
     </configuration>
     <file>
-        <name>$PROJ_DIR$\board_io.c</name>
-    </file>
-    <file>
-        <name>$PROJ_DIR$\board_io.h</name>
-    </file>
-    <file>
         <name>$PROJ_DIR$\bsp.c</name>
     </file>
     <file>

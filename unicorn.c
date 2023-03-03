@@ -185,7 +185,7 @@ void sched()
 {
   
   // FOR TESTING ONLY
-  BSP_setGPIO(GPIOB_AHB, GPIO_PB3, HIGH); // third pin
+  BSP_setGPIO(GPIOC_AHB, GPIO_PC5, HIGH); // Sched() associated pin
   // FOR TESTING ONLY
   
   // set nextTask to Task with most sig. bit set in readyTasks
@@ -204,7 +204,7 @@ void sched()
     *(uint32_t volatile *)0xE000ED04 = (1U << 28U);
   
   // FOR TESTING ONLY
-  BSP_setGPIO(GPIOB_AHB, GPIO_PB3, LOW); // third pin
+  BSP_setGPIO(GPIOC_AHB, GPIO_PC5, LOW); // Sched() associated pin
   // FOR TESTING ONLY
   
 }
