@@ -50,19 +50,19 @@
         <MemConfigValue>C:\Program Files\IAR Systems\Embedded Workbench 9.1\arm\CONFIG\debugger\TexasInstruments\TM4C123GH6PM.ddf</MemConfigValue>
     </PlDriver>
     <ArmDriver>
-        <EnableCache>0</EnableCache>
         <EnforceMemoryConfiguration>1</EnforceMemoryConfiguration>
+        <EnableCache>0</EnableCache>
     </ArmDriver>
     <LmiFtdiDriver>
         <LMIFTDIserialNo>0E235492</LMIFTDIserialNo>
         <LMIFTDIfoundProbes />
-        <LmiFtdiResetStyle>0</LmiFtdiResetStyle>
-        <LmiFtdiResetStrategy>0</LmiFtdiResetStrategy>
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
         <CStepIntDis>_ 0</CStepIntDis>
+        <LmiFtdiResetStyle>0</LmiFtdiResetStyle>
+        <LmiFtdiResetStrategy>0</LmiFtdiResetStrategy>
     </LmiFtdiDriver>
     <DebugChecksum>
-        <Checksum>3479159</Checksum>
+        <Checksum>1111588803</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
