@@ -16,7 +16,8 @@ int main()
   BSP_init();
 
   //testing
-  UART5_SendString("this is a test");
+  //UART5_SendString("this is a test");
+  //testing
   
   //OS stuff
   initializeScheduler();

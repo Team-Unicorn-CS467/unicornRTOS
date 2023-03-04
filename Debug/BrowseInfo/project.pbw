@@ -42011,7 +42011,7 @@
     "scope": null
   },
   {
-    "ID": "c:locks.h@24@macro@LOCKS_H",
+    "ID": "c:locks.h@25@macro@LOCKS_H",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "LOCKS_H",
@@ -44505,7 +44505,7 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.h@26@macro@UNICORN_H",
+    "ID": "c:unicorn.h@27@macro@UNICORN_H",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "UNICORN_H",
@@ -44519,7 +44519,7 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.h@66@macro@TASK_STACK_WORD_SIZE",
+    "ID": "c:unicorn.h@71@macro@TASK_STACK_WORD_SIZE",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "TASK_STACK_WORD_SIZE",
@@ -44533,7 +44533,7 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.h@146@macro@BYTES_PER_WORD",
+    "ID": "c:unicorn.h@152@macro@BYTES_PER_WORD",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "BYTES_PER_WORD",
@@ -44547,7 +44547,7 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.h@210@macro@MAX_TASKS",
+    "ID": "c:unicorn.h@217@macro@MAX_TASKS",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "MAX_TASKS",
@@ -44943,7 +44943,7 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.h@3181@macro@getHighestSetBit",
+    "ID": "c:unicorn.h@3251@macro@getHighestSetBit",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "getHighestSetBit",
@@ -45125,7 +45125,7 @@
     "scope": null
   },
   {
-    "ID": "c:usertasks.h@28@macro@USERTASKS_H",
+    "ID": "c:usertasks.h@29@macro@USERTASKS_H",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "USERTASKS_H",
@@ -45167,7 +45167,7 @@
     "scope": null
   },
   {
-    "ID": "c:exception_handlers.h@38@macro@EXCEPTION_HANDLERS_H",
+    "ID": "c:exception_handlers.h@40@macro@EXCEPTION_HANDLERS_H",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "EXCEPTION_HANDLERS_H",
@@ -45615,7 +45615,7 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@2348@F@readyNewTask@tsk",
+    "ID": "c:unicorn.c@2425@F@readyNewTask@tsk",
     "What": "Variable",
     "defdec": "Def",
     "display": "tsk",
@@ -45629,7 +45629,7 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@3052@F@readyNewTask@stackEnd",
+    "ID": "c:unicorn.c@3141@F@readyNewTask@stackEnd",
     "What": "Variable",
     "defdec": "Def",
     "display": "stackEnd",
@@ -45643,7 +45643,7 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@3185@F@readyNewTask@remainder",
+    "ID": "c:unicorn.c@3275@F@readyNewTask@remainder",
     "What": "Variable",
     "defdec": "Def",
     "display": "remainder",
@@ -45657,7 +45657,7 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@3425@F@readyNewTask@firstFrame",
+    "ID": "c:unicorn.c@3521@F@readyNewTask@firstFrame",
     "What": "Variable",
     "defdec": "Def",
     "display": "firstFrame",
@@ -45685,7 +45685,7 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@4185@F@decrementTimeouts@tasksToDecrement",
+    "ID": "c:unicorn.c@4299@F@decrementTimeouts@tasksToDecrement",
     "What": "Variable",
     "defdec": "Def",
     "display": "tasksToDecrement",
@@ -45699,7 +45699,7 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@4230@F@decrementTimeouts@priorityBit",
+    "ID": "c:unicorn.c@4345@F@decrementTimeouts@priorityBit",
     "What": "Variable",
     "defdec": "Def",
     "display": "priorityBit",
@@ -45713,7 +45713,7 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@4295@F@decrementTimeouts@tsk",
+    "ID": "c:unicorn.c@4414@F@decrementTimeouts@tsk",
     "What": "Variable",
     "defdec": "Def",
     "display": "tsk",
@@ -45769,7 +45769,7 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@7685@F@sched@next",
+    "ID": "c:unicorn.c@7885@F@sched@next",
     "What": "Variable",
     "defdec": "Def",
     "display": "next",
@@ -45797,7 +45797,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@1922@macro@QP_INC_QASSERT_H_",
+    "ID": "c:qassert.h@1974@macro@QP_INC_QASSERT_H_",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "QP_INC_QASSERT_H_",
@@ -45811,7 +45811,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@2471@macro@Q_NORETURN",
+    "ID": "c:qassert.h@2541@macro@Q_NORETURN",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "Q_NORETURN",
@@ -45825,7 +45825,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@3240@macro@Q_DEFINE_THIS_FILE",
+    "ID": "c:qassert.h@3332@macro@Q_DEFINE_THIS_FILE",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "Q_DEFINE_THIS_FILE",
@@ -45839,7 +45839,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@3905@macro@Q_DEFINE_THIS_MODULE",
+    "ID": "c:qassert.h@4015@macro@Q_DEFINE_THIS_MODULE",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "Q_DEFINE_THIS_MODULE",
@@ -45853,7 +45853,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@5012@macro@Q_ASSERT_ID",
+    "ID": "c:qassert.h@5151@macro@Q_ASSERT_ID",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "Q_ASSERT_ID",
@@ -45867,7 +45867,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@5998@macro@Q_ERROR_ID",
+    "ID": "c:qassert.h@6163@macro@Q_ERROR_ID",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "Q_ERROR_ID",
@@ -45881,7 +45881,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@6919@macro@Q_ALLEGE_ID",
+    "ID": "c:qassert.h@7108@macro@Q_ALLEGE_ID",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "Q_ALLEGE_ID",
@@ -45895,7 +45895,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@7659@macro@Q_REQUIRE_ID",
+    "ID": "c:qassert.h@7871@macro@Q_REQUIRE_ID",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "Q_REQUIRE_ID",
@@ -45909,7 +45909,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@8032@macro@Q_REQUIRE",
+    "ID": "c:qassert.h@8255@macro@Q_REQUIRE",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "Q_REQUIRE",
@@ -45923,7 +45923,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@8472@macro@Q_ENSURE_ID",
+    "ID": "c:qassert.h@8707@macro@Q_ENSURE_ID",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "Q_ENSURE_ID",
@@ -45937,7 +45937,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@8825@macro@Q_ENSURE",
+    "ID": "c:qassert.h@9071@macro@Q_ENSURE",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "Q_ENSURE",
@@ -45951,7 +45951,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@9242@macro@Q_INVARIANT_ID",
+    "ID": "c:qassert.h@9500@macro@Q_INVARIANT_ID",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "Q_INVARIANT_ID",
@@ -45965,7 +45965,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@9594@macro@Q_INVARIANT",
+    "ID": "c:qassert.h@9863@macro@Q_INVARIANT",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "Q_INVARIANT",
@@ -45979,7 +45979,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@10016@macro@Q_ASSERT",
+    "ID": "c:qassert.h@10299@macro@Q_ASSERT",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "Q_ASSERT",
@@ -45993,7 +45993,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@10411@macro@Q_ERROR",
+    "ID": "c:qassert.h@10708@macro@Q_ERROR",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "Q_ERROR",
@@ -46007,7 +46007,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@11014@macro@Q_ALLEGE",
+    "ID": "c:qassert.h@11328@macro@Q_ALLEGE",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "Q_ALLEGE",
@@ -46021,7 +46021,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@11722@macro@Q_ASSERT_STATIC",
+    "ID": "c:qassert.h@12054@macro@Q_ASSERT_STATIC",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "Q_ASSERT_STATIC",
@@ -46035,7 +46035,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@12002@macro@Q_ASSERT_COMPILE",
+    "ID": "c:qassert.h@12342@macro@Q_ASSERT_COMPILE",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "Q_ASSERT_COMPILE",
@@ -46077,7 +46077,7 @@
     "scope": null
   },
   {
-    "ID": "c:qassert.h@14259@macro@Q_DIM",
+    "ID": "c:qassert.h@14657@macro@Q_DIM",
     "What": "MacroDef",
     "defdec": "Def",
     "display": "Q_DIM",
@@ -46097,10 +46097,24 @@
     "display": "void taskSignal(uint8_t)",
     "location": {
       "column": "6",
-      "line": "20",
+      "line": "22",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "taskSignal",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@TASK_SLEEP_TIME",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "TASK_SLEEP_TIME",
+    "location": {
+      "column": "16",
+      "line": "64",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
+    },
+    "name": "TASK_SLEEP_TIME",
     "origin": "project_file",
     "scope": null
   },
@@ -46111,7 +46125,7 @@
     "display": "void task_sleepBlink1(void)",
     "location": {
       "column": "6",
-      "line": "27",
+      "line": "66",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "task_sleepBlink1",
@@ -46125,7 +46139,7 @@
     "display": "void task_sleepBlink2(void)",
     "location": {
       "column": "6",
-      "line": "34",
+      "line": "73",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "task_sleepBlink2",
@@ -46139,7 +46153,7 @@
     "display": "void task_sleepBlink3(void)",
     "location": {
       "column": "6",
-      "line": "41",
+      "line": "80",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "task_sleepBlink3",
@@ -46153,7 +46167,7 @@
     "display": "void task_sleepBlink4(void)",
     "location": {
       "column": "6",
-      "line": "48",
+      "line": "87",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "task_sleepBlink4",
@@ -46167,7 +46181,7 @@
     "display": "void task_sleepBlink5(void)",
     "location": {
       "column": "6",
-      "line": "55",
+      "line": "94",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "task_sleepBlink5",
@@ -46181,7 +46195,7 @@
     "display": "void task_sleepBlink6(void)",
     "location": {
       "column": "6",
-      "line": "62",
+      "line": "101",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "task_sleepBlink6",
@@ -46195,7 +46209,7 @@
     "display": "void task_sleepBlink7(void)",
     "location": {
       "column": "6",
-      "line": "69",
+      "line": "108",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "task_sleepBlink7",
@@ -46209,7 +46223,7 @@
     "display": "void task_sleepBlink8(void)",
     "location": {
       "column": "6",
-      "line": "76",
+      "line": "115",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "task_sleepBlink8",
@@ -46223,7 +46237,7 @@
     "display": "void task_sleepBlink9(void)",
     "location": {
       "column": "6",
-      "line": "83",
+      "line": "122",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "task_sleepBlink9",
@@ -46237,10 +46251,52 @@
     "display": "void task_sleepBlink10(void)",
     "location": {
       "column": "6",
-      "line": "90",
+      "line": "129",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "task_sleepBlink10",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@task_sleepBlink11",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void task_sleepBlink11(void)",
+    "location": {
+      "column": "6",
+      "line": "136",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
+    },
+    "name": "task_sleepBlink11",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@task_sleepBlink12",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void task_sleepBlink12(void)",
+    "location": {
+      "column": "6",
+      "line": "143",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
+    },
+    "name": "task_sleepBlink12",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:usertasks.c@2931@macro@TOTAL_TASK_COUNT",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "TOTAL_TASK_COUNT",
+    "location": {
+      "column": "9",
+      "line": "150",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
+    },
+    "name": "TOTAL_TASK_COUNT",
     "origin": "project_file",
     "scope": null
   },
@@ -46251,10 +46307,24 @@
     "display": "tasks",
     "location": {
       "column": "8",
-      "line": "97",
+      "line": "151",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "tasks",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:usertasks.c@3344@macro@RUN_COUNT",
+    "What": "MacroDef",
+    "defdec": "Def",
+    "display": "RUN_COUNT",
+    "location": {
+      "column": "9",
+      "line": "167",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
+    },
+    "name": "RUN_COUNT",
     "origin": "project_file",
     "scope": null
   },
@@ -46265,7 +46335,7 @@
     "display": "taskCounts",
     "location": {
       "column": "11",
-      "line": "111",
+      "line": "168",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "taskCounts",
@@ -46279,7 +46349,7 @@
     "display": "void userTaskLoad(void)",
     "location": {
       "column": "6",
-      "line": "114",
+      "line": "171",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "userTaskLoad",
@@ -46287,13 +46357,13 @@
     "scope": null
   },
   {
-    "ID": "c:usertasks.c@2140@F@userTaskLoad@i",
+    "ID": "c:usertasks.c@3724@F@userTaskLoad@i",
     "What": "Variable",
     "defdec": "Def",
     "display": "i",
     "location": {
       "column": "11",
-      "line": "121",
+      "line": "178",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "i",
@@ -46301,13 +46371,13 @@
     "scope": null
   },
   {
-    "ID": "c:usertasks.c@2177@F@userTaskLoad@j",
+    "ID": "c:usertasks.c@3769@F@userTaskLoad@j",
     "What": "Variable",
     "defdec": "Def",
     "display": "j",
     "location": {
       "column": "13",
-      "line": "123",
+      "line": "180",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "j",
