@@ -278,7 +278,7 @@ void sched()
 {
 
   // FOR TESTING ONLY
-  BSP_setGPIO(GPIOB_AHB, GPIO_PB3, HIGH);
+  BSP_setGPIO(GPIOC_AHB, GPIO_PC5, HIGH); // Sched() associated pin
   // FOR TESTING ONLY
 
   // one or more tasks are staged to be added to readyTasks and stagedReadyTasks is not locked
@@ -322,7 +322,7 @@ void sched()
   }
   
   // FOR TESTING ONLY
-  BSP_setGPIO(GPIOB_AHB, GPIO_PB3, LOW);
+  BSP_setGPIO(GPIOC_AHB, GPIO_PC5, LOW); // Sched() associated pin
   // FOR TESTING ONLY
   
   __asm("CPSIE I"); // enable interrupts)   
@@ -482,7 +482,7 @@ void sysTickRoutine(void)
 {
 
   // FOR TESTING ONLY
-  BSP_setGPIO(GPIOF_AHB, GPIO_PF3, HIGH); // second pin
+  BSP_setGPIO(GPIOC_AHB, GPIO_PC4, HIGH); // SysTick associated pin
   // FOR TESTING ONLY
   
   // one or more tasks are staged to be added to tickSleepHeap and stagedTickSleepTasks is not locked
@@ -531,7 +531,7 @@ void sysTickRoutine(void)
   }
 
   // FOR TESTING ONLY
-  BSP_setGPIO(GPIOF_AHB, GPIO_PF3, LOW); // second pin
+  BSP_setGPIO(GPIOC_AHB, GPIO_PC4, LOW); // SysTick associated pin
   // FOR TESTING ONLY
 
   if (blockSched == 0U) //sched() is not blocked

@@ -4,7 +4,7 @@
 
 // FOR TESTING ONLY
 #include "bsp.h"
-uint32_t FirstPinAHBAddress = (uint32_t)(GPIOF_AHB); // redefined here to provide easy access in inline assembly
+uint32_t PendSVPinAHBAddress = (uint32_t)(GPIOB_AHB); // redefined here to provide easy access in inline assembly
 // FOR TESTING ONLY
 
 //used to substitute instead of the IAR generic definition of the interrupt vector table
@@ -50,13 +50,13 @@ void handler_PendSV(void)
 
   // FOR TESTING ONLY
   // modifying these registers is ok because they were already pushed upon interrupt entry
-  // equivalent to BSP_setGPIO(GPIOF_AHB, GPIO_PF2, HIGH) which asserts the first pin 
-    "LDR        R1, =FirstPinAHBAddress\n"
+  // equivalent to BSP_setGPIO(GPIOB_AHB, GPIO_PB3, HIGH) which asserts a pin
+    "LDR        R1, =PendSVPinAHBAddress\n"
     "LDR        R0, [R1]\n"
-    "MOVS       R1, #4\n"
-    "MOVS       R2, #4\n"
+    "MOVS       R1, #8\n"
+    "MOVS       R2, #8\n"
     "STR        R2, [R0, R1, LSL #2]\n"
-  // FOR TESTING ONLY  
+  // FOR TESTING ONLY     
         
   // save r4-r11 onto stack
     "PUSH       {r4-r11}\n"
@@ -87,10 +87,10 @@ void handler_PendSV(void)
         
   // FOR TESTING ONLY
   // modifying these registers is ok because they were already pushed upon interrupt entry
-  // equivalent to BSP_setGPIO(GPIOF_AHB, GPIO_PF2, LOW) which deasserts the first pin 
-    "LDR        R1, =FirstPinAHBAddress\n"
+  // equivalent to BSP_setGPIO(GPIOB_AHB, GPIO_PB3, LOW) which deasserts a pin
+    "LDR        R1, =PendSVPinAHBAddress\n"
     "LDR        R0, [R1]\n"
-    "MOVS       R1, #4\n"
+    "MOVS       R1, #8\n"
     "MOVS       R2, #0\n"
     "STR        R2, [R0, R1, LSL #2]\n"
   // FOR TESTING ONLY
