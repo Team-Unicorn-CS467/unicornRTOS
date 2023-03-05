@@ -46761,7 +46761,7 @@
     "display": "void releaseUnicornSemaphore(uint32_t)",
     "location": {
       "column": "6",
-      "line": "581",
+      "line": "590",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "releaseUnicornSemaphore",
@@ -46769,13 +46769,13 @@
     "scope": null
   },
   {
-    "ID": "c:unicorn.c@22869@F@releaseUnicornSemaphore@wokeTask",
+    "ID": "c:unicorn.c@23180@F@releaseUnicornSemaphore@wokeTask",
     "What": "Variable",
     "defdec": "Def",
     "display": "wokeTask",
     "location": {
       "column": "16",
-      "line": "587",
+      "line": "596",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "wokeTask",
@@ -46789,7 +46789,7 @@
     "display": "void exitTask(void)",
     "location": {
       "column": "6",
-      "line": "606",
+      "line": "620",
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\unicorn.c"
     },
     "name": "exitTask",
@@ -46811,6 +46811,20 @@
     "scope": null
   },
   {
+    "ID": "c:usertasks.c@870@F@longPulseRedSemaphore@j",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "j",
+    "location": {
+      "column": "16",
+      "line": "29",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
+    },
+    "name": "j",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
     "ID": "c:@F@longPulseBlueSemaphore",
     "What": "Function",
     "defdec": "Def",
@@ -46825,6 +46839,20 @@
     "scope": null
   },
   {
+    "ID": "c:usertasks.c@1574@F@longPulseBlueSemaphore@j",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "j",
+    "location": {
+      "column": "16",
+      "line": "53",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
+    },
+    "name": "j",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
     "ID": "c:@F@longPulseGreenSemaphore",
     "What": "Function",
     "defdec": "Def",
@@ -46835,6 +46863,20 @@
       "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
     },
     "name": "longPulseGreenSemaphore",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:usertasks.c@2233@F@longPulseGreenSemaphore@j",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "j",
+    "location": {
+      "column": "16",
+      "line": "76",
+      "path": "C:\\Users\\atoyn\\Downloads\\unicornRTOS\\usertasks.c"
+    },
+    "name": "j",
     "origin": "project_file",
     "scope": null
   },

@@ -550,11 +550,20 @@ void aquireUnicornSemaphore(uint32_t chan)
 {
   Q_ASSERT(chan < MAX_LOCKS); 
 
-  acquireLock(&lockSleepLock);
+  // ***NOTE: THIS IS AN OPTIMIZATION WHICH COULD BE APPLIED
+  // ELSEWHERE IN THE SCHEDULER WHERE A TASK MIGHT JUST WAIT ON LOCKS IN A TASK ***
+  
+  // try to aquire the lock, but reschedule
+  // if it is not immediately available
+  while(tryAquireLock(&lockSleepLock) == LOCK_UNAVAILABLE)
+  {
+    __asm("CPSID I");
+    sched();
+  }
   
   // we want to ensure the tryAquireLock is not failing
   // on account of being interrupted in this case
-  // if the aquisition legitimately failes because the lock is held,
+  // if the aquisition legitimately fails because the lock is held,
   // we leave interrupts disabled to avoid race conditions on currentTask
   __asm("CPSID I");
   
@@ -585,18 +594,23 @@ void releaseUnicornSemaphore(uint32_t chan)
   acquireLock(&lockSleepLock);
   
   struct Task* wokeTask = getNextTaskSleepingOnChannel(chan);
-  releaseLock(&(lockChannels[chan].lock)); // release the lock on chan
   
-  releaseLock(&lockSleepLock);    
-
-  if(wokeTask != (struct Task*)(0U)) // a task was sleeping on chan
+  if(wokeTask != (struct Task*)(0U)) // a task was sleeping on chan wake up the next in line task but don't release the lock
   {  
+    releaseLock(&lockSleepLock);
+    
     acquireLock(&stagedReadyTasksLock);
     stagedReadyTasks[stagedReadyTasksCount] = wokeTask; // stage wokeTask to be ready
     ++stagedReadyTasksCount;
     releaseLock(&stagedReadyTasksLock); 
   }
-
+  
+  else // no task was sleeping on chan, release the lock on chan
+  {
+    releaseLock(&(lockChannels[chan].lock));
+    releaseLock(&lockSleepLock);
+  }
+  
   __asm("CPSID I"); // disable interrupts to avoid any race conditions on currentTask  
   sched(); // schedule next task and set PendSV to trigger (as soon as interrupts are enabled)  
 }
