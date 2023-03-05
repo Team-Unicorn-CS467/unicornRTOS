@@ -2,14 +2,19 @@
 #define UNICORN_H
 
 #include <stdint.h>
-#include "locks.h" //for MutexLock
+#include "locks.h" // for MutexLock
+#include "qassert.h" // Q_ASSERT
+#include "TM4C123GH6PM.h" // NVIC_SystemReset()
 
-#define TASK_STACK_WORD_SIZE 64U     // later this will not be a constant value
-#define BYTES_PER_WORD       4U      // for 32 bit architecture
-#define MAX_TASKS            8U
-#define PRIORITY_COUNT       8U      // number of different priority levels (0 - 7)
-#define MAX_LOCKS            8U      // maximum number of OS-supported semaphore locks ???
+// FOR TESTING ONLY
+#include "bsp.h"
+// FOR TESTING ONLY
 
+#define TASK_STACK_WORD_SIZE 64U        // later this will not be a constant value
+#define BYTES_PER_WORD       4U         // for 32 bit architecture
+#define MAX_TASKS            8U         // must be <= 31
+#define PRIORITY_COUNT       8U         // number of different priority levels (0 - 7)
+#define MAX_LOCKS            8U         // maximum number of OS-supported semaphore locks ???
 
 // returns the bit index of the highest set bit in a 32-bit bitmask
 #define getTopSetBitIndex(bitmask_32) ((32U - __CLZ(bitmask_32)) - 1U)
@@ -70,8 +75,9 @@ struct Task
   struct Task*          next;                           // used in the readyTasks structure
 };
 
-extern struct Task* volatile currentTask; //initialized in unicorn.c
-extern struct Task* volatile nextTask; //initialized in unicorn.c
+extern struct Task* volatile currentTask; // initialized in unicorn.c
+extern struct Task* volatile nextTask; // initialized in unicorn.c
+extern volatile uint32_t blockSched; // initialized in unicorn.c
 
 // linked list of tasks used to group like tasks (same priority, or same mutext lock)
 typedef struct
@@ -87,16 +93,10 @@ typedef struct
   TaskList sleepingTasks;
 } LockChannel;
 
-/*** Scheduling Stuff ***/
+/*** public scheduling functions ***/
 
 //starting setup of the task table, idleTask, user task loader
 void initializeScheduler(EntryFunction, uint8_t);
-
-// decrements Task->timeout for all Tasks in taskTable
-void decrementTimeouts(void);
-
-// set's the Task->timeout to 'ticks' and sets readyTasks[Task] to 0
-void timeoutSleep(uint32_t ticks);
 
 //initializes a new Task and marks it as ready to run without scheduling
 //(safe to run this with interrupts disabled)
@@ -106,8 +106,12 @@ void readyNewTask(EntryFunction, uint8_t priority);
 //does everything readyNewTask does, but also schedules the task to run
 void startNewTask(EntryFunction, uint8_t priority);
 
-//a task calls this to exit itself
-void exitTask();
+// set's the Task->timeout to 'ticks' and sets readyTasks[Task] to 0
+void timeoutSleep(uint32_t ticks);
+
+// decrements Task->timeout for all Tasks in taskTable
+// reserved for use by the SysTick handler
+void sysTickRoutine(void);
 
 // acquire a semaphore lock managed by the OS
 void aquireUnicornSemaphore(uint32_t);
@@ -115,7 +119,7 @@ void aquireUnicornSemaphore(uint32_t);
 // release a semaphore lock managed by the OS
 void releaseUnicornSemaphore(uint32_t);
 
-//potentially schedules a new stack and context switches
-void sched();
+//a task calls this to exit itself
+void exitTask();
 
 #endif //UNICORN_H

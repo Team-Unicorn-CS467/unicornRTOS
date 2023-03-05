@@ -44,20 +44,7 @@ void handler_SVCall(void) //no implementation for now
 
 //***NOTE: THE CURRENT IMPLEMENTATION REQUIRES THE FPU TO BE TURNED OFF***
 void handler_PendSV(void)
-{
-  /*
-  // if not coming from reset/idleTask (when currenTask=null) save r4-r11 and currentTask->sp to stack
-  if (currentTask != (Task *)0)
-  {
-    //save registers R4 through R11 to currentTask's stack
-    currentTask->sp = sp;
-  }
-  sp = nextTask->sp;
-  currentTask = nextTask;
-  //enable interrupts:
-  __asm("CPSIE I");
-  */
-  
+{  
   //disable interrupts
   __asm("CPSID I\n" 
 
@@ -89,10 +76,15 @@ void handler_PendSV(void)
 
   // clear exclusive monitor (for semaphores)
     "CLREX              \n"
+
+  // blockSched = 0;
+    "LDR        R2, =blockSched\n"
+    "MOVS       R1, #0\n"
+    "STR        R1, [R2]\n"
       
   // restore nextTask's r4-r11 regs
     "POP        {r4-r11}\n"
-
+        
   // FOR TESTING ONLY
   // modifying these registers is ok because they were already pushed upon interrupt entry
   // equivalent to BSP_setGPIO(GPIOF_AHB, GPIO_PF2, LOW) which deasserts the first pin 
@@ -110,9 +102,10 @@ void handler_PendSV(void)
     "BX         LR\n"); 
 }
 
-void handler_SysTick(void) //incrementing ticks, scheduling/switching task
+// tracking timeout tasks, incrementing ticks, then sched()
+void handler_SysTick(void)
 {  
-  decrementTimeouts();
+  sysTickRoutine();
 }
 
 int const __vector_table[] @ ".intvec" = //the @ ".intvec" syntax is not standard c, but IAR supports it for replacing the generic vector table IAR generates in the linking process from its own library???
